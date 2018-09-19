@@ -24,7 +24,7 @@ public function __construct()
             switch($role)
             {
                 case 1:
-                    $data['viewpage']='index'; //administrator or Admin
+                    //$data['viewpage']='index'; //administrator or Admin
                 break;
                 case 2:
 
@@ -36,7 +36,7 @@ public function __construct()
                 case 4:
                     // $types=$this->session->userdata('types');
                     // $data['history']=$this->DailyCmr_model->gethistorydetailbyDECO($reportdate,$types);
-                    $data['viewpage']='dashboard/manager';//manager or RM
+                    //$data['viewpage']='dashboard/manager';//manager or RM
                 break;
                 case 5:
                 break;

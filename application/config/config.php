@@ -26,7 +26,7 @@ date_default_timezone_get();
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:81/skp_reports/set';
+$config['base_url'] = 'http://localhost:81/skp_reports';
 
 /*
 |--------------------------------------------------------------------------
