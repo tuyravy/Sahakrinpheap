@@ -2,6 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Menu_model extends CI_Model
 {
+    public function __construct()
+    {
+         parent::__construct();  
+         $this->load->model("Function_model"); 
+         $this->Reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));   
+         $this->role =$this->session->userdata('role');
+         $this->brcode =$this->session->userdata('branch_code');
+         $this->subbrcode =$this->session->userdata('subbranch'); 
+         $this->sid=$this->session->userdata('system_id'); 
+    }
+    public function detailnotyetupload(){
+        
+        $result=$this->db->query("Call Cmr_DetailNotyetupload('".$this->Reportdate."',".$this->role.",".$this->sid.",'".$this->brcode."')");
+        $res      = $result->result();
+ 
+         //add this two line 
+         $result->next_result(); 
+         $result->free_result(); 
+        //end of new code
+ 
+         return $res;
+
+    }
     public static function GetMenu()
     {
         $result=DB::table('menu_role')
@@ -212,6 +235,22 @@ public function setprofile($userid,$sid)
 
       
   }
+  public function CheckUpload(){
+    $result=$this->db->query(" CALL Cmr_CheckDataUpload('".$this->Reportdate."','".$this->sid."','".$this->role."')");        
+    $res= $result->result();
+
+    //add this two line 
+    $result->next_result(); 
+    $result->free_result(); 
+   //end of new code
+    foreach($res as $row){
+        
+        return $row->counts;
+    }
+    return 0;
+    
+   
+}
   function getNotyatupload()
   {
       
@@ -219,7 +258,7 @@ public function setprofile($userid,$sid)
       $systemid=$this->session->userdata('system_id');
       $role=$this->session->userdata('role');
       $brcode=$this->session->userdata('branch_code');
-      $result=$this->db->query("Call sp_getNotyatupload(".$reportdate.",".$role.",".$systemid.",".$brcode.")");
+      $result=$this->db->query("Call Cmr_CountNotYetUpload('".$systemid."','".$role."','".$reportdate."');");
       $res      = $result->result();
       $result->next_result(); 
       $result->free_result(); 
@@ -292,6 +331,22 @@ public function setprofile($userid,$sid)
           
           return false; // And here false to TRUE
         }   
+
+        
+  }
+  function getusername()
+  {
+      $user_id=$this->session->userdata('user_id');
+      $result=$this->db->from('users')
+                        ->where('user_id',$user_id)
+                        ->where('flag',1)
+                        ->get();
+       
+       
+           return $result->result();
+       
+       
+       
   }
     
 }

@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>CASH INTER-BRANCH</h2>
+                      <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">CASH INTER-BRANCH</span>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>

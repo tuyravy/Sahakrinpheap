@@ -35,7 +35,7 @@
                                       
                                         <label for="exampleInputName2">Filter by:</label>
                                           <select class="form-control" id="systemid" name="systemid">
-                                            <option value=''>Select RMName</option>
+                                            <option value=''><<  Select RMName  >></option>
                                             <?php foreach($controlbyrm as $row){
                                                   if(isset($systemid)){?>
                                                   <option value="<?php echo $row->sid;?>" <?php if($row->sid==$systemid){ echo  'selected';}?>><?php echo $row->name;?></option>
@@ -99,27 +99,13 @@
                             </tr>
                            <?php }?>
                            <tr>
-                              <td colspan='2' style="text-align:right">Total:</td>                              
+                              <td colspan='3' style="text-align:right">Total:</td>                              
                               <td style="text-align:center;"><?php echo $totalAcc;?></td>       
                               <td colspan='3'></td>                     
                             </tr>
                           </tbody>                          
                         </table>  
-                        <!-- <div class="pull-right">
-                          <div style="margin-top: 25px;margin-bottom: -12px;">
-                              <label>Total <span class="label label-default"><?= $total_rows; ?></span>records</label>
-                          </div>  
-                          <br/>
-                          <?php 
-                            if(isset($systemid)=="All")
-                            {
-                                echo "";
-                            }else{
-                              echo $this->pagination->create_links(); 
-                            }
-                            
-                            ?>
-                        </div>                  -->
+                       
                       </div>  
                     </div>                      
                   </div>                    

@@ -50,7 +50,7 @@
                                        <?php if($types==2){?>
                                         <label for="exampleInputName2">Filter by Branch:</label>
                                           <select class="form-control" id="branchname" name="brname">
-                                            <option value=''>Select Branch</option>
+                                            <option value=''><< Select Branch >></option>
                                             <?php foreach($brlist as $row){
                                                   if(isset($brname)){?>
                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
@@ -61,7 +61,7 @@
                                           </select>                                        
                                           <!-- <label for="exampleInputName2">Filter by Co:</label> -->
                                           <select class="form-control" id="CoName" name="coname">
-                                            <option value=''>Select Co-Name</option>    
+                                            <option value=''><< Select Co-Name >></option>    
                                             <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -76,7 +76,7 @@
                                             <input type="hidden" value="<?php echo $this->session->userdata('branch_code');?>" id="brcode">                                              
                                               <select class="form-control CoNameSingle" name="coname">  
                                                 
-                                                <option value=''>Select Co-Name</option>                                               
+                                                <option value=''><< Select Co-Name >></option>                                               
                                                 <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -118,7 +118,7 @@
                             <br/>
                        
                         <div id="reports">
-                        <table id="datatable-buttons5" class="table table-bordered">
+                        <table id="datatable-buttons5" class="table table-bordered table-condensed f11">
                           <thead>
                             <tr style="text-align:center;boder;">
                               <th style="boder;border-bottom:3pt solid #22d4ae;text-align:center;padding:10px 0px 25px 0px;white-space: nowrap;overflow: hidden;" rowspan="2">CO-Name</th>
@@ -141,11 +141,37 @@
                               <th style="text-align:center;">BrName</th>
                               <th style="text-align:center;">BrCode</th>
                             </tr>
-                            <?php foreach($Repayment as $re){?>
+                            <?php 
+                                $GrantedTotal=0;
+                                $TotalBalance=0;
+                                $Principle=0;
+                                $Interest=0;
+                                $Penalty=0;
+                                $AdminFee=0;
+                                $TotalBalance_new=0;
+                                $Principle_new=0;
+                                $Interest_new=0;
+                                $Penalty_new=0;
+                                $AdminFee_new=0;
+
+                                foreach($Repayment as $re){    
+                                  $GrantedTotal+=$re->Principle+$re->Interest+$re->Penalty+$re->AdminFee+$re->Principle1+$re->Interest1+$re->Penalty1+$re->AdminFee1;
+                                  $TotalBalance+=$re->Interest+$re->Penalty+$re->AdminFee;
+                                  $Principle+=$re->Principle;
+                                  $Interest+=$re->Interest;
+                                  $Penalty+=$re->Penalty;
+                                  $AdminFee+=$re->AdminFee;
+                                  $TotalBalance_new+=$re->Interest1+$re->Penalty1+$re->AdminFee1;
+                                  $Principle_new+=$re->Principle1;
+                                  $Interest_new+=$re->Interest1;
+                                  $Penalty_new+=$re->Penalty1;
+                                  $AdminFee_new+=$re->AdminFee1;
+
+                                ?>
                             <tr>
                                 <td style="text-align:left"><?= $re->CoName;?></td>
-                                <td style="text-align:right"><?= number_format($re->Principle+$re->Principle1,0);?></td>
-                                <td style="text-align:right"><?= number_format($re->Interest+$re->Penalty+$re->AdminFee,0);?></td>
+                                <td style="text-align:right"><?= number_format($re->Interest+$re->Penalty+$re->AdminFee+$re->Principle1+$re->Interest1+$re->Penalty1+$re->AdminFee1,0); ?></td>
+                                <td style="text-align:right"><?= number_format($re->Principle+$re->Interest+$re->Penalty+$re->AdminFee,0);?></td>
                                 <td style="text-align:right"><?= number_format($re->Principle,0);?></td>
                                 <td style="text-align:right"><?= number_format($re->Interest,0);?></td>
                                 <td style="text-align:right"><?= number_format($re->Penalty,0);?></td>
@@ -159,6 +185,22 @@
                                 <td style="text-align:center;"><?= $re->brcode;?></td>
                             </tr>
                             <?php }?>
+                            <tr class="active">
+                                <td style="text-align:right">Total:</td>
+                                <td style="text-align:right"><?= number_format($GrantedTotal,0); ?></td>
+                                <td style="text-align:right"><?= number_format($TotalBalance,0);?></td>
+                                <td style="text-align:right"><?= number_format($Principle,0);?></td>
+                                <td style="text-align:right"><?= number_format($Interest,0);?></td>
+                                <td style="text-align:right"><?= number_format($Penalty,0);?></td>
+                                <td style="text-align:right"><?= number_format($AdminFee,0);?></td>
+                                <td style="text-align:right"><?= number_format($TotalBalance_new,0);?></td>
+                                <td style="text-align:right"><?= number_format($Principle_new,0);?></td>
+                                <td style="text-align:right"><?= number_format($Interest_new,0);?></td>
+                                <td style="text-align:right"><?= number_format($Penalty_new,0);?></td>
+                                <td style="text-align:right"><?= number_format($AdminFee_new,0);?></td>                               
+                                <td style="text-align:center;" colspan="2"></td>
+                                
+                            </tr>
                           </thead>                           
                         </table>
                         

@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#317EFB"/>
     <title>Sahakrinpheap Reports</title>
     <link href="<?php echo base_url(); ?>public/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Khmer" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="shortcut icon" href="<?= base_url().'assets/img/favicon.png';?>" />
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?= base_url().'assets/img/favicon57x57.png';?>" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?= base_url().'assets/img/favicon72x72.png';?>" />
@@ -17,6 +19,31 @@
     <link href="<?php echo base_url();?>public/bootstrap.min.css" rel="stylesheet">   
     <link href="<?php echo base_url();?>public/custom.min.css" rel="stylesheet">
   </head>
+  <style>
+  body{
+  font-family:Khmer OS Content !important;
+  font-size:12px;
+  }
+  .badge-light {
+    display: inline-block;
+    min-width: 5px;
+    padding: 1px 2px;
+    font-size:12px;
+    font-weight:100;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius:5px;
+    margin-left:-5px;
+}
+  </style>
+  <?php 
+   $types=$this->session->userdata('types');
+   $checking=$this->Menu_model->CheckUpload(); 
+  ?>
   <body class="nav-md" onload="setTimeout(myFunction,900000);">
     <div class="container body">
       <div class="main_container">
@@ -88,8 +115,10 @@
             <nav class="" role="navigation">
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>                
-              </div>              
-              <ul class="nav navbar-nav navbar-right">               
+              </div>            
+           
+              <ul class="nav navbar-nav navbar-right">  
+                             
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url();?>public/images/user.png" alt="user"><?php echo $this->session->userdata('full_name'); ?>
@@ -97,42 +126,40 @@
                   </a>                    
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="<?php echo site_url("home/changeprofile");?>"> Profile</a></li>
-                    <?php 
-                         $types=$this->session->userdata('types');
-                         if($types==2)
-                         {
-                    ?>                      
-                        <li><a href='#' data-toggle="modal" data-target=".bs-example-modal-sm">Switch-Branch</a></li>
-                    <?php
-                         }
-                     ?>
+                    
                     <li>                    
                     <li><a href="<?php echo site_url('logout');?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
+               
                 <li role="presentation" class="dropdown">
                   <a href="javascript:onmouseover;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge badge-success"><?php echo $this->Menu_model->getNotyatupload();?></span> 
+                  <i class="fa fa-envelope-o"></i>   
+                    <?php if($this->Menu_model->getNotyatupload()==0){ echo "";}else{?>                                       
+                      <span class="badge bg-green">                                             
+                        <?php echo $this->Menu_model->getNotyatupload();?>
+                      </span>
+                    <?php }?>
                   </a>                  
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <!-- <?php                         
+                    <?php                         
                         $res=$this->Menu_model->getNotyetuploadbranch();
                         foreach($res as $row){
                       ?>
                     <li>
-                      <a href="<?= base_url();?>">
+                      <a href="<?= site_url("detail/detail_notyetupload");?>">
                         <span class="image"><img src="<?= base_url() . 'public/images/logo.png' ?>" alt="Profile Image" /></span>
                         <span>
                           <span><?php echo $row->shortcode;?></span>
                           <span class="time"></span>
                         </span>
+                        
                         <span class="message">
                           Today Branch <?php echo $row->shortcode;?> Not Yet Upload Data...
                         </span>
                       </a>
                     </li>
-                   <?php }?> -->
+                   <?php }?>
                     <li>
                       <div class="text-center">
                         <a>
@@ -142,24 +169,50 @@
                       </div>
                     </li>
                   </ul>
-                </li>                 
+                </li>         
+                <li>
+                       <a href="javascript:onmouseover;" class="nohover">
+                       <span class="fa fa-bell">
+                          <small>
+                              <?php if($checking>=1){?>
+                              <sup class="badge badge-light" style="background-color:rgba(231,76,60,0.88);">
+                                <?php if($checking){echo $checking;}?>
+                              </sup>  
+                              <?php }?>
+                          </small>     
+                        </span>                 
+                       </a>
+                </li>        
                 <li class="nohover">
                     <a class="nohover">Report Date:<span style="margin-left:10px;" class="badge badge-secondary"><?php echo date("d-M-Y",strtotime($this->Function_model->GetCurrRunDate()));?></span></a>   
                 </li>
-                <?php if($this->session->userdata('types')==2){?>
+
+               
                 <li class="nohover" style="hover:none;">
                     <a class="nohover">Branch:<span style="margin-left:10px;" class="badge badge-secondary">
-                        <!-- <?php echo $this->Menu_model->getbranchname($this->session->userdata('branch_code'));?></span></a>    -->
+                        <?php echo $this->Menu_model->getbranchname($this->session->userdata('branch_code'));?></span></a>   
                 </li>
-                <?php }?>               
+                           
               </ul>
             </nav>
           </div>
         </div>
         <!-- /top navigation -->       
         <!-- page content -->
-        <div class="right_col" role="main">         
+        <div class="right_col" role="main">  
+            <?php  
+           
+            if($checking>=1){?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><span class="fa fa-exclamation-triangle"></span><span style="margin-left:10px;">សូមត្រួតពិនិត្យទិន្នន័យរបស់លោកអ្នក! ទិន្នន័យរបស់លោកអ្នកមិនទាន់បានជោតជ័យទេ<span></strong> <a href="<?= site_url("detail/detail_notyetupload");?>">ចុចត្រង់នេះ</a>
+                <?php if($types==4){?>
+                <strong><p style="margin-left:25px;">ប្រព័ន្ធកំពុងធ្វើប្រតិបត្តិការត្រួតពិនិត្យទិន្នន័យ</p> </strong>
+                <?php }?>        
+            </div>    
+            <?php }?>   
             <?php 
+                
                 if(isset($viewpage)){
                 $this->load->view($viewpage);
                 }
@@ -173,23 +226,7 @@
       </div>
     </div>
     
-      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Switch-Sub Branch</h4>
-              </div>
-              <div class="modal-body">
-                <h5>Do you want to set Switch-Sub branch ?</h5>                  
-              </div>
-              <div class="modal-footer">            
-                <a href="<?php echo site_url("Home/setmulitbranch")?>"  class="btn btn-primary"><span class="glyphicon glyphicon-off"></span><span style="margin-left:10px;">Switch User</span></a>
-              </div>
-            </div>
-          </div>
-      </div>          
-    <!-- jQuery -->
+    
     <script src="<?php echo base_url();?>public/jquery.min.js"></script>
     <script src="<?php echo base_url();?>public/bootstrap.min.js"></script>
     <!-- <script src="<?php echo base_url();?>public/nprogress.js"></script>

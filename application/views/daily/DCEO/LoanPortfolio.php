@@ -93,13 +93,7 @@
                               <td style="text-align:left" colspan='2'></td>
                           </tr>                            
                         </table>
-                        <!-- <div class="pull-right">
-                          <div style="margin-top: 25px;margin-bottom: -12px;">
-                              <label>Total <span class="label label-default"><?= $total_rows; ?></span>records</label>
-                          </div>  
-                          <br/>
-                          <?php echo $this->pagination->create_links(); ?>
-                        </div>  -->
+                       
                      </div>   
                     </div>                    
                   </div>

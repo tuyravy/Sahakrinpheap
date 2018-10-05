@@ -11,7 +11,7 @@ class DailyCash extends CI_Controller {
          $this->load->model('Function_model');        
          $this->load->helper('url');
          $this->load->helper('form');
-         $this->load->model('Imports_model');
+         //$this->load->model('Imports_model');
          $this->load->library('Excel');
          $this->load->library('Utility');
          $this->load->model('FN_model');
@@ -164,8 +164,7 @@ class DailyCash extends CI_Controller {
         $total_rows=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate);
         $utility->pagination_config($total_rows,$base_url);
         $data['BRANCH']=$this->FN_model->GETBRANCH();
-        $data['menulist']=$this->Menu_model->getUsermenu();
-        $data['submenu']=$this->Menu_model->getsubMenu();
+        $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['viewpage']='FN/CashSummary.php'; 
         $this->load->view('master_page',$data);

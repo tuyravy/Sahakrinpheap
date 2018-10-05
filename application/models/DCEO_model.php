@@ -14,9 +14,37 @@ class DCEO_model extends CI_Model
          $this->role =$this->session->userdata('role');
          $this->brcode =$this->session->userdata('branch_code');
          $this->subbrcode =$this->session->userdata('subbranch'); 
+         $this->sid=$this->session->userdata('system_id'); 
+    }
+    public function CheckUpload(){
+        $result=$this->db->query(" CALL Cmr_CheckDataUpload('".$this->Reportdate."','".$this->sid."','".$this->role."')");        
+        $res= $result->result();
+
+        //add this two line 
+        $result->next_result(); 
+        $result->free_result(); 
+       //end of new code
+        foreach($res as $row){
+            
+            return $row->counts;
+        }
+        return 0;
+        
+       
+    }
+    public function gethistorydetailbyDECO($Reportdate,$type)
+    {
+         $result=$this->db->query("Call sp_GetHistorydetailbyDECO(".$Reportdate.",".$type.")");     
+         $res      = $result->result();
+          //add this two line 
+          $result->next_result(); 
+          $result->free_result(); 
+         //end of new code
+  
+          return $res;
     }
     /*=================Loan Active and Portfolio=======*/
-
+    
     public function loanActiveBorrowerByProduct($offset,$role)
     {       
         $sid=$this->db->select('sid')
@@ -252,56 +280,13 @@ class DCEO_model extends CI_Model
         ->where('flag',1)
         ->where('rid',1)
         ->get()->row(); 
-        $result=$this->db->query("
-                SELECT 
-                tbl.`shortcode`,
-                SUM(p.BalAmt) AS OS,
-                SUM(p.Acc) AS Cilent,
-                SUM(p.PAR1_Amt) AS PAR1_Amt,
-                SUM(p.PAR7_Amt) AS PAR7_Amt,
-                SUM(p.PAR30_Amt) AS PAR30_Amt,
-                SUM(p.PAR1_Amt)/SUM(p.BalAmt) AS Ratio1day,
-                SUM(d.DisbAmtDaily) AS DisbAmtDaily,
-                SUM(d.DisbAccDaily) AS DisbAccDaily
-                FROM par_values p
-                LEFT JOIN dis_values d ON p.IdCO=d.idCo AND d.brcode=p.brcode AND d.`ReportDate`='2018-08-10'
-                INNER JOIN tbl_branch tbl ON tbl.`brCode`=p.`brcode`                
-                WHERE p.reportdate='2018-08-10' 
-                GROUP BY p.`brcode` limit 1;"); 
-        
-        
-         
-        $result1=$this->db->query("
-                SELECT 
-                tbl.`shortcode`,
-                SUM(p.BalAmt) AS OSPre,
-                SUM(p.Acc) AS CilentPre,
-                SUM(p.PAR1_Amt) AS PAR1_AmtPre,
-                SUM(p.PAR7_Amt) AS PAR7_AmtPre,
-                SUM(p.PAR30_Amt) AS PAR30_AmtPre,
-                SUM(p.PAR1_Amt)/SUM(p.BalAmt) AS Ratio1dayPre,
-                SUM(d.DisbAmtDaily) AS DisbAmtDailyPre,
-                SUM(d.DisbAccDaily) AS DisbAccDailyPre
-                FROM par_values p
-                LEFT JOIN dis_values d ON p.IdCO=d.idCo AND d.brcode=p.brcode AND d.`ReportDate`='2018-08-09'
-                INNER JOIN tbl_branch tbl ON tbl.`brCode`=p.`brcode`                
-                WHERE p.reportdate='2018-08-09' 
-                GROUP BY p.`brcode` limit 1");
-
-        // $result_final=array_column($result->result(),$result1->result()); 
-         $arraylist=array();
-         array_push($arraylist,$result->result(),$result1->result());    
-         foreach($arraylist as $key=>$row){
-            foreach($row as $key=>$re){
-                return $re;
-            }
-         }
-        // $result=$this->db->query("Call Cmr_DailyBranchPerformentDCEO('".$this->Reportdate."','".$this->Reportdate."','".$sid->sid."','1');");     
-        // $res= $result->result(); 
-        // $result->next_result(); 
-        // $result->free_result(); 
+       
+        $result=$this->db->query("Call Cmr_DailyBranchPerformentDCEO('".$this->Reportdate."','".$this->Reportdate."','".$sid->sid."','1');");     
+        $res= $result->result(); 
+        $result->next_result(); 
+        $result->free_result(); 
         //$this->output->enable_profiler(TRUE);       
-          
+        return $res; 
     }
     public function overloaded_DailyBrPerforment($sid,$reportdate,$reportend,$role)
     {
@@ -363,6 +348,39 @@ class DCEO_model extends CI_Model
                 }
                 return  $arraylist;
     }
+    public function getcmrsummRMCEO($rmid,$reportdate,$type)
+    {
+       $result=$this->db->query("Call Cmr_SummaryCMRByRM('".$rmid."','".$reportdate."')");     
+       $res= $result->result();
+       $result->next_result(); 
+       $result->free_result();
+       foreach($res as $row){
+        return $row;
+       }
+      
+    }
+    public function SummaryCEO($reportdate)
+    {
+       $result=$this->db->query("Call Cmr_SummaryCEO('".$reportdate."')");     
+       $res= $result->result();
+       $result->next_result(); 
+       $result->free_result();
+       foreach($res as $row){
+        return $row;
+       }
+      
+    }
+         public function getsumary($reportdate)
+        {
+             
+            $result=$this->db->query("Call Cmr_SummaryCEO('".$reportdate."')");     
+            $res= $result->result();
+            $result->next_result(); 
+            $result->free_result();
+            foreach($res as $row){
+                return $row;
+            }
+        }
     public function GetRM(){
         $result=$this->db->select("branch_control,name,sid,rid")
                          ->from("rm")
@@ -400,6 +418,15 @@ class DCEO_model extends CI_Model
        {
            return $rows;
        }
+  }
+  public function getRmNamebySID($sid){
+
+    $result=$this->db->select("branch_control,name,sid,rid")
+    ->from("rm")
+    ->where('flag',1)
+    ->where('sid',$sid)
+    ->get()->row();
+    return $result->name;
   }
 
 

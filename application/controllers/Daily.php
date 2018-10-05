@@ -5,7 +5,6 @@ class Daily extends CI_Controller {
     {
          parent::__construct();       
          $this->load->model('Menu_model');        
-         $this->load->model('Dailyloanhistory_model');
          $this->load->model('DailyCmr_model');
          $this->load->library("pagination");
          $this->load->library('Excel');
@@ -30,6 +29,7 @@ class Daily extends CI_Controller {
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
         $data['viewpage']='daily/activeBorrower';         
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['brlist']=$this->BM_model->GetBrByUser();
             if(isset($_GET['per_page']))
             {
@@ -119,7 +119,7 @@ class Daily extends CI_Controller {
         $msg = "Configer has been changed.";     
         $CoName=$this->BM_model->GetCoName($brcode);
         $opt="";
-        $opt.="<option value=>Select CoName</option>";
+        $opt.="<option value=><< Select CoName >></option>";
         foreach($CoName as $re){
             $opt.="<option value='$re->IdCo'>";
             $opt.=$re->CoName;
@@ -138,6 +138,7 @@ class Daily extends CI_Controller {
         $data['sid']=$this->session->userdata('system_id');
         $data['types']=$this->session->userdata('types');
         $data['title'] = lang('system_titel');    
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['total_rows'] = $this->BM_model->TotalCobyproduct();   
         $data['brlist']=$this->BM_model->GetBrByUser();    
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
@@ -201,7 +202,8 @@ class Daily extends CI_Controller {
         $data['title'] = lang('system_titel');    
         $data['types']=$this->session->userdata('types');
         $data['brlist']=$this->BM_model->GetBrByUser(); 
-        $data['total_rows'] = $this->BM_model->TotalCobyproduct();       
+        $data['total_rows'] = $this->BM_model->TotalCobyproduct();   
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
         if(isset($_GET['per_page']))
         {
@@ -296,7 +298,9 @@ class Daily extends CI_Controller {
         $data['title'] = lang('system_titel'); 
         $data['types']=$this->session->userdata('types');   
         $data['brlist']=$this->BM_model->GetBrByUser(); 
-        $data['total_rows'] = $this->BM_model->TotalCobyproduct();       
+        $data['total_rows'] = $this->BM_model->TotalCobyproduct();   
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
         if(isset($_GET['per_page']))
         {
@@ -396,6 +400,8 @@ class Daily extends CI_Controller {
         $data['CoName']=$this->BM_model->GetCoName($this->session->userdata('branch_code'));
         $data['total_rows'] = $this->BM_model->TotalCobyproduct();   
         $data['brlist']=$this->BM_model->GetBrByUser();     
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
         if(isset($_GET['per_page']))
         {
@@ -494,7 +500,9 @@ class Daily extends CI_Controller {
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');   
         $data['brlist']=$this->BM_model->GetBrByUser();  
-        $data['types']=$this->session->userdata('types');   
+        $data['types']=$this->session->userdata('types');  
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));      
         if(isset($_POST['brname']) || isset($_POST['coname']))
         {
                 $brcode=$this->input->post('brname');
@@ -580,6 +588,8 @@ class Daily extends CI_Controller {
         $data['title'] = lang('system_titel');              
         $data['brlist']=$this->BM_model->GetBrByUser();
         $data['types']=$this->session->userdata('types');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
         if(isset($_POST['brname']) || isset($_POST['coname']))
         {
                 $brcode=$this->input->post('brname');
@@ -664,6 +674,8 @@ class Daily extends CI_Controller {
         $data['title'] = lang('system_titel');      
         $data['brlist']=$this->BM_model->GetBrByUser();
         $data['types']=$this->session->userdata('types');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
         if(isset($_POST['brname']) || isset($_POST['coname']))
         {
                 $brcode=$this->input->post('brname');
@@ -751,6 +763,8 @@ class Daily extends CI_Controller {
        
         $data['brlist']=$this->BM_model->GetBrByUser();
         $data['types']=$this->session->userdata('types');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
         if(isset($_POST['brname']) || isset($_POST['coname']))
         {
                 $brcode=$this->input->post('brname');
@@ -836,6 +850,8 @@ class Daily extends CI_Controller {
         $data['title'] = lang('system_titel');
         $data['brlist']=$this->BM_model->GetBrByUser();
         $data['types']=$this->session->userdata('types');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+        $data['reportend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));  
         if(isset($_POST['brname']))
         {
                 $brcode=$this->input->post('brname');
