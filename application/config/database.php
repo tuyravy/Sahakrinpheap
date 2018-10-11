@@ -99,7 +99,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '45.40.138.90',
 	'username' => 'spmficom_cbs_uat',
 	'password' => 'RTCn#?O4Pdz,',
 	'database' => 'spmficom_cbs_uat',
