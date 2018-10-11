@@ -7,7 +7,11 @@ class FN_model extends CI_Model {
     }   
     PUBLIC FUNCTION INTERBRANCH($startdate,$enddate,$brcode)
     {
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+=======
+        $result=$this->db->query("CALL sp_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -19,7 +23,11 @@ class FN_model extends CI_Model {
     
     PUBLIC FUNCTION CASHINFLOW($startdate,$enddate,$brcode)
     {
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_cashinflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+=======
+        $result=$this->db->query("CALL sp_cashinflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -29,7 +37,11 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION CASHOUTFLOW($startdate,$enddate,$brcode)
     {
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_cashoutflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+=======
+        $result=$this->db->query("CALL sp_cashoutflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -45,7 +57,11 @@ class FN_model extends CI_Model {
     PUBLIC FUNCTION DONLOADCASHINTERBRANCH($startdate,$enddate,$brcode)
     {
 
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+=======
+        $result=$this->db->query("CALL sp_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -89,7 +105,11 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION GETSUMMARYDETAIL($startdate,$enddate,$brname,$page)
     {
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_dailycashmovement_summary('".$startdate."','".$enddate."','".$brname."','".$page."');");
+=======
+        $result=$this->db->query("CALL sp_dailycashmovement_summary('".$startdate."','".$enddate."','".$brname."','".$page."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -106,7 +126,11 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION DOWNLOADSUMMARYCASHDETAIL($datestart,$dateend,$brcode)
     {
+<<<<<<< .merge_file_a17552
         $result=$this->db->query("CALL FN_dailycashmovement_donwloadsummary('".$datestart."','".$dateend."','".$brcode."');");
+=======
+        $result=$this->db->query("CALL sp_dailycashmovement_donwloadsummary('".$datestart."','".$dateend."','".$brcode."');");
+>>>>>>> .merge_file_a16948
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -133,6 +157,7 @@ class FN_model extends CI_Model {
         }
         
     }
+<<<<<<< .merge_file_a17552
     public function GetBrByUser(){
         $userid=$this->session->userdata('user_id');
         $result=$this->db->from('users')
@@ -159,4 +184,6 @@ class FN_model extends CI_Model {
         }
         return  $arraylist;
     }
+=======
+>>>>>>> .merge_file_a16948
 }

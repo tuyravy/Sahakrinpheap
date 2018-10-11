@@ -39,7 +39,10 @@ public function __construct()
                     $this->load->model('BM_model');      
                     $checking=$this->BM_model->CheckUpload(); 
                     $this->session->set_tempdata(array("errortrue"=>$checking),null,300);
+<<<<<<< .merge_file_a16744
                    
+=======
+>>>>>>> .merge_file_a14500
                     $data['alert']=$checking;
                     $data['datahistory']=$this->BM_model->getDailyloanhistory($brcode,$reportdate);
                     $data['viewpage']='dashboard/BM_dashboard';//manager or BM
@@ -52,7 +55,10 @@ public function __construct()
                     $systemid=$this->session->userdata('system_id');
                     $checking=$this->RM_model->CheckUpload(); 
                     $this->session->set_tempdata(array("errortrue"=>$checking),null,300);
+<<<<<<< .merge_file_a16744
                   
+=======
+>>>>>>> .merge_file_a14500
                     $data['alert']=$checking;
                     $data['history']=$this->RM_model->gethistorydetailbyRm($systemid,$reportdate);                    
                     $data['viewpage']='dashboard/RM_dashboard';//manager or RM
@@ -64,7 +70,10 @@ public function __construct()
                     $this->load->model('DCEO_model');
                     $data['types']=$this->session->userdata('types');
                     $checking=$this->DCEO_model->CheckUpload(); 
+<<<<<<< .merge_file_a16744
                   
+=======
+>>>>>>> .merge_file_a14500
                     $data['alert']=$checking;
                     $this->session->set_tempdata(array("errortrue"=>$checking),null,300);    
                     $data['alert']=$checking;     
