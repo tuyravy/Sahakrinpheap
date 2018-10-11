@@ -44,7 +44,7 @@ class Login_model extends CI_Model
                     'username'=>$res->username,
                     'phone'=>$res->phone,
                     'role_id'=>$res->role_id,
-                    'm_id'=>$res->menu_option,
+                    'm_id'=>$res->m_id,
                     'brControl'=>$res->brControl,
                     'role'=>$res->role,
                     'types'=>$res->types,
