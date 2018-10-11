@@ -53,13 +53,7 @@
                                            value="<?php if(isset($datestart)){echo $datestart;}else{ echo date('Y-m-d');}?>"
                                           readonly="true" style="background:white;">
                                       </div>
-                                      <!-- <div class="form-group">
-                                        <label for="exampleInputEmail2">To:</label>
-                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
-                                                placeholder="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo date('Y-m-d');}?>" 
-                                                value="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo date('Y-m-d');}?>"
-                                                readonly="true" style="background:white;">
-                                      </div> -->
+                                     
                                       <button type="submit" class="btn btn-primary" style="margin-top:5px;" id='search'>
                                       <span class="glyphicon glyphicon-refresh"></span> <span>Search</span></button>
                                       
