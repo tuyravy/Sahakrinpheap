@@ -25,23 +25,23 @@ class Menu_model extends CI_Model
          return $res;
 
     }
-    public static function GetMenu()
-    {
-        $result=DB::table('menu_role')
-                    ->where('flage',1)
-                    ->where('type',1)
-                    ->where('parent_id',0)->get();
-        $array=array();
-        foreach($result as $key=>$val)
-        {
-            $result=DB::table('menu_role')           
-            ->where('type',2)
-            ->where('parent_id',$val->mid)
-            ->get();
-            array_push($array,[$val,$val=$result]);
-        }
-        return $array;
-    }
+    // public static function GetMenu()
+    // {
+    //     $result=DB::table('menu_role')
+    //                 ->where('flage',1)
+    //                 ->where('type',1)
+    //                 ->where('parent_id',0)->get();
+    //     $array=array();
+    //     foreach($result as $key=>$val)
+    //     {
+    //         $result=DB::table('menu_role')           
+    //         ->where('type',2)
+    //         ->where('parent_id',$val->mid)
+    //         ->get();
+    //         array_push($array,[$val,$val=$result]);
+    //     }
+    //     return $array;
+    // }
     
     public function MainiManu()
     {
