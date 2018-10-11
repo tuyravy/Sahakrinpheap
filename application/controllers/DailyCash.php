@@ -11,7 +11,7 @@ class DailyCash extends CI_Controller {
          $this->load->model('Function_model');        
          $this->load->helper('url');
          $this->load->helper('form');
-         $this->load->model('Imports_model');
+         //$this->load->model('Imports_model');
          $this->load->library('Excel');
          $this->load->library('Utility');
          $this->load->model('FN_model');
@@ -50,7 +50,8 @@ class DailyCash extends CI_Controller {
             $data['cashonhand']=$this->FN_model->INTERBRANCH(null,null,null);           
            
         }
-        
+        $data['role']=$this->session->userdata('role');
+        $data['brlist']=$this->FN_model->GetBrByUser();
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['viewpage']='FN/CashInterBranch.php'; 
@@ -76,7 +77,8 @@ class DailyCash extends CI_Controller {
             $data['cashinflow']=$this->FN_model->CASHINFLOW(null,null,null);
             
         }
-       
+        $data['role']=$this->session->userdata('role');
+        $data['brlist']=$this->FN_model->GetBrByUser();
         $data['BRANCH']=$this->FN_model->GETBRANCH();       
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
@@ -102,6 +104,8 @@ class DailyCash extends CI_Controller {
             
             $data['CASHOUTFLOW']=$this->FN_model->CASHOUTFLOW(null,null,null);
         }
+        $data['role']=$this->session->userdata('role');
+        $data['brlist']=$this->FN_model->GetBrByUser();
         $data['BRANCH']=$this->FN_model->GETBRANCH();
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
@@ -159,13 +163,14 @@ class DailyCash extends CI_Controller {
                
             
         }
+        $data['role']=$this->session->userdata('role');
+        $data['brlist']=$this->FN_model->GetBrByUser();
         $data['total_rows']=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate);        
         $base_url = base_url()."index.php/DailyCash/CashSummary";
         $total_rows=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate);
         $utility->pagination_config($total_rows,$base_url);
         $data['BRANCH']=$this->FN_model->GETBRANCH();
-        $data['menulist']=$this->Menu_model->getUsermenu();
-        $data['submenu']=$this->Menu_model->getsubMenu();
+        $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['viewpage']='FN/CashSummary.php'; 
         $this->load->view('master_page',$data);

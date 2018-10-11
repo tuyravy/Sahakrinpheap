@@ -18,25 +18,60 @@ public function __construct()
     }    
 	public function index()
 	{              
+            if($this->Menu_model->GetStatusImport()==0){
+            $this->Menu_model->AutoImportScript($checking);
+            }
             $data['title'] = lang('system_titel');
-            $data['mlist']=$this->Menu_model->MainiManu();        
+            $data['mlist']=$this->Menu_model->MainiManu(); 
             $role=$this->session->userdata('role');
+            $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+            $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
             switch($role)
             {
                 case 1:
-                    //$data['viewpage']='index'; //administrator or Admin
+                    $data['viewpage']='index'; //administrator or Admin
                 break;
                 case 2:
 
-                    //$data['viewpage']='general';//general user or BM
+                    $types=$this->session->userdata('types');
+                    $data['types']=$this->session->userdata('types');
+                    $brcode=$this->session->userdata('branch_code');
+                    $this->load->model('BM_model');      
+                    $checking=$this->BM_model->CheckUpload(); 
+                    $this->session->set_tempdata(array("errortrue"=>$checking),null,300);
+                   
+                    $data['alert']=$checking;
+                    $data['datahistory']=$this->BM_model->getDailyloanhistory($brcode,$reportdate);
+                    $data['viewpage']='dashboard/BM_dashboard';//manager or BM
+                    
                 break;
                 case 3:
-                    //$data['viewpage']='manager';//manager or RM
+
+                    $types=$this->session->userdata('types');                    
+                    $this->load->model('RM_model');                  
+                    $systemid=$this->session->userdata('system_id');
+                    $checking=$this->RM_model->CheckUpload(); 
+                    $this->session->set_tempdata(array("errortrue"=>$checking),null,300);
+                  
+                    $data['alert']=$checking;
+                    $data['history']=$this->RM_model->gethistorydetailbyRm($systemid,$reportdate);                    
+                    $data['viewpage']='dashboard/RM_dashboard';//manager or RM
+
                 break;
                 case 4:
-                    // $types=$this->session->userdata('types');
-                    // $data['history']=$this->DailyCmr_model->gethistorydetailbyDECO($reportdate,$types);
-                    //$data['viewpage']='dashboard/manager';//manager or RM
+
+                    
+                    $this->load->model('DCEO_model');
+                    $data['types']=$this->session->userdata('types');
+                    $checking=$this->DCEO_model->CheckUpload(); 
+                  
+                    $data['alert']=$checking;
+                    $this->session->set_tempdata(array("errortrue"=>$checking),null,300);    
+                    $data['alert']=$checking;     
+                    $data['row']=$this->DCEO_model->SummaryCEO($reportdate);
+                    $data['pre']=$this->DCEO_model->SummaryCEO($reportdate);
+                    $data['viewpage']='dashboard/DCEO_dashboard';//manager or RM
+
                 break;
                 case 5:
                 break;
@@ -51,6 +86,8 @@ public function __construct()
             {
                 $this->load->view('master_page',$data);
             }
+            
+            
         
 	}
     public function setmulitbranch()
@@ -285,16 +322,11 @@ public function changeprofile()
 {
     
         $this->load->helper('url');
-        $this->load->helper('form');
-     
+        $this->load->helper('form');     
         $brcode=$this->session->userdata('branch_code');
         $role=$this->session->userdata('role_id');
-        $this->load->model('Dailyloanhistory_model');
-        $this->load->model('DailyCmr_model');
-        $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
-        $data['datahistory']=$this->Dailyloanhistory_model->getDailyloanhistory($brcode,$reportdate);      
-        $data['menulist']=$this->Menu_model->getUsermenu();
-        $data['submenu']=$this->Menu_model->getsubMenu();
+        $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));       
+        $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['users']=$this->Menu_model->getusername();
         $data['useractive']=$this->Users_model->getUserActive(); 
@@ -313,8 +345,7 @@ public function errorsprofiles()
         $this->load->model('DailyCmr_model');
         $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
         $data['datahistory']=$this->Dailyloanhistory_model->getDailyloanhistory($brcode,$reportdate);      
-        $data['menulist']=$this->Menu_model->getUsermenu();
-        $data['submenu']=$this->Menu_model->getsubMenu();
+        $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['users']=$this->Menu_model->getusername();
         $data['useractive']=$this->Users_model->getUserActive(); 

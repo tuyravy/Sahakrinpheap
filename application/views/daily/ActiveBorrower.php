@@ -14,7 +14,7 @@
                 <div class="dashboard_graph x_panel">                
                   <div class="row x_title">
                     <div class="col-md-6">
-                    <span class="glyphicon glyphicon-use"></span>Active Borrower by Product Type
+                      <span class="glyphicon glyphicon-th-list"></span><span style="margin-left:5px;">Active Borrower by Product Type</span>
                     </div>                    
                   </div>
                   <style>
@@ -35,7 +35,7 @@
                                        <?php if($types==2){?>
                                         <label for="exampleInputName2">Filter by Branch:</label>
                                           <select class="form-control" id="branchname" name="brname">
-                                            <option value=''>Select Branch</option>
+                                            <option value=''><< Select Branch >></option>
                                             <?php foreach($brlist as $row){
                                                   if(isset($brname)){?>
                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
@@ -46,7 +46,7 @@
                                           </select>                                        
                                           <!-- <label for="exampleInputName2">Filter by Co:</label> -->
                                           <select class="form-control" id="CoName" name="coname">
-                                            <option value=''>Select Co-Name</option>    
+                                            <option value=''><< Select Co-Name >></option>    
                                             <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -61,7 +61,7 @@
                                             <input type="hidden" value="<?php echo $this->session->userdata('branch_code');?>" id="brcode">                                              
                                               <select class="form-control CoNameSingle" name="coname">  
                                                 
-                                                <option value=''>Select Co-Name</option>                                               
+                                                <option value=''><< Select Co-Name >></option>                                               
                                                 <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -125,7 +125,7 @@
                               <td style="text-align:center"><?php echo $re->brcode;?></td>
                             </tr>
                            <?php }?>
-                           <tr>
+                           <tr class="active">
                               <td colspan='2' style="text-align:right">Total:</td>                              
                               <td style="text-align:center;"><?php echo $totalAcc;?></td>       
                               <td colspan='3'></td>                     

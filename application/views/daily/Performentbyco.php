@@ -13,10 +13,8 @@
               <div class="row">                
               <div class="col-md-12 col-sm-12 col-xs-12">                  
                 <div class="dashboard_graph x_panel">                
-                  <div class="row x_title">
-                    <div class="col-md-6">
-                      <span class="glyphicon glyphicon-file" style="padding:10px;"></span>Co-Performant-Daily<small></small>
-                    </div>                    
+                  <div class="row x_title">                    
+                  <span class="glyphicon glyphicon-th-list"></span><span style="margin-left:5px;">Co-Performant-Daily</span>   
                   </div>
                   <div class="x_content">
                     <div class="demo-container col-md-12" style="height:auto;">
@@ -102,9 +100,9 @@
                                 </tr>
                                 <tr>
                                 
-                                <th colspan="8"  style="text-align:center;" class="active"><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
-                                <th colspan="8"  style="text-align:center;" class="danger"><?php if(isset($prereportdate)){echo date('d-M-Y',strtotime($prereportdate));}else{echo date("d-M-Y");};?></th>
-                                <th colspan="10"  style="text-align:center;" class="warning"><?php if(isset($prereportdate)){echo date('d-M-Y',strtotime($prereportdate));}else{echo date("d-M-Y");};?><span style="padding:10px;">/</span><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
+                                <th colspan="8"  style="text-align:center;" class="active"><?php if(isset($reportend)){echo date('d-M-Y',strtotime($reportend));}else{echo date("d-M-Y");};?></th>
+                                <th colspan="8"  style="text-align:center;" class="danger"><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
+                                <th colspan="10"  style="text-align:center;" class="warning"><?php if(isset($reportend)){echo date('d-M-Y',strtotime($reportend));}else{echo date("d-M-Y");};?><span style="padding:10px;">/</span><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
                                 </tr>
                                 <tr style="white-space: nowrap;overflow: hidden;border-bottom:3pt solid #22d4ae;">
                                 <th  style="text-align:center;" class="active">Total Balance</th>
@@ -138,7 +136,15 @@
                                 </tr>                               
                             </thead>
                             <body>
-                            <?php $i=1;foreach($coperforment as $row):?>
+                            <?php $i=1;
+                                $OS=0;$Cilent=0;$PAR1_Amt=0;$PAR7_Amt=0;$PAR30_Amt=0;$Ratio1day=0;$DisbAmtDaily=0;$DisbAccDaily=0;
+                                $OS_P=0;$Cilent_P=0;$PAR1_Amt_P=0;$PAR7_Amt_P=0;$PAR30_Amt_P=0;$Ratio1day_P=0;$DisbAmtDaily_P=0;$DisbAccDaily_P=0;
+                                $OS_T=0;$Cilent_T=0;$PAR1_Amt_T=0;$PAR7_Amt_T=0;$PAR30_Amt_T=0;$Ratio1day_T=0;$DisbAmtDaily_T=0;$DisbAccDaily_T=0;
+                                foreach($coperforment as $row):
+                                    $OS+=$row->OS;$Cilent+=$row->Cilent;$PAR1_Amt+=$row->PAR1_Amt;$PAR7_Amt+=$row->PAR7_Amt;$PAR30_Amt+=$row->PAR30_Amt;$Ratio1day+=$row->PAR1_Amt/$row->OS;$DisbAmtDaily+=$row->DisbAmtDaily;$DisbAccDaily+=$row->DisbAccDaily;
+                                    $OS_P+=$row->OSPre;$Cilent_P+=$row->CilentPre;$PAR1_Amt_P+=$row->PAR1_AmtPre;$PAR7_Amt_P+=$row->PAR7_AmtPre;$PAR30_Amt_P+=$row->PAR30_AmtPre;$Ratio1day_P+=$row->PAR1_AmtPre/$row->OSPre;$DisbAmtDaily_P+=$row->DisbAmtDailyPre;$DisbAccDaily_P+=$row->DisbAccDailyPre;
+                                    $OS_T+=$row->OS-$row->OSPre;$Cilent_T+=$row->Cilent-$row->CilentPre;$PAR1_Amt_T+=$row->PAR1_Amt-$row->PAR1_AmtPre;$PAR7_Amt_T+=$row->PAR7_Amt-$row->PAR7_AmtPre;$PAR30_Amt_T+=$row->PAR30_Amt-$row->PAR30_AmtPre;$DisbAmtDaily_T+=$row->DisbAmtDaily-$row->DisbAmtDailyPre;$DisbAccDaily_T+=$row->DisbAccDaily-$row->DisbAccDailyPre;
+                                ?>
                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
                                         <td><?= $i++;?></td>
                                         <td style="text-align:left;"><?= $row->CoName;?></td>
@@ -172,6 +178,37 @@
                                         <td><?= $row->brcode;?></td>
                                     </tr>
                                 <?php endforeach;?>
+                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                        <td colspan='2' style="text-align:right">Total:</td>                                        
+                                        <td><?= number_format($OS,0);?></td>
+                                        <td><?= $Cilent;?></td>
+                                        <td><?=  number_format($PAR1_Amt,0);?></td>
+                                        <td><?=  number_format($PAR7_Amt,0);?></td>
+                                        <td><?=  number_format($PAR30_Amt,0);?></td>
+                                        <td><?=  number_format($PAR1_Amt/$OS*100,2);?>%</td>
+                                        <td><?=  number_format($DisbAmtDaily,0);?></td>
+                                        <td><?=  $DisbAccDaily;?></td>
+
+                                        <td><?= number_format($OS_P,0);?></td>
+                                        <td><?= $Cilent_P;?></td>
+                                        <td><?=  number_format($PAR1_Amt_P,0);?></td>
+                                        <td><?=  number_format($PAR7_Amt_P,0);?></td>
+                                        <td><?=  number_format($PAR30_Amt_P,0);?></td>
+                                        <td><?=  number_format($PAR1_Amt_P/$OS_P*100,2);?>%</td>
+                                        <td><?=  number_format($DisbAmtDaily_P,0);?></td>
+                                        <td><?=  $DisbAccDaily_P;?></td>
+
+                                        <td><?= number_format($OS_T,0);?></td>
+                                        <td><?= $Cilent_T;?></td>
+                                        <td><?=  number_format($PAR1_Amt_T,0);?></td>
+                                        <td><?=  number_format($PAR7_Amt_T,0);?></td>
+                                        <td><?=  number_format($PAR30_Amt_T,0);?></td>
+                                        <td><?= number_format(($PAR1_Amt/$OS-$PAR1_Amt_P/$OS_P)*100,2);?>%</td>
+                                        <td><?=  number_format($DisbAmtDaily_T,0);?></td>
+                                        <td><?=  $DisbAccDaily_T;?></td>
+                                        <td colspan="2"></td>
+                                       
+                                    </tr>
                             </body>
                             </table>
                         </div>

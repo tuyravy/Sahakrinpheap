@@ -122,7 +122,27 @@
                           </thead>
                           <tbody id="showrationsDaily">
                             <?php                               
-                                foreach($Ratios as $rows){                               
+                                 $Balamt=0;
+                                 $PAR1=0;
+                                 $PAR1AMT=0;
+                                 $ParRatio1day=0;
+                                 $PAR7=0;
+                                 $PAR7AMT=0;
+                                 $ParRation7day=0;
+                                 $PAR30=0;
+                                 $PAR30AMT=0;
+                                 $ParRatio30day=0;        
+                                 foreach($Ratios as $rows){ 
+                                 $Balamt+=$rows->BalAmt;
+                                 $PAR1+=$rows->PAR1;
+                                 $PAR1AMT+=$rows->PAR1_Amt;
+                                 $ParRatio1day+=$rows->ParRatio1day;
+                                 $PAR7+=$rows->PAR7;
+                                 $PAR7AMT+=$rows->PAR7_Amt;
+                                 $ParRation7day+=$rows->ParRatio7day;
+                                 $PAR30+=$rows->PAR30;
+                                 $PAR30AMT+=$rows->PAR30_Amt;
+                                 $ParRatio30day+=$rows->ParRatio30day;                        
                             ?>
                             <tr style="text-align:right">                              
                               <td style="text-align:left"><?php echo $rows->CoName;?></td>
@@ -142,7 +162,23 @@
                              <td style="text-align:center;"><?= $rows->brcode;?></td>
                             </tr>
                            <?php }?>                             
-                                                     
+                           <tr style="text-align:right">                              
+                              <td style="text-align:right">Total:</td>
+                              <td><?php echo number_format($Balamt,0);?></td>
+                              <td><?php echo number_format($PAR1,0);?></td>
+                              <td><?php echo number_format($PAR1AMT,0);?></td>
+                              <td><?php if($PAR1AMT==0){ echo number_format(0,2);}else{echo number_format($PAR1AMT/$Balamt,4)*100;}?>%</td>
+                              <td><?php echo number_format($PAR7,0);?></td>
+                              <td><?php echo number_format($PAR7AMT,0);?></td>
+                              <td><?php if($PAR7AMT==0){echo number_format(0,2);}else{echo number_format($PAR7AMT/$Balamt,4)*100;}?>%</td>
+                              <td><?php echo number_format($PAR30,0);?></td>
+                              <td><?php echo number_format($PAR30AMT,0);?></td>                              
+                              <td>
+                                <?php if($PAR30AMT==0){echo number_format(0,2);}else{echo number_format($PAR30AMT/$Balamt,4)*100;}?>%
+                              </td>
+                              <td style="text-align:center;" colspan='2'></td>
+                            
+                            </tr>                           
                               
                           </tbody>
                            

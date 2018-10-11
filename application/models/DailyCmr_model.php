@@ -878,14 +878,14 @@ class DailyCmr_model extends CI_Model
        $result->free_result();
        return $res;
   }
-     public function getsumary($reportdate)
-  {
-        $type=$this->session->userdata('types');
-       $result=$this->db->query("Call sp_summaryByDECO('".$reportdate."','".$type."')");     
-       $res= $result->result();
-       $result->next_result(); 
-       $result->free_result();
-       return $res;
-  }
+//      public function getsumary($reportdate)
+//   {
+//         $type=$this->session->userdata('types');
+//        $result=$this->db->query("Call sp_summaryByDECO('".$reportdate."','".$type."')");     
+//        $res= $result->result();
+//        $result->next_result(); 
+//        $result->free_result();
+//        return $res;
+//   }
 }
 ?>

@@ -13,8 +13,39 @@ class BM_model extends CI_Model
          $this->Reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));   
          $this->role =$this->session->userdata('role');
          $this->brcode =$this->session->userdata('branch_code');
-         $this->subbrcode =$this->session->userdata('subbranch'); 
+         $this->subbrcode =$this->session->userdata('subbranch');
+         $this->sid=$this->session->userdata('system_id'); 
     }
+   
+    public function CheckUpload(){
+        $result=$this->db->query(" CALL Cmr_CheckDataUpload('".$this->Reportdate."','".$this->sid."','".$this->role."')");        
+        $res= $result->result();
+
+        //add this two line 
+        $result->next_result(); 
+        $result->free_result(); 
+       //end of new code
+        foreach($res as $row){
+            
+            return $row->counts;
+        }
+        return 0;
+        
+       
+    }
+    public function  getDailyloanhistory($brcode,$reportdate)
+    {
+       $result=$this->db->query("CALL Cmr_getDailyloanhistory('".$brcode."','".$reportdate."')");
+        $res      = $result->result();
+
+        //add this two line 
+        $result->next_result(); 
+        $result->free_result(); 
+       //end of new code
+
+        return $res;
+       
+   }
     /*=================Loan Active and Portfolio=======*/
 
     public function loanActiveBorrowerByProduct($offset)
@@ -92,7 +123,7 @@ class BM_model extends CI_Model
 
         $result=$this->db->select('IdCo,CoName,DisbAccMonth,DisbAmtMonth,PrName,tbl_branch.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")    
+        ->join("prtype","prtype.PrCode=dis_values.PrType")    
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode")     
         ->where('tbl_branch.brcode',$this->brcode)
         ->where('Reportdate',$this->Reportdate)
@@ -105,7 +136,7 @@ class BM_model extends CI_Model
            
             $result=$this->db->select('IdCo,CoName,DisbAccMonth,DisbAmtMonth,PrName,dis_values.brcode,shortcode')
             ->from('dis_values')
-            ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+            ->join("prtype","prtype.PrCode=dis_values.PrType")
             ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode")     
             ->where('dis_values.brcode',$brcode)
             ->where('idCo',$idco)
@@ -117,7 +148,7 @@ class BM_model extends CI_Model
 
         $result=$this->db->select('IdCo,CoName,DisbAccMonth,DisbAmtMonth,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode") 
         ->where('dis_values.brcode',$brcode)        
         ->where('Reportdate',$reportdate)           
@@ -133,7 +164,7 @@ class BM_model extends CI_Model
         }
         $result=$this->db->select('IdCo,CoName,DisbAccMonth,DisbAmtMonth,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode") 
         ->where_in('dis_values.brcode',$arraylist)        
         ->where('Reportdate',$reportdate)           
@@ -147,7 +178,7 @@ class BM_model extends CI_Model
 
         $result=$this->db->select('IdCo,CoName,DisbAccDaily,DisbAmtDaily,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode") 
         ->where('dis_values.brcode',$this->brcode)
         ->where('Reportdate',$this->Reportdate)
@@ -160,7 +191,7 @@ class BM_model extends CI_Model
 
         $result=$this->db->select('IdCo,CoName,sum(DisbAccDaily) as DisbAccDaily,sum(DisbAmtDaily) as DisbAmtDaily,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode")
         ->where('dis_values.brcode',$brcode)
         ->where('IdCo',$idco)
@@ -175,7 +206,7 @@ class BM_model extends CI_Model
 
         $result=$this->db->select('IdCo,CoName,sum(DisbAccDaily) as DisbAccDaily,sum(DisbAmtDaily) as DisbAmtDaily,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode")
         ->where('dis_values.brcode',$brcode)
         ->where('Reportdate>=',$reportdate)  
@@ -193,7 +224,7 @@ class BM_model extends CI_Model
         }
         $result=$this->db->select('IdCo,CoName,DisbAccDaily,DisbAmtDaily,PrName,dis_values.brcode,shortcode')
         ->from('dis_values')
-        ->join("skp_prtype","skp_prtype.PrCode=dis_values.PrType")
+        ->join("prtype","prtype.PrCode=dis_values.PrType")
         ->join("tbl_branch","tbl_branch.brCode=dis_values.brcode")
         ->where_in('dis_values.brcode',$arraylist)
         ->where('Reportdate>=',$reportdate)  

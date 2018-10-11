@@ -1,10 +1,10 @@
 <!-- page content -->        
             <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
                         <a href="<?= base_url();?>">Home</a>                        
-                        <a href="<?= site_url('dcmrsahakrinpheaceo');?>" >Summary CMR-Daily</a>
-                        <a href="<?= site_url('cmrSummRMCEO');?>">Summary CMR By RM-Daily</a>
+                        <a href="<?= site_url('dailydceo/dcmrsahakrinpheaceo');?>" >Summary CMR-Daily</a>
+                        <a href="<?= site_url('dailydceo/cmrSummRMCEO');?>">Summary CMR By RM-Daily</a>
                         <?php if($type==3){}else{?>
-                        <a href="<?= site_url('daillydisbursebyinterest');?>" class="active">Disbursement by Interest-Daily</a>
+                        <a href="<?= site_url('dailydceo/loandisbbyinterest');?>" class="active">Disbursement by Interest-Daily</a>
                         <?php }?>
                         <!--<a href="<?= site_url('daily/daillyloan');?>">Written-Off and Loan > 90 Days</a>-->
             </div>
@@ -221,16 +221,17 @@
                                         <?php  
                                                 
                                                 if($row->tital=='% Client'){
-                                                    $row->ClientMonthly+$row->Client2Week+$row->ClientWeekly;
+                                                    //$row->ClientMonthly+$row->Client2Week+$row->ClientWeekly;
                                                     echo '100%';
                                                 }else if($row->tital=='% Disb')
                                                 {
-                                                    $totalpersion=$row->ClientMonthly+$row->Client2Week+$row->ClientWeekly;
+                                                    //$totalpersion=$row->ClientMonthly+$row->Client2Week+$row->ClientWeekly;
                                                     echo "100%";
                                                     
                                                 }else if($row->tital=='Amt Disb')
                                                 {
-                                                    $total=($b+$a+$c)/4000;
+                                                    
+                                                    //$total=($b+$a+$c)/4000;
                                                     echo number_format($totalAmtWeekly,0);
                                                 }
                                                 else if($row->tital=='Client')
@@ -551,11 +552,11 @@
                                         $clientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($reportdate,$row->monthlyrate);
                                         $PreclientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($Prereportdate,$row->monthlyrate);
                                     ?>
-                                        <th style="text-align:right"><?php echo number_format((($clientmonthlyrateFull-$PreclientmonthlyrateFull)/$totalClient)*100,0);?>%</th>
+                                        <th style="text-align:right"><?php​ if($clientmonthlyrateFull==0){echo 0;}else{ echo number_format((($clientmonthlyrateFull-$PreclientmonthlyrateFull)/$totalClient)*100,0);}?>%</th>
                                     <?php
                                      }
                                     ?>
-                                    <th style="text-align:right"><?php echo number_format(($totalClient/$totalClient)*100,2);?>%</th>                              
+                                    <th style="text-align:right"><?php if($totalClient==0){echo 0;}else{echo number_format(($totalClient/$totalClient)*100,2);}?>%</th>                              
                                 </tr>      
                                 <tr style="text-align:right;font-weight:bold;white-space: nowrap;overflow: hidden;">   
                                    
@@ -566,11 +567,11 @@
                                         $GrantedAmtFull=$this->DailyCmr_model->getGrantedAmtFull($reportdate,$row->monthlyrate);
                                         $PreGrantedAmtFull=$this->DailyCmr_model->getGrantedAmtFull($Prereportdate,$row->monthlyrate);
                                     ?>
-                                        <th style="text-align:right"><?php echo number_format((($GrantedAmtFull-$PreGrantedAmtFull)/$disb)*100,0);?>%</th>
+                                        <th style="text-align:right"><?php if($GrantedAmtFull==0){echo 0;}else{ echo number_format((($GrantedAmtFull-$PreGrantedAmtFull)/$disb)*100,0);}?>%</th>
                                     <?php
                                      }
                                     ?>
-                                    <th style="text-align:right"><?php echo number_format(($disb/$disb)*100,2);?>%</th>                              
+                                    <th style="text-align:right"><?php if($disb==0){echo 0;}else{echo number_format(($disb/$disb)*100,2);}?>%</th>                              
                                 </tr> 
                            </tbody>
                       </table>

@@ -1,3 +1,11 @@
+         <?php
+             if(isset($_GET['datestart'])){
+                $reportdate=$_GET['datestart'];
+                $reportdateend=$_GET['dateend'];
+             }
+             $row=$this->DCEO_model->SummaryCEO($reportdate);
+             $pre=$this->DCEO_model->SummaryCEO($reportdateend);
+         ?>
          <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
                         <a href="<?= base_url();?>">Home</a>
                         <a href="<?= site_url('dailydceo/dcmrsahakrinpheaceo');?>" class="active">Summary CMR-Daily</a>
@@ -111,7 +119,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right;" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->TotalActiveBorrowerPre,0);?>
+                                            <?= number_format($pre->NumOfActive,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -119,7 +127,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right;" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalActiveBorrowerToday,0);?>
+                                            <?= number_format($row->NumOfActive,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -127,7 +135,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right;font-weight: bold;" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format(($res->TotalActiveBorrowerToday)-($res->TotalActiveBorrowerPre),0);?>
+                                            <?= number_format(($row->NumOfActive)-($pre->NumOfActive),0);?>
                                         </div>
                                      </div>
                                 </td>   
@@ -139,7 +147,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ActiveBorrowerNewPre,0);?>
+                                            <?= number_format($row->NumOfActive_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -147,7 +155,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ActiveBorrowerNewToday,0);?>
+                                            <?= number_format($pre->NumOfActive_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -155,7 +163,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format(($res->ActiveBorrowerNewToday)-($res->ActiveBorrowerNewPre),0);?>
+                                            <?= number_format(($row->NumOfActive_New)-($pre->NumOfActive_New),0);?>
                                          </div>
                                      </div>
                                 </td>   
@@ -167,7 +175,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ActiveBorrowerExistingPre,0);?>
+                                            <?= number_format($pre->NumOfActive_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -175,7 +183,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ActiveBorrowerExistingToday,0);?>
+                                            <?= number_format($row->NumOfActive_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -184,7 +192,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format(($res->ActiveBorrowerExistingToday-$res->ActiveBorrowerExistingPre),0);?>
+                                            <?= number_format(($row->NumOfActive_Existing-$pre->NumOfActive_Existing),0);?>
                                          </div>
                                      </div>
                                      
@@ -197,7 +205,7 @@
                                        <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalLoanPortfolioPre,0)?>
+                                            <?= number_format($pre->Balance,0)?>
                                                              
                                         </div>
                                       </div>            
@@ -208,7 +216,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalLoanPortfolioToday,0);?>
+                                            <?= number_format($pre->Balance,0);?>
                                          </div>
                                      </div>
                                     </td>
@@ -216,7 +224,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= (number_format($res->TotalLoanPortfolio,0));?>
+                                            <?= (number_format($row->Balance-$pre->Balance,0));?>
                                          </div>
                                      </div>
                                 
@@ -229,7 +237,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->LoanPortfolioNewPre,0);?>
+                                            <?= number_format($pre->Balance_New,0);?>
                                         </div>
                                      </div>
                                 </td>
@@ -237,7 +245,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->LoanPortfolioNewToday,0);?>
+                                            <?= number_format($row->Balance_New,0);?>
                                          </div>
                                      </div>
                                     </td>
@@ -245,7 +253,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->BalanceofLoanPortfolioNewProd,0));?>
+                                            <?= (number_format($row->Balance_New-$pre->Balance_New,0));?>
                                          </div>
                                      </div>
                                 
@@ -258,7 +266,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->LoanPortfolioExistingPre,0);?>
+                                            <?= number_format($pre->Balance_Existing,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -266,7 +274,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->LoanPortfolioExistingToday,0);?>
+                                            <?= number_format($row->Balance_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -274,7 +282,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->BalanceofLoanPortfolioExsitProd,0));?>
+                                            <?= (number_format($row->Balance_Existing-$pre->Balance_Existing,0));?>
                                          </div>
                                      </div>
                                 
@@ -288,7 +296,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalDailyDisbursedpreDay,0);?>
+                                            <?= number_format($pre->Balance_Disbursed,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -296,7 +304,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalDailyDisbursedToday,0);?>
+                                            <?= number_format($row->Balance_Disbursed,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -304,7 +312,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalDailyDisbTotalSum,0);?>
+                                            <?= number_format($row->Balance_Disbursed-$pre->Balance_Disbursed,0);?>
                                          </div>
                                      </div>
                                  </td>   
@@ -316,7 +324,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuedisbNewPreDay,0);?>
+                                            <?= number_format($pre->Balance_Disburesd_New,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -324,7 +332,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuedisbNewToday,0);?>
+                                            <?= number_format($row->Balance_Disburesd_New,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -332,7 +340,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->TotalValuedis,0));?>
+                                            <?= (number_format($row->Balance_Disburesd_New-$row->Balance_Disburesd_New,0));?>
                                          </div>
                                      </div>
                                 </td>   
@@ -344,7 +352,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuedisbExistingDay,0);?>
+                                            <?= number_format($pre->Balance_Disburesd_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -352,7 +360,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuedisbExistingToday,0);?>
+                                            <?= number_format($row->Balance_Disburesd_Existing,0);?>
                                         </div>
                                      </div>
                                  </td>
@@ -360,7 +368,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->ValuedisbExistingTodayTotal,0));?>
+                                            <?= (number_format($row->Balance_Disburesd_Existing-$pre->Balance_Disburesd_Existing,0));?>
                                         </div>
                                      </div>                           
                                 
@@ -375,7 +383,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalDailyRepayment,0);?>
+                                            <?= number_format($pre->LoanRepaymentDaily,0);?>
                                          </div>
                                      </div>
                                  </td>
@@ -383,7 +391,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= number_format($res->TotalDailyRepaymentToday,0);?>
+                                            <?= number_format($row->LoanRepaymentDaily,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -391,7 +399,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight: bold;">
-                                            <?= (number_format($res->TotalDailyRepaymentTodaySUM,0));?>
+                                            <?= (number_format($row->LoanRepaymentDaily-$pre->LoanRepaymentDaily,0));?>
                                          </div>
                                      </div>
                                  </td>   
@@ -403,7 +411,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->DailyRepaymentNewPreDay,0);?>
+                                            <?= number_format($pre->Repayment_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -411,7 +419,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->DailyRepaymentNewToday,0);?>
+                                            <?= number_format($row->Repayment_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -419,7 +427,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->DailyRepaymentNewTodayPrvi,0));?>
+                                            <?= (number_format($row->Repayment_New-$pre->Repayment_New,0));?>
                                          </div>
                                      </div>
                                  </td>   
@@ -431,7 +439,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->DailyRepaymentExistingPrDay,0);?>
+                                            <?= number_format($pre->Repayment_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -439,7 +447,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->DailyRepaymentExistingToday,0);?>
+                                            <?= number_format($row->Repayment_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -447,7 +455,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->DailyRepaymentExistingPrDaySUM,0));?>
+                                            <?= (number_format($row->Repayment_Existing-$pre->Repayment_Existing,0));?>
                                          </div>
                                      </div>
                                      
@@ -470,7 +478,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->ValuePAR1day,0);?>
+                                            <?= number_format($pre->PAR1DAY,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -478,7 +486,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->ValuePAR1dayToday,0);?>
+                                            <?= number_format($row->PAR1DAY,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -486,7 +494,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= (number_format($res->ValuePAR1dayTodaySUM,0));?>
+                                            <?= (number_format($pre->PAR1DAY-$pre->PAR1DAY,0));?>
                                          </div>
                                      </div>
                                 
@@ -499,7 +507,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR1dayNew,0);?>
+                                            <?= number_format($row->PAR1DAY_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -507,7 +515,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR1dayNewToday,0);?>
+                                            <?= number_format($pre->PAR1DAY_New,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -515,7 +523,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->ValuePAR1dayNewTodaySUM,0));?>
+                                            <?= (number_format($row->PAR1DAY_New-$pre->PAR1DAY_New,0));?>
                                          </div>
                                      </div>
                                 
@@ -528,7 +536,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR1dayExisting,0);?>
+                                            <?= number_format($pre->PAR1DAY_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -536,7 +544,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR1dayExistingToday,0);?>
+                                            <?= number_format($row->PAR1DAY_Existing,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -544,7 +552,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->ValuePAR1dayExistingTodaySUM,0));?>
+                                            <?= (number_format($row->PAR1DAY_Existing-$pre->PAR1DAY_Existing,0));?>
                                          </div>
                                      </div>
                                  </td>   
@@ -557,7 +565,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR7days,0);?>
+                                            <?= number_format($pre->PAR7DAY,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -565,7 +573,7 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR7daysToday,0);?>
+                                            <?= number_format($row->PAR7DAY,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -573,7 +581,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->ValuePAR7daysTodaySUM,0));?>
+                                            <?= (number_format($row->PAR7DAY-$pre->PAR7DAY,0));?>
                                          </div>
                                      </div>
                                 
@@ -586,14 +594,14 @@
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR30days,0);?>
+                                            <?= number_format($pre->PAR30DAY,0);?>
                                          </div>
                                      </div></td>
                                  <td style="padding:0px 0px 0px 0px;text-align:center">
                                      <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->ValuePAR30daysToday,0);?>
+                                            <?= number_format($row->PAR30DAY,0);?>
                                          </div>
                                      </div>
                                 </td>
@@ -601,7 +609,7 @@
                                     <div class="row">
                                         <div class="col-md-2">$</div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= (number_format($res->ValuePAR30daysTodaySUM,0));?>
+                                            <?= (number_format($row->PAR30DAY-$pre->PAR30DAY,0));?>
                                          </div>
                                      </div>
                                 </td>   
@@ -622,7 +630,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->PARRatio1day*100,2);?>%
+                                            <?php if($pre->PAR1DAY==0){echo 0;}else{echo number_format($pre->PAR1DAY/$pre->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -630,7 +638,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->PARRatio1dayToday*100,2);?>%
+                                            <?php if($row->PAR1DAY==0){echo 0;}else{ echo number_format($row->PAR1DAY/$row->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -638,7 +646,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;font-weight:bold;">
-                                            <?= number_format($res->PARRatio1dayTodaySUM*100,2);?>%
+                                            <?php if($row->PAR1DAY==0 || $pre->PAR1DAY==0){echo 0;}else{echo number_format(($row->PAR1DAY/$row->Balance-$pre->PAR1DAY/$pre->Balance)*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>   
@@ -650,7 +658,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                        <?= number_format($res->PARRatio1dayNew*100,2);?>%
+                                        <?php if($pre->PAR1DAY_New==0){echo 0;}else{ echo number_format($pre->PAR1DAY_New/$pre->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -658,7 +666,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio1dayNewToday*100,2);?>%
+                                            <?php if($row->PAR1DAY_New==0){echo 0;}else{ echo number_format($row->PAR1DAY_New/$row->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -666,7 +674,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format(((number_format($res->PARRatio1dayNewToday,2))-(number_format($res->PARRatio1dayNew,2)))*100,2);?>%
+                                            <?php if($row->PAR1DAY_New==0 || $pre->PAR1DAY_New==0){echo 0;}else{echo number_format(((number_format($row->PAR1DAY_New/$row->Balance,2))-(number_format($pre->PAR1DAY_New/$pre->Balance,2)))*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>   
@@ -678,7 +686,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio1dayExisting*100,2);?>%
+                                            <?php if($pre->PAR1DAY_Existing==0){echo 0;}else{echo number_format($pre->PAR1DAY_Existing/$pre->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -686,7 +694,8 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio1dayExistingToday*100,2);?>%
+                                        <?php if($row->PAR1DAY_Existing==0){echo 0;}else{echo number_format($row->PAR1DAY_Existing/$row->Balance*100,2);}?>%
+                                           
                                          </div>
                                      </div>
                                 </td>
@@ -694,7 +703,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio1dayExistingTodaySUM*100,2);?>%
+                                            <?php if($row->PAR1DAY_Existing==0 || $pre->PAR1DAY_Existing==0){echo 0;}else{ echo number_format(($row->PAR1DAY_Existing/$row->Balance-$pre->PAR1DAY_Existing/$pre->Balance)*100,2);}?>%
                                          </div>
                                      </div>
                                 
@@ -708,7 +717,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio7days*100,2);?>%
+                                            <?php if($pre->PAR7DAY==0){echo 0;}else{echo number_format($pre->PAR7DAY/$pre->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -716,7 +725,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio7daysToday,2);?>%
+                                            <?php if($row->PAR1DAY==0){echo 0;}else{ echo number_format($row->PAR7DAY/$row->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -724,7 +733,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio7daysSUM,2);?>%
+                                            <?php if($row->PAR7DAY==0 || $pre->PAR7DAY==0){echo 0;}else{ echo number_format($row->PAR7DAY/$row->Balance-$pre->PAR7DAY/$pre->Balance,2);}?>%
                                          </div>
                                      </div>
                                 
@@ -738,7 +747,7 @@
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
                                             
-                                            <?= number_format($res->PARRatio30days*100,2);?>%
+                                            <?php if($pre->PAR30DAY==0){echo 0;}else{echo number_format($pre->PAR30DAY/$pre->Balance*100,2);}?>%
                                          </div>
                                      </div>
                                 </td>
@@ -746,7 +755,7 @@
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio30daysToday,2);?> %
+                                            <?php if($row->PAR30DAY==0){echo 0;}else{echo number_format($row->PAR30DAY/$row->Balance*100,2);}?> %
                                         </div>
                                      </div>
                                 </td>
@@ -755,7 +764,7 @@
                                      <div class="row">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                            <?= number_format($res->PARRatio30daysSUM,2);?>%
+                                            <?php if($row->PAR30DAY==0 || $pre->PAR30DAY==0){echo 0;}else{echo number_format($row->PAR30DAY/$row->Balance-$pre->PAR30DAY/$pre->Balance,2);}?>%
                                         </div>
                                      </div>
                                      

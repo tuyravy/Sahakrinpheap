@@ -91,8 +91,8 @@
                             <br/>
                             <br/>
                        
-                        <div id="reports">
-                        <table id="datatable-buttons5" class="table table-bordered">
+                        <div id="reports" class="panel-body table-responsive">                     
+                        <table class="table table-bordered table-condensed f11">
                           <thead>
                             <tr style="text-align:center;boder;">
                               <th style="boder;border-bottom:3pt solid #22d4ae;text-align:center;padding:10px 0px 25px 0px;white-space: nowrap;overflow: hidden;" rowspan="2">CO-Name</th>
@@ -130,7 +130,7 @@
 
                                 foreach($Repayment as $re){?>
                             <tr>
-                                <td style="text-align:left"><?= $re->CoName;?></td>
+                                <td style="text-align:left;white-space: nowrap;overflow: hidden;"><?= $re->CoName;?></td>
                                 <td style="text-align:right"><?= number_format($re->Principle+$re->Interest+$re->Penalty+$re->AdminFee+$re->Principle1+$re->Interest1+$re->Penalty1+$re->AdminFee1,0);$Total+=$re->Principle+$re->Interest+$re->Penalty+$re->AdminFee+$re->Principle1+$re->Interest1+$re->Penalty1+$re->AdminFee1;?></td>
                                 <td style="text-align:right"><?= number_format($re->Principle+$re->Interest+$re->Penalty+$re->AdminFee,0);$TotalBalance+=$re->Principle+$re->Interest+$re->Penalty+$re->AdminFee;?></td>
                                 <td style="text-align:right"><?= number_format($re->Principle,0);$Principle+=$re->Principle;?></td>
@@ -147,7 +147,7 @@
                             </tr>
                             <?php }?>
                             <tr> 
-                                <td style="text-align:left">Total:</td>
+                                <td style="text-align:right">Total:</td>
                                 <td style="text-align:right"><?= $Total;?></td>
                                 <td style="text-align:right"><?= number_format($TotalBalance,0);?></td>
                                 <td style="text-align:right"><?= number_format($Principle,0);?></td>

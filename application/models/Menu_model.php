@@ -2,6 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Menu_model extends CI_Model
 {
+    public function __construct()
+    {
+         parent::__construct();  
+         $this->load->model("Function_model"); 
+         $this->Reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));   
+         $this->role =$this->session->userdata('role');
+         $this->brcode =$this->session->userdata('branch_code');
+         $this->subbrcode =$this->session->userdata('subbranch'); 
+         $this->sid=$this->session->userdata('system_id'); 
+    }
+    public function detailnotyetupload(){
+        
+        $result=$this->db->query("Call Cmr_DetailNotyetupload('".$this->Reportdate."',".$this->role.",".$this->sid.",'".$this->brcode."')");
+        $res      = $result->result();
+ 
+         //add this two line 
+         $result->next_result(); 
+         $result->free_result(); 
+        //end of new code
+ 
+         return $res;
+
+    }
     public static function GetMenu()
     {
         $result=DB::table('menu_role')
@@ -102,18 +125,7 @@ class Menu_model extends CI_Model
        return $listofarray;
        
     }
-public function getstaff($sid)
-    {
-        $result=$this->db->query("CALL sp_Getallstaff(".$sid.")");
-          $res= $result->result(); 
-          $result->next_result(); 
-          $result->free_result(); 
 
-        foreach($result as $row)
-        {
-            return $row;
-        };
-    }
 public function setprofile($userid,$sid)
     {
         $sidresult=$this->getstaff($sid);
@@ -168,34 +180,8 @@ public function setprofile($userid,$sid)
           return true;
       
   }
-  function getCurrRundate()
-  {
-       $result=$this->db->query("Call sp_getCurrRunDate()");   
-       $res=$result->result();
-       $result->next_result(); 
-       $result->free_result();  
-      
-       foreach($res as $row){
-           return $row->dateworking;
-       }
-
-  }
-  function getPreCurrRundate()
-  {
-       $result=$this->db->query("Call sp_getPreCurrRunDate()");   
-       $res=$result->result();
-       $result->next_result(); 
-       $result->free_result();  
-      
-       foreach($res as $row){
-           return $row->dateworking;
-       }
-        //add this two line 
-       
-       //end of new code
-
-      
-  }
+  
+  
   function getPreMonthCurrRundate()
   {
        $result=$this->db->query("Call sp_getPreMonthCurrRunDate()");   
@@ -212,14 +198,30 @@ public function setprofile($userid,$sid)
 
       
   }
+  public function CheckUpload(){
+    $result=$this->db->query(" CALL Cmr_CheckDataUpload('".$this->Reportdate."','".$this->sid."','".$this->role."')");        
+    $res= $result->result();
+
+    //add this two line 
+    $result->next_result(); 
+    $result->free_result(); 
+   //end of new code
+    foreach($res as $row){
+        
+        return $row->counts;
+    }
+    return 0;
+    
+   
+}
   function getNotyatupload()
   {
       
-      $reportdate=date('Ymd',strtotime($this->Menu_model->getCurrRundate()));
+      $reportdate=date('Ymd',strtotime($this->Function_model->GetCurrRunDate()));
       $systemid=$this->session->userdata('system_id');
       $role=$this->session->userdata('role');
       $brcode=$this->session->userdata('branch_code');
-      $result=$this->db->query("Call sp_getNotyatupload(".$reportdate.",".$role.",".$systemid.",".$brcode.")");
+      $result=$this->db->query("Call Cmr_CountNotYetUpload('".$systemid."','".$role."','".$reportdate."');");
       $res      = $result->result();
       $result->next_result(); 
       $result->free_result(); 
@@ -232,11 +234,11 @@ public function setprofile($userid,$sid)
   }
   function getNotyetuploadbranch()
   {
-      $reportdate=date('Ymd',strtotime($this->Menu_model->getCurrRundate()));
+      $reportdate=date('Ymd',strtotime($this->Function_model->GetCurrRunDate()));
       $systemid=$this->session->userdata('system_id');
       $role=$this->session->userdata('role');
       $brcode=$this->session->userdata('branch_code');
-      $result=$this->db->query("Call sp_GetNotYetUpload(".$reportdate.",".$role.",".$systemid.",".$brcode.")");
+      $result=$this->db->query("Call Cmr_GetNotYetUpload(".$reportdate.",".$role.",".$systemid.",".$brcode.")");
        $res      = $result->result();
 
         //add this two line 
@@ -292,6 +294,70 @@ public function setprofile($userid,$sid)
           
           return false; // And here false to TRUE
         }   
+
+        
+  }
+  function getusername()
+  {
+      $user_id=$this->session->userdata('user_id');
+      $result=$this->db->from('users')
+                        ->where('user_id',$user_id)
+                        ->where('flag',1)
+                        ->get();
+       
+       
+           return $result->result();
+       
+  }
+  public function GetStatusImport()
+  {
+    $reportdate=date('Y-m-d',strtotime($this->Function_model->GetCurrRunDate()));
+    $result=$this->db->where("ReportDate",$reportdate)
+                     ->from('trahisdailyimports')
+                     ->get();
+    if($result->num_rows()==0){
+
+        return 0;
+    }
+    return 1;
+  }
+
+  public function AutoImportScript($checking)
+  {
+
+    $reportdate=date('Y-m-d',strtotime($this->Function_model->GetCurrRunDate()));
+    if ($checking==0){
+
+        $result=$this->db->query("Call Cmr_AutoImportsCoperformant('".$reportdate."')");
+        $res = $result->result();
+        //add this two line 
+        $result->next_result(); 
+        $result->free_result(); 
+        //end of new code
+        foreach($res as $row)
+        {
+            //return 1;
+        }
+        $result1=$this->db->query("Call Cmr_AutoImportsCMRByRM('".$reportdate."')");
+        $res1 = $result1->result();
+
+        //add this two line 
+        $result1->next_result(); 
+        $result1->free_result(); 
+        foreach($res1 as $row){
+            //return 1;
+        }
+        //end of new code
+        $data=array
+        (
+            "DateImport"=>date('Y-m-d'),
+            "ReportDate"=>$reportdate,
+            "Finish_Import"=>date('H:i:s')
+        );
+        $this->db->insert("trahisdailyimports",$data);
+        return 1;
+        
+    }
   }
     
 }

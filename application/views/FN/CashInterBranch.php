@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>CASH INTER-BRANCH</h2>
+                      <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">CASH INTER-BRANCH</span>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -41,12 +41,23 @@
                                           <div class="row-fluid">
                                             <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
                                             <option data-subtext="Select by RM" value="">Select</option>                                            
-                                            <?php foreach($BRANCH as $row){
+                                            <?php 
+                                              if(isset($role)==2){
+                                           
+                                              foreach($brlist as $row){
+                                                if(isset($brname)){?>
+                                                <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
+                                                <?php }else{?>
+                                                <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
+                                              <?php }}?>
+                                            <?php
+                                              }else{
+                                              foreach($BRANCH as $row){
                                               if(isset($brname)){?>
                                               <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
                                               <?php }else{?>
                                               <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
-                                            <?php }}?>
+                                            <?php }}}?>
                                             </select>
                                         </div>
                                       </div>

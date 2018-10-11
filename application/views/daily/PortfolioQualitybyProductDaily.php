@@ -49,7 +49,7 @@
                                        <?php if($types==2){?>
                                         <label for="exampleInputName2">Filter by Branch:</label>
                                           <select class="form-control" id="branchname" name="brname">
-                                            <option value=''>Select Branch</option>
+                                            <option value=''><< Select Branch >></option>
                                             <?php foreach($brlist as $row){
                                                   if(isset($brname)){?>
                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
@@ -60,7 +60,7 @@
                                           </select>                                        
                                           <!-- <label for="exampleInputName2">Filter by Co:</label> -->
                                           <select class="form-control" id="CoName" name="coname">
-                                            <option value=''>Select Co-Name</option>    
+                                            <option value=''><< Select Co-Name >></option>    
                                             <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -75,7 +75,7 @@
                                             <input type="hidden" value="<?php echo $this->session->userdata('branch_code');?>" id="brcode">                                              
                                               <select class="form-control CoNameSingle" name="coname">  
                                                 
-                                                <option value=''>Select Co-Name</option>                                               
+                                                <option value=''><< Select Co-Name >></option>                                               
                                                 <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -138,8 +138,22 @@
                              </tr>                                                     
                           </thead>
                           <tbody id="showproductdaily">
-                            <?php                                 
+                            <?php    
+                                $BalAmt=0;
+                                $PAR1EX=0;
+                                $PAR7EX=0;
+                                $PAR30EX=0;
+                                $PAR1NE=0;
+                                $PAR7NE=0;
+                                $PAR30NE=0;                             
                                 foreach($quality as $row){
+                                    $BalAmt+=$row->BalAmt;
+                                    $PAR1EX+=$row->PAR1EX;
+                                    $PAR7EX+=$row->PAR7EX;
+                                    $PAR30EX+=$row->PAR30EX;
+                                    $PAR1NE+=$row->PAR1NE;
+                                    $PAR7NE+=$row->PAR7NE;
+                                    $PAR30NE+=$row->PAR30NE;  
                               ?>
                             <tr style="text-align:right">                              
                               <td style="text-align:left"><?php echo $row->CoName;?></td>
@@ -153,7 +167,19 @@
                              <td style="text-align:center;"><?= $row->shortcode;?></td>
                              <td style="text-align:center;"><?= $row->brcode;?></td>
                             </tr>
-                            <?php }?>                            
+                            <?php }?>  
+                            <tr style="text-align:right" class="active">                              
+                              <td style="text-align:right">Total:</td>
+                              <td><?php echo number_format($BalAmt,0);?></td>
+                              <td><?php echo number_format($PAR1EX,0);?></td>
+                              <td><?php echo number_format($PAR7EX,0);?></td>
+                              <td><?php echo number_format($PAR30EX,0);?></td>
+                              <td><?php echo number_format($PAR1NE,0);?></td>                             
+                              <td><?php echo number_format($PAR7NE,0);?></td>                           
+                             <td><?php echo number_format($PAR30NE,0);?></td>
+                             <td style="text-align:center;" colspan='2'></td>
+                            
+                            </tr>                          
                           </tbody>      
                         </table>
                         

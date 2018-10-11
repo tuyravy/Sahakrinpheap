@@ -50,7 +50,7 @@
                                       
                                         <label for="exampleInputName2">Filter by:</label>
                                           <select class="form-control" id="systemid" name="systemid">
-                                            <option value=''>Select RMName</option>
+                                            <option value=''><< Select RMName >></option>
                                             <?php foreach($controlbyrm as $row){
                                                   if(isset($sid)){?>
                                                   <option value="<?php echo $row->sid;?>" <?php if($row->sid==$sid){ echo  'selected';}?>><?php echo $row->name;?></option>

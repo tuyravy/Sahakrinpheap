@@ -91,8 +91,8 @@
                             <br/>
                             <br/>
                        
-                        <div id="reports">
-                        <table id="datatable-buttons8" class="table table-striped table-bordered">
+                        <div id="reports" class="panel-body table-responsive">                     
+                        <table class="table table-bordered table-condensed f11">
                           <thead>                          
                               
                               <tr>
@@ -114,10 +114,24 @@
                           </thead>
                           <tbody id="showproductdaily">
                             <?php                                 
+                                $BalAmt=0;
+                                $PAR1EX=0;
+                                $PAR7EX=0;
+                                $PAR30EX=0;
+                                $PAR1NE=0;
+                                $PAR7NE=0;
+                                $PAR30NE=0;                             
                                 foreach($quality as $row){
+                                    $BalAmt+=$row->BalAmt;
+                                    $PAR1EX+=$row->PAR1EX;
+                                    $PAR7EX+=$row->PAR7EX;
+                                    $PAR30EX+=$row->PAR30EX;
+                                    $PAR1NE+=$row->PAR1NE;
+                                    $PAR7NE+=$row->PAR7NE;
+                                    $PAR30NE+=$row->PAR30NE;  
                               ?>
                             <tr style="text-align:right">                              
-                              <td style="text-align:left"><?php echo $row->CoName;?></td>
+                              <td style="text-align:left;white-space: nowrap;overflow: hidden;"><?php echo $row->CoName;?></td>
                               <td><?php echo number_format($row->BalAmt,0);?></td>
                               <td><?php echo number_format($row->PAR1EX,0);?></td>
                               <td><?php echo number_format($row->PAR7EX,0);?></td>
@@ -128,7 +142,19 @@
                              <td style="text-align:center;"><?= $row->shortcode;?></td>
                              <td style="text-align:center;"><?= $row->brcode;?></td>
                             </tr>
-                            <?php }?>                            
+                            <?php }?> 
+                            <tr style="text-align:right">                              
+                              <td style="text-align:right">Total:</td>
+                              <td><?php echo number_format($BalAmt,0);?></td>
+                              <td><?php echo number_format($PAR1EX,0);?></td>
+                              <td><?php echo number_format($PAR7EX,0);?></td>
+                              <td><?php echo number_format($PAR30EX,0);?></td>
+                              <td><?php echo number_format($PAR1NE,0);?></td>                             
+                              <td><?php echo number_format($PAR7NE,0);?></td>                           
+                             <td><?php echo number_format($PAR30NE,0);?></td>
+                             <td style="text-align:center;" colspan='2'></td>
+                            
+                            </tr>                             
                           </tbody>      
                         </table>
                         

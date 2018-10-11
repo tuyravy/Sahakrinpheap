@@ -40,7 +40,7 @@
                                        <?php if($types==2){?>
                                         <label for="exampleInputName2">Filter by Branch:</label>
                                           <select class="form-control" id="branchname" name="brname">
-                                            <option value=''>Select Branch</option>
+                                            <option value=''><< Select Branch >></option>
                                             <?php foreach($brlist as $row){
                                                   if(isset($brname)){?>
                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
@@ -51,7 +51,7 @@
                                           </select>                                        
                                           <!-- <label for="exampleInputName2">Filter by Co:</label> -->
                                           <select class="form-control" id="CoName" name="coname">
-                                            <option value=''>Select Co-Name</option>    
+                                            <option value=''><< Select Co-Name >></option>    
                                             <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -66,7 +66,7 @@
                                             <input type="hidden" value="<?php echo $this->session->userdata('branch_code');?>" id="brcode">                                              
                                               <select class="form-control CoNameSingle" name="coname">  
                                                 
-                                                <option value=''>Select Co-Name</option>                                               
+                                                <option value=''><< Select Co-Name >></option>                                               
                                                 <?php foreach($CoName as $row){
                                                   if(isset($idCo)){?>                                                                              
                                                   <option value="<?php echo $row->IdCo;?>" <?php if($row->IdCo==$idCo){ echo  'selected';}?>><?php echo $row->CoName;?></option>
@@ -120,17 +120,25 @@
                           </thead>   
                           <tbody>
                               <?php  
+                                 $TotalAcc=0;
+                                 $TotalBalamt=0; 
                                 foreach($loanDisbDaily as $re){?>
                               <tr>
                                   <td><?= $re->IdCo;?></td>
                                   <td><?= $re->CoName;?></td>
-                                  <td><?= $re->DisbAccDaily;?></td>       
-                                  <td><?= $re->DisbAmtDaily;?></td>
+                                  <td style="text-align:right"><?= $re->DisbAccDaily;$TotalAcc+=$re->DisbAccDaily;?></td>       
+                                  <td style="text-align:right"><?= $re->DisbAmtDaily;$TotalBalamt+=$re->DisbAmtDaily;?></td>
                                   <td><?= $re->PrName;?></td>
                                   <td style="text-align:center"><?= $re->shortcode;?></td>
                                   <td style="text-align:center"><?= $re->brcode;?></td>
                               </tr>
                               <?php }?>
+                              <tr>
+                                  <td colspan="2" style="text-align:right">Total:</td>                                  
+                                  <td style="text-align:right"><?= $TotalAcc;?></td>       
+                                  <td style="text-align:right"><?= number_format($TotalBalamt,0);?></td> 
+                                  <td colspan="3"></td>                                 
+                                </tr> 
                           </tbody>                        
                         </table>                        
                           <!-- <div class="pull-right">

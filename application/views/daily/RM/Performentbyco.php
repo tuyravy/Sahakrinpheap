@@ -116,35 +116,35 @@
                             <?php $i=1;foreach($coperforment as $row):?>
                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
                                         <td><?= $i++;?></td>
-                                        <td style="text-align:left;"><?= $row->CoName;?></td>
-                                        <td><?= number_format($row->OS,0);?></td>
-                                        <td><?= $row->Cilent;?></td>
-                                        <td><?=  number_format($row->PAR1_Amt,0);?></td>
-                                        <td><?=  number_format($row->PAR7_Amt,0);?></td>
-                                        <td><?=  number_format($row->PAR30_Amt,0);?></td>
-                                        <td><?=  number_format($row->Ratio1day*100,2);?>%</td>
-                                        <td><?=  number_format($row->DisbAmtDaily,0);?></td>
-                                        <td><?=  $row->DisbAccDaily;?></td>
+                                        <td style="text-align:left;"><?= $row->COName;?></td>
+                                        <td><?= number_format($row->Balance,0);?></td>
+                                        <td><?= $row->Clients;?></td>
+                                        <td><?=  number_format($row->PAR1Days,0);?></td>
+                                        <td><?=  number_format($row->PAR7Days,0);?></td>
+                                        <td><?=  number_format($row->PAR30Days,0);?></td>
+                                        <td><?=  number_format($row->PAR1Days/$row->Balance*100,2);?>%</td>
+                                        <td><?=  number_format($row->DisbAmt,0);?></td>
+                                        <td><?=  $row->ClientDisb;?></td>
 
-                                        <td><?= number_format($row->OSPre,0);?></td>
-                                        <td><?= $row->CilentPre;?></td>
-                                        <td><?=  number_format($row->PAR1_AmtPre,0);?></td>
-                                        <td><?=  number_format($row->PAR7_AmtPre,0);?></td>
-                                        <td><?=  number_format($row->PAR30_AmtPre,0);?></td>
-                                        <td><?=  number_format($row->Ratio1dayPre*100,2);?>%</td>
-                                        <td><?=  number_format($row->DisbAmtDailyPre,0);?></td>
-                                        <td><?=  $row->DisbAccDailyPre;?></td>
+                                        <td><?= number_format($row->Balance_pre,0);?></td>
+                                        <td><?= $row->Clients;?></td>
+                                        <td><?=  number_format($row->PAR1Days_pre,0);?></td>
+                                        <td><?=  number_format($row->PAR7Days_pre,0);?></td>
+                                        <td><?=  number_format($row->PAR30Days_pre,0);?></td>
+                                        <td><?=  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);?>%</td>
+                                        <td><?=  number_format($row->DisbAmt_pre,0);?></td>
+                                        <td><?=  $row->ClientDisb_pre;?></td>
 
-                                        <td><?= number_format(($row->OS)-($row->OSPre),0);?></td>
-                                        <td><?= ($row->Cilent)-($row->CilentPre);?></td>
-                                        <td><?=  number_format(($row->PAR1_Amt)-($row->PAR1_AmtPre),0);?></td>
-                                        <td><?=  number_format(($row->PAR7_Amt)-($row->PAR7_AmtPre),0);?></td>
-                                        <td><?=  number_format(($row->PAR30_Amt)-($row->PAR30_AmtPre),0);?></td>
-                                        <td><?=  number_format(($row->Ratio1day-$row->Ratio1dayPre)*100,2);?>%</td>
-                                        <td><?=  number_format(($row->DisbAmtDaily)-($row->DisbAmtDailyPre),0);?></td>
-                                        <td><?=  ($row->DisbAccDaily)-($row->DisbAccDailyPre);?></td>
-                                        <td><?=  $row->shortcode;?></td>
-                                        <td><?= $row->brcode;?></td>
+                                        <td><?= number_format(($row->Balance)-($row->Balance_pre),0);?></td>
+                                        <td><?= ($row->Clients)-($row->Clients);?></td>
+                                        <td><?=  number_format(($row->PAR1Days)-($row->PAR1Days_pre),0);?></td>
+                                        <td><?=  number_format(($row->PAR7Days)-($row->PAR7Days_pre),0);?></td>
+                                        <td><?=  number_format(($row->PAR30Days)-($row->PAR30Days_pre),0);?></td>
+                                        <td><?=  number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);?>%</td>
+                                        <td><?=  number_format(($row->DisbAmt)-($row->DisbAmt_pre),0);?></td>
+                                        <td><?=  ($row->ClientDisb)-($row->ClientDisb_pre);?></td>
+                                        <td style="text-align:left;"><?=  $row->BrName;?></td>
+                                        <td><?=  $row->BrCode;?></td>
                                     </tr>
                                 <?php endforeach;?>
                             </body>

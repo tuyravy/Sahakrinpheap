@@ -7,7 +7,7 @@ class FN_model extends CI_Model {
     }   
     PUBLIC FUNCTION INTERBRANCH($startdate,$enddate,$brcode)
     {
-        $result=$this->db->query("CALL sp_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+        $result=$this->db->query("CALL FN_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -19,7 +19,7 @@ class FN_model extends CI_Model {
     
     PUBLIC FUNCTION CASHINFLOW($startdate,$enddate,$brcode)
     {
-        $result=$this->db->query("CALL sp_cashinflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+        $result=$this->db->query("CALL FN_cashinflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -29,7 +29,7 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION CASHOUTFLOW($startdate,$enddate,$brcode)
     {
-        $result=$this->db->query("CALL sp_cashoutflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+        $result=$this->db->query("CALL FN_cashoutflow_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -45,7 +45,7 @@ class FN_model extends CI_Model {
     PUBLIC FUNCTION DONLOADCASHINTERBRANCH($startdate,$enddate,$brcode)
     {
 
-        $result=$this->db->query("CALL sp_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
+        $result=$this->db->query("CALL FN_cashinterbranch_dailycashmovement('".$startdate."','".$enddate."','".$brcode."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -89,7 +89,7 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION GETSUMMARYDETAIL($startdate,$enddate,$brname,$page)
     {
-        $result=$this->db->query("CALL sp_dailycashmovement_summary('".$startdate."','".$enddate."','".$brname."','".$page."');");
+        $result=$this->db->query("CALL FN_dailycashmovement_summary('".$startdate."','".$enddate."','".$brname."','".$page."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -106,7 +106,7 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION DOWNLOADSUMMARYCASHDETAIL($datestart,$dateend,$brcode)
     {
-        $result=$this->db->query("CALL sp_dailycashmovement_donwloadsummary('".$datestart."','".$dateend."','".$brcode."');");
+        $result=$this->db->query("CALL FN_dailycashmovement_donwloadsummary('".$datestart."','".$dateend."','".$brcode."');");
         $res      = $result->result();
         //add this two line 
         $result->next_result(); 
@@ -132,5 +132,31 @@ class FN_model extends CI_Model {
             return $row->total;
         }
         
+    }
+    public function GetBrByUser(){
+        $userid=$this->session->userdata('user_id');
+        $result=$this->db->from('users')
+                    ->where('user_id',$userid)
+                    ->where('flag',1)->get();
+        $brlist=array();
+       
+        foreach($result->result() as $k=>$val){
+           
+             $brlist=explode(",",$val->subbranch);             
+        }
+        //print_r($brlist);
+        $arraylist=array();
+        foreach ($brlist as $value) {          
+            $brcodelist=(int)$value;
+            $result1 =$this->db->from('tbl_branch')
+                            ->where('brCode',$brcodelist)
+                            ->where('flage', 1)
+                            ->get();
+            foreach($result1->result() as $vl)
+            {
+                array_push($arraylist,$vl);    
+            }
+        }
+        return  $arraylist;
     }
 }

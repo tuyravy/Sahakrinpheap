@@ -25,7 +25,7 @@
                 <div class="dashboard_graph x_panel">
                   <div class="row x_title">
                     <div class="col-md-6">
-                      <h3><span class="glyphicon glyphicon-file" style="padding:10px;"></span>Written-Off and Loan > 90 Days<small></small></h3>
+                      <span class="glyphicon glyphicon-file"></span><span style="margin-left:5px;">Written-Off and Loan > 90 Days</sapn>
                     </div>
                     
                   </div>

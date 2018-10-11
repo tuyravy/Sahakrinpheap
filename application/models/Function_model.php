@@ -107,17 +107,7 @@ class Function_model extends CI_Model
         }
         
     }
-    public function GetLoanPastmutiy($brcode)
-    {
-        $result=$this->db->query("SELECT COUNT(*) as total FROM SKP_Pastmutiy WHERE Brcode in('".$brcode."');");
-        if($result->num_rows()>0)
-        {
-            foreach($result->result() as $row)
-            {
-                return $row->total;
-            }
-        }
-    }
+    
     public function GetBrCodebyRm($sid)
     {
         $result=$this->db->query("select branch_control from rm where flag=1 and sid='".$sid."'");
