@@ -2,7 +2,7 @@
         $brcode=$this->session->userdata('branch_code');
         $role=$this->session->userdata('role');   
         $sid=$this->session->userdata('system_id'); 
-        $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
+        $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));  
        
 ?><!-- page content -->
                

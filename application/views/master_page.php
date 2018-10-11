@@ -43,10 +43,7 @@
   <?php 
    $types=$this->session->userdata('types');
    $checking=$this->Menu_model->CheckUpload(); 
-<<<<<<< .merge_file_a02876
    
-=======
->>>>>>> .merge_file_a13208
   ?>
   <body class="nav-md" onload="setTimeout(myFunction,900000);">
     <div class="container body">

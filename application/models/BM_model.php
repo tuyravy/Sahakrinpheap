@@ -35,11 +35,7 @@ class BM_model extends CI_Model
     }
     public function  getDailyloanhistory($brcode,$reportdate)
     {
-<<<<<<< .merge_file_a15400
        $result=$this->db->query("CALL Cmr_getDailyloanhistory('".$brcode."','".$reportdate."')");
-=======
-       $result=$this->db->query("CALL sp_getDailyloanhistory('".$brcode."','".$reportdate."')");
->>>>>>> .merge_file_a10264
         $res      = $result->result();
 
         //add this two line 

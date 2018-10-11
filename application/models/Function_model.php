@@ -107,21 +107,7 @@ class Function_model extends CI_Model
         }
         
     }
-<<<<<<< .merge_file_a01860
     
-=======
-    public function GetLoanPastmutiy($brcode)
-    {
-        $result=$this->db->query("SELECT COUNT(*) as total FROM SKP_Pastmutiy WHERE Brcode in('".$brcode."');");
-        if($result->num_rows()>0)
-        {
-            foreach($result->result() as $row)
-            {
-                return $row->total;
-            }
-        }
-    }
->>>>>>> .merge_file_a15688
     public function GetBrCodebyRm($sid)
     {
         $result=$this->db->query("select branch_control from rm where flag=1 and sid='".$sid."'");

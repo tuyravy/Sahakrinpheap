@@ -308,7 +308,6 @@ public function setprofile($userid,$sid)
        
            return $result->result();
        
-<<<<<<< .merge_file_a01580
   }
   public function GetStatusImport()
   {
@@ -359,10 +358,6 @@ public function setprofile($userid,$sid)
         return 1;
         
     }
-=======
-       
-       
->>>>>>> .merge_file_a13456
   }
     
 }
