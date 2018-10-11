@@ -94,13 +94,13 @@ $query_builder = TRUE;
 // 	'failover' => array(),
 // 	'save_queries' => TRUE
 // );
-$active_group = 'default';
-$query_builder = TRUE;
+// $active_group = 'default';
+// $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'spmficom_cbs',
+	'username' => 'spmficom_cbs_uat',
 	'password' => 'RTCn#?O4Pdz,',
 	'database' => 'spmficom_cbs_uat',
 	'dbdriver' => 'mysqli',
