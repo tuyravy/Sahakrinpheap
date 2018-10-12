@@ -26,11 +26,7 @@
                     <div class="icon"></div>
                     <div class="count" style="font-size:25px;">
                     <span style="padding:5px;">
-<<<<<<< .merge_file_a16956
                       <?php if($row->PAR1DAY==0){ echo 0;}else{ echo number_format($row->PAR1DAY/$row->Balance*100,2);}?>
-=======
-                      <?php echo number_format($row->PAR1DAY/$row->Balance*100,2);?>
->>>>>>> .merge_file_a16164
                     </span>%</div>
                     <p>PAR Raito 1Days-Daily</p>
                   </div>
@@ -80,11 +76,7 @@
 
                   <div class="count" style="font-size:25px;">
                   <span style="padding:5px;">
-<<<<<<< .merge_file_a16956
                     <?php if($row->PAR7DAY==0){echo 0;}else{echo number_format($row->PAR7DAY/$row->Balance*100,2);}?>
-=======
-                    <?php echo number_format($row->PAR7DAY/$row->Balance*100,2);?>
->>>>>>> .merge_file_a16164
                   </span>%</div>
 
                   <p>PAR Raito 7Days-Daily</p>
@@ -136,11 +128,7 @@
                   <div class="icon"></div>
 
                   <div class="count" style="font-size:25px;">
-<<<<<<< .merge_file_a16956
                     <span style="padding:5px;"><?php if($row->PAR30DAY==0){echo 0;}else{echo number_format($row->PAR30DAY/$row->Balance*100,2);}?></span>%</div>
-=======
-                    <span style="padding:5px;"><?php echo number_format($row->PAR30DAY/$row->Balance*100,2);?></span>%</div>
->>>>>>> .merge_file_a16164
 
                   <p>PAR Raito 30Days-Daily</p>
                 </div>
@@ -333,7 +321,6 @@
                                         <th>PAR Raito 1Days-Daily</th>
 
                                         <td style="text-align:right;font-weight:bold;">
-<<<<<<< .merge_file_a16956
                                         <?php if($pre->PAR1DAY==0){echo 0;}else{echo number_format($pre->PAR1DAY/$pre->Balance*100,2);}?>%</td>
 
                                         <td style="text-align:right;font-weight:bold;">
@@ -342,16 +329,6 @@
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
                                         <?php if($row->PAR1DAY==0){echo 0;}else{ echo number_format(($row->PAR1DAY/$row->Balance-$pre->PAR1DAY/$pre->Balance)*100,2);}?>%</td>
-=======
-                                        <?php echo number_format($pre->PAR1DAY/$pre->Balance*100,2);?>%</td>
-
-                                        <td style="text-align:right;font-weight:bold;">
-                                       
-                                            <?php echo number_format($row->PAR1DAY/$row->Balance*100,2);?>
-                                            %</td>                                           
-                                        <td style="text-align:right;font-weight:bold;">
-                                        <?php echo number_format(($row->PAR1DAY/$row->Balance-$pre->PAR1DAY/$pre->Balance)*100,2);?>%</td>
->>>>>>> .merge_file_a16164
 
                                       </tr>
                                       <tr style="white-space: nowrap;overflow: hidden;">
@@ -359,7 +336,6 @@
                                         <th>PAR Raito 7Days-Daily</th>
 
                                        <td style="text-align:right;font-weight:bold;">
-<<<<<<< .merge_file_a16956
                                         <?php if($pre->PAR7DAY==0){echo 0;}else{echo number_format($pre->PAR7DAY/$pre->Balance*100,2);}?>%</td>
 
                                         <td style="text-align:right;font-weight:bold;">
@@ -368,16 +344,6 @@
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
                                         <?php if($row->PAR7DAY==0){echo 0;}else{echo number_format(($row->PAR7DAY/$row->Balance-$pre->PAR7DAY/$pre->Balance)*100,2);}?>%</td>
-=======
-                                        <?php echo number_format($pre->PAR7DAY/$pre->Balance*100,2);?>%</td>
-
-                                        <td style="text-align:right;font-weight:bold;">
-                                       
-                                            <?php echo number_format($row->PAR7DAY/$row->Balance*100,2);?>
-                                            %</td>                                           
-                                        <td style="text-align:right;font-weight:bold;">
-                                        <?php echo number_format(($row->PAR7DAY/$row->Balance-$pre->PAR7DAY/$pre->Balance)*100,2);?>%</td>
->>>>>>> .merge_file_a16164
 
                                       </tr>
                                       <tr style="white-space: nowrap;overflow: hidden;">
@@ -385,7 +351,6 @@
                                         <th>PAR Raito 30Days-Daily</th>
 
                                          <td style="text-align:right;font-weight:bold;">
-<<<<<<< .merge_file_a16956
                                         <?php if($pre->PAR30DAY==0){echo 0;}else{echo number_format($pre->PAR30DAY/$pre->Balance*100,2);}?>%</td>
 
                                         <td style="text-align:right;font-weight:bold;">
@@ -394,16 +359,6 @@
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
                                         <?php if($row->PAR30DAY==0){echo 0;}else{echo number_format(($row->PAR30DAY/$row->Balance-$pre->PAR30DAY/$pre->Balance)*100,2);}?>%</td>
-=======
-                                        <?php echo number_format($pre->PAR30DAY/$pre->Balance*100,2);?>%</td>
-
-                                        <td style="text-align:right;font-weight:bold;">
-                                       
-                                            <?php echo number_format($row->PAR30DAY/$row->Balance*100,2);?>
-                                            %</td>                                           
-                                        <td style="text-align:right;font-weight:bold;">
-                                        <?php echo number_format(($row->PAR30DAY/$row->Balance-$pre->PAR30DAY/$pre->Balance)*100,2);?>%</td>
->>>>>>> .merge_file_a16164
 
                                       </tr>                                     
                                       

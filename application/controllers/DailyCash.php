@@ -298,6 +298,37 @@ class DailyCash extends CI_Controller {
             
         }
     }
+
+    PUBLIC FUNCTION FullTrailBalance(){
+        
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        if(isset($_POST['brname']))
+        {
+            $startdate=date("Y-m-d",strtotime($_POST['datestart']));
+            $enddate=date("Y-m-d",strtotime($_POST['dateend']));
+            $brname=$_POST['brname'];
+            $data['brname']=$brname;
+            $data['datestart']=$startdate;
+            $data['dateend']=$enddate;
+            $data['cashinflow']=$this->FN_model->CASHINFLOW($startdate,$enddate,$brname);
+            
+        }else
+        {
+           
+            $data['cashinflow']=$this->FN_model->CASHINFLOW(null,null,null);
+            
+        }
+        $data['role']=$this->session->userdata('role');
+        $data['brlist']=$this->FN_model->GetBrByUser();
+        $data['BRANCH']=$this->FN_model->GETBRANCH();       
+        $data['mlist']=$this->Menu_model->MainiManu();
+        $data['title'] = lang('system_titel');
+        $data['viewpage']='FN/FullTrialBalance.php'; 
+        $this->load->view('master_page',$data);
+
+    }
     PUBLIC FUNCTION DONLOADCASHINTERBRANCH($datestart,$dateend,$brcode)
     {
         $this->excel->setActiveSheetIndex(0);

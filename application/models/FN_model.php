@@ -53,39 +53,6 @@ class FN_model extends CI_Model {
        //end of new code
         return $res;
         
-        // $re=$this->db->query("select 
-        // '1111011' as AccNo,
-        // 'Cash on Hand' as TitleAcc,
-        // case
-        // when
-        //     sum(DrAmt)=0 then 0 else sum(DrAmt) end as DrAmt,
-        // case
-        // when sum(CrAmt)=0 then 0 else sum(CrAmt) end as CrAmt,
-        // BrCode,BrShort from dailycashmovement where PostDate between '".$startdate."' and '".$enddate."' and 
-        // GlAcc in(2965011,2965012,2965013,2965014,2965015) and BrCode='".$brcode."' and Note_ContraACC='1111011'");
-        // $result1=array();
-        // foreach($re->result() as $row)
-        // {
-            
-        //      array_push($result1,$row);
-        // }
-        // $re=$this->db->query("select 
-        // '1163011' as AccNo,
-        // 'Cash on Hand' as TitleAcc,
-        // case
-        // when 
-        // sum(DrAmt)=0 then 0 else sum(DrAmt) end as DrAmt,
-        // case
-        // when sum(CrAmt)=0 then 0 else sum(CrAmt) end as CrAmt,BrCode,BrShort from dailycashmovement where PostDate between '".$startdate."' and '".$enddate."' and 
-        // GlAcc in(2965011,2965012,2965013,2965014,2965015) and BrCode='".$brcode."' and Note_ContraACC='1163011'");
-        // $result2=array();
-        // foreach($re->result() as $row)
-        // {
-        //     array_push($result2,$row);
-        // }
-
-        $query = array_merge($result1, $result2);
-        return $query;
     }
     PUBLIC FUNCTION GETSUMMARYDETAIL($startdate,$enddate,$brname,$page)
     {
