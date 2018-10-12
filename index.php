@@ -56,11 +56,11 @@
     ini_set('memory_limit', '-1'); //memory limit
     ini_set('max_execution_time', 600); //600s = 10mn
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	if ($_SERVER['SERVER_NAME'] == 'local_server_name') {
-		define('ENVIRONMENT', 'development');
-	} else {
-		define('ENVIRONMENT', 'production');
-	}
+	// if ($_SERVER['SERVER_NAME'] == 'local_server_name') {
+	// 	define('ENVIRONMENT', 'development');
+	// } else {
+	// 	define('ENVIRONMENT', 'production');
+	// }
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

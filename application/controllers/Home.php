@@ -322,7 +322,7 @@ public function changeprofile()
         $this->load->helper('form');     
         $brcode=$this->session->userdata('branch_code');
         $role=$this->session->userdata('role_id');
-        $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));       
+        $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));       
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['title'] = lang('system_titel');
         $data['users']=$this->Menu_model->getusername();

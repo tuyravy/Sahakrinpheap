@@ -36,7 +36,7 @@ class RM_model extends CI_Model
     
     public function gethistorydetailbyRm($systemid,$Reportdate)
     {
-         $result=$this->db->query("Call sp_historydetailbyRm('".$systemid."','".$Reportdate."')");     
+         $result=$this->db->query("Call Cmr_historydetailbyRm('".$systemid."','".$Reportdate."')");     
          $res      = $result->result();
   
           //add this two line 

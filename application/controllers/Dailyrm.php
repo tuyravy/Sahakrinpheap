@@ -16,7 +16,11 @@ class DailyRm extends CI_Controller {
         if(!$this->session->userdata('user_id'))
         {              
                redirect(site_url('Login'));
-        }    
+        }   
+        if($this->Menu_model->UserAccURL()==0){
+
+            redirect(site_url('logout'));
+        }
     }    
 	
     public function activeBorrower()

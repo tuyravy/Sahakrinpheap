@@ -12,6 +12,53 @@ class Menu_model extends CI_Model
          $this->subbrcode =$this->session->userdata('subbranch'); 
          $this->sid=$this->session->userdata('system_id'); 
     }
+   public function returnSegmentName() {
+
+        
+        $segment1 = $this->uri->segment(1);//segment1 is Controler Name
+        $segment2 = $this->uri->segment(2);//segment2 is Function Name
+        return $segment1."/".$segment2;
+    }
+    public function UserAccURL()
+    {
+           $segment=$this->returnSegmentName();
+           $UserAccURL=$this->MainiManu();
+           $keyvalue=0;
+           foreach($UserAccURL[1] as $key=>$val)
+           {
+               foreach($val as $re)
+               {
+                   foreach($re as $vl){
+                        if($vl->controller==$segment)
+                        {
+                            $keyvalue=$vl->mid;
+                        }
+                   }
+                    
+               }
+               
+           }
+           $userid=$this->session->userdata('user_id');
+           $submenut=$this->db->from('users')
+           ->where('user_id',$userid)
+           ->where('flag',1)
+           ->get();
+            $submenulist=array();
+            foreach($submenut->result() as $k=>$val)
+            {
+                $submenulist=explode(",",$val->sm_id);
+
+            }
+            $AccKey=0;
+            foreach($submenulist as $row){
+
+                if($row==$keyvalue){
+                    $AccKey=$row;
+                }
+
+            }
+           return $AccKey;
+    }
     public function detailnotyetupload(){
         
         $result=$this->db->query("Call Cmr_DetailNotyetupload('".$this->Reportdate."',".$this->role.",".$this->sid.",'".$this->brcode."')");
@@ -25,23 +72,23 @@ class Menu_model extends CI_Model
          return $res;
 
     }
-    // public static function GetMenu()
-    // {
-    //     $result=DB::table('menu_role')
-    //                 ->where('flage',1)
-    //                 ->where('type',1)
-    //                 ->where('parent_id',0)->get();
-    //     $array=array();
-    //     foreach($result as $key=>$val)
-    //     {
-    //         $result=DB::table('menu_role')           
-    //         ->where('type',2)
-    //         ->where('parent_id',$val->mid)
-    //         ->get();
-    //         array_push($array,[$val,$val=$result]);
-    //     }
-    //     return $array;
-    // }
+    public static function GetMenu()
+    {
+        $result=DB::table('menu_role')
+                    ->where('flage',1)
+                    ->where('type',1)
+                    ->where('parent_id',0)->get();
+        $array=array();
+        foreach($result as $key=>$val)
+        {
+            $result=DB::table('menu_role')           
+            ->where('type',2)
+            ->where('parent_id',$val->mid)
+            ->get();
+            array_push($array,[$val,$val=$result]);
+        }
+        return $array;
+    }
     
     public function MainiManu()
     {
@@ -66,7 +113,6 @@ class Menu_model extends CI_Model
                 array_push($minmenu,$vl);    
             }
                    
-            
        }
       /*------------------End GET MinMenu----------------*/
 
@@ -85,7 +131,7 @@ class Menu_model extends CI_Model
         foreach($submenulist as $sub){
             $submid=(int)$sub;                 
                 $resultparent =$this->db->from('menu_role')
-                            ->where('type', 2)
+                            ->where('type', 2)                           
                             ->where('mid',$submid)                                        
                             ->get();
                 foreach($resultparent->result() as $val)

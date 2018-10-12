@@ -15,6 +15,10 @@ class detail extends CI_Controller {
         {              
                redirect(site_url('Login'));
         }    
+        if($this->Menu_model->UserAccURL()==0){
+
+            redirect(site_url('logout'));
+        }
     } 
     public function detail_notyetupload(){
 

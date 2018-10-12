@@ -11,11 +11,11 @@
         
             <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
                         <a href="<?= base_url();?>">Home</a>
-                        <a href="<?= site_url('activeBorrower');?>">Loan Active Borrower</a>
-                        <a href="<?= site_url('loanPortfolio');?>">Loan Portfolio</a>
-                        <a href="<?= site_url('loanDisbInMonth');?>" >Loan Disbursement</a>
-                        <a href="<?= site_url('writtenoff');?>" class="active">Loan Written-Off Collection</a>
-                        <a href="<?= site_url('repaymentinmonth');?>">Loan Repayment</a>
+                        <a href="<?= site_url('daily/activeBorrower');?>">Loan Active Borrower</a>
+                        <a href="<?= site_url('daily/loanPortfolio');?>">Loan Portfolio</a>
+                        <a href="<?= site_url('daily/loanDisbInMonth');?>" >Loan Disbursement</a>
+                        <a href="<?= site_url('daily/writtenoff');?>" class="active">Loan Written-Off Collection</a>
+                        <a href="<?= site_url('daily/repaymentinmonth');?>">Loan Repayment</a>
             </div>
        
 

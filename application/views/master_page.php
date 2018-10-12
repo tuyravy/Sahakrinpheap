@@ -76,12 +76,15 @@
                           <?php foreach ($valsub as $key=>$vl):
                             if($key==$val->mid):?>
                             <ul class="nav child_menu">
-                              <?php foreach ($vl as $v):?>                     
+                              <?php foreach ($vl as $v):
+                                if($v->flage!=0):?>                     
                                 <li><a href="<?php echo site_url($v->controller);?>">    
                                   <?php echo $v->function_name;?>                 
                                 </a>
                                 </li>                  
-                              <?php endforeach;?>
+                              <?php 
+                              endif;
+                             endforeach;?>
                             </ul>     
                           <?php endif;?>                 
                         <?php endforeach;?>

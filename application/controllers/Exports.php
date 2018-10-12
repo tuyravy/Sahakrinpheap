@@ -10,6 +10,10 @@ class Exports extends CI_Controller {
         // Load the Model
         $this->load->model('Menu_model');
         $this->load->model("DailyCmr_model");
+        if($this->Menu_model->UserAccURL()==0){
+
+            redirect(site_url('logout'));
+        }
     }
 
     public function index() {

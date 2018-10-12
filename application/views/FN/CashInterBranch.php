@@ -64,15 +64,15 @@
                                       <div class="form-group" style="margin-top:10px;">                                       
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
-                                          placeholder="<?php if(isset($datestart)){echo $datestart;}else{date('Y-m-d');}?>"
-                                          value="<?php if(isset($datestart)){echo $datestart;}else{echo date('Y-m-d');}?>"
+                                          placeholder="<?php if(isset($datestart)){echo $datestart;}else{ echo $reportdate;}?>"
+                                          value="<?php if(isset($datestart)){echo $datestart;}else{ echo $reportdate;}?>"
                                           readonly="true" style="background:white;">
                                       </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
-                                        placeholder="<?php if(isset($dateend)){echo $dateend;}else{date('Y-m-d');}?>" 
-                                        value="<?php if(isset($dateend)){echo $dateend;}else{ echo date('Y-m-d');}?>"
+                                        placeholder="<?php if(isset($dateend)){echo $dateend;}else{ echo $reportdate;}?>" 
+                                        value="<?php if(isset($dateend)){echo $dateend;}else{ echo $reportdate;}?>"
                                         readonly="true" style="background:white;">
                                 </div> 
                                <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="

@@ -17,6 +17,14 @@ class User extends CI_Controller {
          $this->load->model('login_model');
          $this->load->model('menu_model');
          $this->load->model('users_model');
+         if(!$this->session->userdata('user_id'))
+         {              
+               redirect(site_url('Login'));
+         } 
+         if($this->Menu_model->UserAccURL()==0){
+
+            redirect(site_url('logout'));
+        }
     }
 	public function index()
     {

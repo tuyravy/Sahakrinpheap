@@ -19,11 +19,16 @@ class DailyCash extends CI_Controller {
             {
                 redirect(site_url('Login'));
             }
+            if($this->Menu_model->UserAccURL()==0){
+
+                redirect(site_url('logout'));
+            }
             $brcode=$this->session->userdata('branch_code');
             $userid=$this->session->userdata('user_id');
             $role=$this->session->userdata('role');
             $subbrcode=$this->session->userdata('subbranch');
             $reportdate=date("Y-m-d",strtotime($this->Function_model->getCurrRundate($role,$brcode,$subbrcode))); 
+
             if(isset($_GET['mid'])) {
                   $this->Menu_model->setLoginhistory($this->session->userdata('user_id'),$_GET['mid'],date("Y-m-d",strtotime($reportdate)));  
             }
@@ -34,6 +39,7 @@ class DailyCash extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('form');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         if(isset($_POST['brname']))
         {
             $startdate=date("Y-m-d",strtotime($_POST['datestart']));
@@ -61,6 +67,7 @@ class DailyCash extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('form');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         if(isset($_POST['brname']))
         {
             $startdate=date("Y-m-d",strtotime($_POST['datestart']));
@@ -89,6 +96,7 @@ class DailyCash extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('form');
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         if(isset($_POST['brname']))
         {
             $startdate=date("Y-m-d",strtotime($_POST['datestart']));
@@ -118,7 +126,7 @@ class DailyCash extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
-        
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         if($page==''){ 
             $page=0;
             $this->session->unset_tempdata(array("datestart","dateend","brname"));
