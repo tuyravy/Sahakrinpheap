@@ -320,6 +320,7 @@ class DailyCash extends CI_Controller {
             $data['cashinflow']=$this->FN_model->CASHINFLOW(null,null,null);
             
         }
+        $data['fulltb']=$this->FN_model->FULLTRIALBALANCE();
         $data['role']=$this->session->userdata('role');
         $data['brlist']=$this->FN_model->GetBrByUser();
         $data['BRANCH']=$this->FN_model->GETBRANCH();       

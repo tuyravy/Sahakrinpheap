@@ -126,4 +126,10 @@ class FN_model extends CI_Model {
         }
         return  $arraylist;
     }
+    PUBLIC FUNCTION FULLTRIALBALANCE(){
+
+        $result=$this->db->query("select * from fn_fulltrialbalance where reportdate='20180930' and brcode='103'");
+        return $result->result();
+
+    }
 }

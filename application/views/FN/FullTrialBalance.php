@@ -110,10 +110,9 @@
                         <table class="table table-bordered projects" id="datatable-buttons">
                           <thead>
                             <tr style="border-bottom:3pt solid #22d4ae;">
-                              <th style="width: 1%;text-align:center" colspan="2">AccNumber</th>                                   
+                              <th style="width: 1%;text-align:center">AccNumber</th>                                   
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">AccName</th>
-                              <th style="text-align:center;white-space: nowrap;overflow: hidden;">Balance</th>
-                              <th style="text-align:center;white-space: nowrap;overflow: hidden;">CCy</th>
+                              <th style="text-align:center;white-space: nowrap;overflow: hidden;">Balance</th>                              
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">Date</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">BrCode</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">BrShort</th>
@@ -122,7 +121,18 @@
                             </tr>
                           </thead>
                           <tbody id="reportsinterbranch">
-                         
+                          <?php foreach($fulltb as $row){?>
+                            <tr>
+                              <td><?php echo $row->AccNumber; ?></td>
+                              <td><?php echo $row->AccName; ?></td>
+                              <td style="text-align:right"><?php echo $row->Balance; ?></td>
+                              <td><?php echo $row->Date; ?></td>
+                              <td><?php echo $row->BrCode; ?></td>
+                              <td><?php echo $row->BrShort; ?></td>
+                              <td><?php echo $row->ReportDate; ?></td>
+                            
+                            </tr>
+                          <?php }?>
                           </tbody>
                         </table>
                           <div class="col-sm-12" id="foldershow" style="display:none;">
