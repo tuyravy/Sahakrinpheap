@@ -115,6 +115,32 @@ class FN_model extends CI_Model {
         
     }
     public function GetBrByUser(){
+        $sid=$this->session->userdata('system_id');
+        $result=$this->db->from('rm')
+                    ->where('sid',$sid)
+                    ->where('flag',1)->get();
+        $brlist=array();
+       
+        foreach($result->result() as $k=>$val){
+           
+             $brlist=explode(",",$val->branch_control);             
+        }
+        //print_r($brlist);
+        $arraylist=array();
+        foreach ($brlist as $value) {          
+            $brcodelist=(int)$value;
+            $result1 =$this->db->from('tbl_branch')
+                            ->where('brCode',$brcodelist)
+                            ->where('flage', 1)
+                            ->get();
+            foreach($result1->result() as $vl)
+            {
+                array_push($arraylist,$vl);    
+            }
+        }
+        return  $arraylist;
+    }
+    public function GetBrByUsers(){
         $userid=$this->session->userdata('user_id');
         $result=$this->db->from('users')
                     ->where('user_id',$userid)
