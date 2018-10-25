@@ -39,7 +39,7 @@ class Function_model extends CI_Model
                      (
                          "select 
                             count(*) as Upload 
-                            from upload_history where report_date='".$datenow."' and brcode in('".$brcode."','".$subbrcode."')"
+                            from upload_history where ReportDate='".$datenow."' and brcode in('".$brcode."','".$subbrcode."')"
                      );
                      if($result->num_rows()>0){
                         foreach($result->result() as $row)
@@ -54,7 +54,7 @@ class Function_model extends CI_Model
                         (
                             "select 
                             count(*) as Upload 
-                            from upload_history where report_date='".$datenow."' and brcode in('".$this->GetBrCodebyRm($sid)."')"
+                            from upload_history where ReportDate='".$datenow."' and brcode in('".$this->GetBrCodebyRm($sid)."')"
                         );
                         if($result->num_rows()>0){
                             foreach($result->result() as $row)

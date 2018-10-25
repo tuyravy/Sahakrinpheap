@@ -11,7 +11,6 @@ class DailyCash extends CI_Controller {
          $this->load->model('Function_model');        
          $this->load->helper('url');
          $this->load->helper('form');
-         //$this->load->model('Imports_model');
          $this->load->library('Excel');
          $this->load->library('Utility');
          $this->load->model('FN_model');
@@ -159,9 +158,9 @@ class DailyCash extends CI_Controller {
                     $data['summarydatail']=$this->FN_model->GETSUMMARYDETAIL($startdate,$enddate,$brname,$page);
                 }else
                 {
-                    $startdate=date("Y-m-d");
-                    $enddate=date("Y-m-d");
-                    $brname='';
+                    $startdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+                    $enddate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+                    $brname=$this->session->userdata('branch_code');;
                     $data['brname']=$brname;
                     $data['datestart']=$startdate;
                     $data['dateend']=$enddate;
@@ -218,9 +217,9 @@ class DailyCash extends CI_Controller {
                 $data['cashtransition']=$this->FN_model->CASHBYTRANSITION($startdate,$enddate,$brname,$page);
             }else
             {
-                $startdate=date("Y-m-d");
-                $enddate=date("Y-m-d");
-                $brname='';
+                $startdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+                $enddate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+                $brname=$this->session->userdata('branch_code');
                 $data['brname']=$brname;
                 $data['datestart']=$startdate;
                 $data['dateend']=$enddate;
@@ -304,23 +303,24 @@ class DailyCash extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         if(isset($_POST['brname']))
         {
             $startdate=date("Y-m-d",strtotime($_POST['datestart']));
-            $enddate=date("Y-m-d",strtotime($_POST['dateend']));
+            // $enddate=date("Y-m-d",strtotime($_POST['dateend']));
             $brname=$_POST['brname'];
             $data['brname']=$brname;
             $data['datestart']=$startdate;
-            $data['dateend']=$enddate;
-            $data['cashinflow']=$this->FN_model->CASHINFLOW($startdate,$enddate,$brname);
+            // $data['dateend']=$enddate;
+            $data['fulltb']=$this->FN_model->FULLTRIALBALANCE($startdate,$brname);
             
         }else
         {
            
-            $data['cashinflow']=$this->FN_model->CASHINFLOW(null,null,null);
+            $data['fulltb']=$this->FN_model->FULLTRIALBALANCE($reportdate,$this->session->userdata('branch_code'));
             
         }
-        $data['fulltb']=$this->FN_model->FULLTRIALBALANCE();
+        
         $data['role']=$this->session->userdata('role');
         $data['brlist']=$this->FN_model->GetBrByUser();
         $data['BRANCH']=$this->FN_model->GETBRANCH();       
@@ -330,6 +330,7 @@ class DailyCash extends CI_Controller {
         $this->load->view('master_page',$data);
 
     }
+
     PUBLIC FUNCTION DONLOADCASHINTERBRANCH($datestart,$dateend,$brcode)
     {
         $this->excel->setActiveSheetIndex(0);
@@ -359,5 +360,11 @@ class DailyCash extends CI_Controller {
         $this->excel->setActiveSheetIndex(0);
         $data=$this->FN_model->DOWNLOADCASHBYTRANSITION($datestart,$dateend,$brcode);        
         $this->excel->stream($brcode."_Daily_Cash_byTransition_".$datestart."_and_".$dateend."_.xls",$data);
+    }
+    PUBLIC FUNCTION DONLOADCASHFULLTRILBALANCE($datestart,$brcode)
+    {
+        $this->excel->setActiveSheetIndex(0);
+        $data=$this->FN_model->FULLTRIALBALANCE($datestart,$brcode);        
+        $this->excel->stream($brcode."_Daily_FullTrailBalance_".$datestart."_.xls",$data);
     }
 }

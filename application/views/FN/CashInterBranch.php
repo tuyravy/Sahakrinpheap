@@ -1,9 +1,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-        <script src="<?php echo base_url();?>public/vendors/jquery/dist/jquery.min.js"></script>  
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+       
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -40,7 +38,7 @@
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                             <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
-                                            <option data-subtext="Select by RM" value="">Select</option>                                            
+                                            <option data-subtext="Select Branch" value="All">All</option>                                           
                                             <?php 
                                               if(isset($role)==2){
                                            
@@ -90,7 +88,7 @@
                       <div id="reports">
                         <div class="row" id="logoreports" style="display:none">
                                 <div class="col-md-6">
-                                      <img src="<?php echo base_url();?>public/img/logo_simple.png" class="img-responsive" alt="Cinque Terre">
+                                      <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
                                 </div>
                                 <div class="col-md-6" id="textcenter">
                                     <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
@@ -113,26 +111,29 @@
                             <th style="width: 1%;text-align:center" colspan="2">AccNo</th>                           
                             <th style="text-align:center">BALANCE IN</th>
                             <th style="text-align:center">BALANCE OUT</th>
-                            
+                            <!-- <th style="text-align:center">Ending Balance</th> -->
                            
                           </tr>
                         </thead>
                         <tbody id="reportsinterbranch">
-                          <?php foreach($cashonhand as $row){?>
+                          <?php 
+                           $Total_CashIn=0;
+                           $Total_CashOut=0;
+                          foreach($cashonhand as $row){?>
                           <tr style="text-align:right">
                             <td><?php echo $row->Acc;?></td>
                             <td style="white-space: nowrap;overflow: hidden;text-align:left"><?php echo $row->titel;?></td>
-                            <td><?php  echo number_format($row->CASH_IN,0);?></td>
-                            <td><?php  echo number_format($row->CASH_OUT,0);?></td>                           
-              
+                            <td><?php  echo number_format($row->CASH_IN,0);$Total_CashIn+=$row->CASH_IN;?></td>
+                            <td><?php  echo number_format($row->CASH_OUT,0);$Total_CashOut+=$row->CASH_OUT;?></td>                           
+                            <!-- <td></td> -->
                           </tr>
                           <?php }?>
                           
                           <tr style="text-align:right"  >
                             <td colspan='2' style="text-align:center">Total</td>                            
-                            <td><?php  echo number_format($row->CASH_IN,0);?></td>
-                            <td><?php  echo number_format($row->CASH_OUT,0);?></td>
-                            
+                            <td><?php  echo number_format($Total_CashIn,0);?></td>
+                            <td><?php  echo number_format($Total_CashOut,0);?></td>
+                            <!-- <td></td> -->
                           
                           </tr>
                         </tbody>

@@ -1,9 +1,7 @@
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-        <script src="<?php echo base_url();?>public/vendors/jquery/dist/jquery.min.js"></script>  
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> 
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+     
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -12,7 +10,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">Daily Cash Movement Summary</span>
+                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">Daily Cash Summary</span>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -40,7 +38,8 @@
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                           <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
-                                            <option data-subtext="Select by RM" value="">Select</option>
+                                           
+                                            <option data-subtext="Select Branch" value="All">All</option>
                                             <?php 
                                               if(isset($role)==2){
                                            
@@ -92,12 +91,12 @@
                           <div id="reports">
                             <div class="row" id="logoreports" style="display:none">
                                     <div class="col-md-6">
-                                          <img src="<?php echo base_url();?>public/img/logo_simple.png" class="img-responsive" alt="Cinque Terre">
+                                          <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
                                     </div>
                                     <div class="col-md-6" id="textcenter">
                                         <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
                                         <h2 id="in1" style="text-align:center;">SAHAKRINPHEAP S.T MICROFINANCE PLC</h2>
-                                        <h2 id="in2" style="text-align:center;">Cash Inter-Branch Reports</h2>
+                                        <h2 id="in2" style="text-align:center;">Cash Summary Reports</h2>
                                         <p id="in3" style="text-align:center">Reports Date:
                                         <?php if(isset($datestart)){echo $datestart;}else{echo date("Y-m-d");}?>
                                           <span style="margin-left:10px;">
@@ -114,7 +113,7 @@
                                   <th rowspan='2' valign="middle" style="vertical-align: middle;text-align:center;border-bottom:3pt solid #22d4ae;">Date</th>
                                   <th colspan='2' style="text-align:center;white-space: nowrap;overflow: hidden;">Repay over Branch</th>
                                   <th colspan='13' style="text-align:center;white-space: nowrap;overflow: hidden;">Cash In</th>                                  
-                                  <th colspan='5' style="text-align:center;white-space: nowrap;overflow: hidden;">Cash Out</th>
+                                  <th colspan='7' style="text-align:center;white-space: nowrap;overflow: hidden;">Cash Out</th>
                                   
                                 </tr>
                                 <tr style="border-bottom:3pt solid #22d4ae;">
@@ -139,8 +138,8 @@
                                     <th style="text-align:center">Payments</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">Cash shortage</th>
                                     <th style="text-align:center">Others</th>
-                                   
-                                    
+                                    <th>BrCode</th>
+                                    <th>BrName</th>
                                 </tr>
                                 </thead>
                                 <tbody id="reportsinterbranch">
@@ -169,7 +168,8 @@
                                   <td><?php echo number_format($row->Payments,0);?></td>
                                   <td><?php echo number_format($row->Cashshortage,0);?></td>
                                   <td><?php echo number_format($row->Otherscashout,0);?></td>
-                                  
+                                  <td><?php echo $row->brcode;?></td>
+                                  <td><?php echo $row->BrShort;?></td>
                                 </tr>                              
                                 <?php }?>
                                 </tbody>

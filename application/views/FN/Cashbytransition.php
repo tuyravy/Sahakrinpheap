@@ -1,9 +1,6 @@
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-        <script src="<?php echo base_url();?>public/vendors/jquery/dist/jquery.min.js"></script>  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> 
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -12,7 +9,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>CASH BY TRANSITION</h2>
+                      <h2>CASH BY TRANSACTION</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -40,7 +37,7 @@
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                             <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
-                                            <option data-subtext="Select by RM" value="">Select</option>                                            
+                                            <option data-subtext="Select Branch" value="All">All</option>                                            
                                             <?php foreach($BRANCH as $row){
                                               if(isset($brname)){?>
                                               <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
@@ -80,12 +77,12 @@
                       
                         <div class="row" id="logoreports" style="display:none">
                                 <div class="col-md-6">
-                                      <img src="<?php echo base_url();?>public/img/logo_simple.png" class="img-responsive" alt="Cinque Terre">
+                                      <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
                                 </div>
                                 <div class="col-md-6" id="textcenter">
                                     <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
                                     <h2 id="in1" style="text-align:center;">SAHAKRINPHEAP S.T MICROFINANCE PLC</h2>
-                                    <h2 id="in2" style="text-align:center;">Cash Inter-Branch Reports</h2>
+                                    <h2 id="in2" style="text-align:center;">Cash by Transaction Reports</h2>
                                     <p id="in3" style="text-align:center">Reports Date:
                                     <?php if(isset($datestart)){echo $datestart;}else{echo date("Y-m-d");}?>
                                       <span style="margin-left:10px;">
@@ -118,7 +115,7 @@
                         <?php foreach($cashtransition as $row){?>
                         <tr>
                             <td><?php echo $row->GLAcc;?></td>
-                            <td><?php echo $row->FullTitle;?></td>
+                            <td style="text-align:left;white-space: nowrap;overflow: hidden;"><?php echo $row->FullTitle;?></td>
                             <td style="text-align:right"><?php echo number_format($row->DrAmt,0);?></td>
                             <td style="text-align:right"><?php echo number_format($row->CrAmt,0);?></td>
                             <td style="text-align:right"><?php echo number_format($row->Begining,0);?></td>

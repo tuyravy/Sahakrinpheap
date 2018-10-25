@@ -1,9 +1,7 @@
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-        <script src="<?php echo base_url();?>public/vendors/jquery/dist/jquery.min.js"></script>  
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> 
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+      
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -33,13 +31,14 @@
                     <div class="x_content">
                       <div class="row">
                           <div class="col-md-12">
-                              <form class="form-inline" action="<?php echo site_url('DailyCash/Cashinflow');?>" method="post">
+                              <form class="form-inline" action="<?php echo site_url('DailyCash/FullTrailBalance');?>" method="post">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific Period:</legend>
                                       <div class="form-group" style="margin-top:-10px;">                                       
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                             <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
+                                            <option data-subtext="Select Branch" value="All">All</option>
                                             <?php 
                                               if(isset($role)==2){
                                            
@@ -61,19 +60,19 @@
                                         </div>
                                       </div>
                                       <div class="form-group" style="margin-top:10px;">                                       
-                                          <label for="exampleInputName2">From:</label>
+                                          <label for="exampleInputName2">ReportDate:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
                                           placeholder="<?php if(isset($datestart)){echo $datestart;}else{echo $reportdate;}?>"
                                           value="<?php if(isset($datestart)){echo $datestart;}else{echo $reportdate;}?>"
                                           readonly="true" style="background:white;">
                                       </div>
-                                <div class="form-group" style="margin-top:10px;">
+                                <!-- <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
                                         placeholder="<?php if(isset($dateend)){echo $dateend;}else{echo $reportdate;}?>" 
                                         value="<?php if(isset($dateend)){echo $dateend;}else{ echo $reportdate;}?>"
                                         readonly="true" style="background:white;">
-                                </div> 
+                                </div>  -->
                                <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
                                <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
@@ -91,19 +90,15 @@
                       <div id="reports">
                         <div class="row" id="logoreports" style="display:none">
                                 <div class="col-md-6">
-                                      <img src="<?php echo base_url();?>public/img/logo_simple.png" class="img-responsive" alt="Cinque Terre">
+                                      <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
                                 </div>
                                 <div class="col-md-6" id="textcenter">
                                     <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
                                     <h2 id="in1" style="text-align:center;">SAHAKRINPHEAP S.T MICROFINANCE PLC</h2>
-                                    <h2 id="in2" style="text-align:center;">Cash Inter-Branch Reports</h2>
+                                    <h2 id="in2" style="text-align:center;">Full Trail Balance Reports</h2>
                                     <p id="in3" style="text-align:center">Reports Date:
                                     <?php if(isset($datestart)){echo $datestart;}else{echo date("Y-m-d");}?>
-                                      <span style="margin-left:10px;">
-                                          To:<span style="margin-left:10px;">
-                                            <?php if(isset($dateend)){echo $dateend;}else{echo date("Y-m-d");}?>
-                                            </span>
-                                      </span>
+                                      
                                     </p>
                                 </div>   
                         </div> 
@@ -126,10 +121,10 @@
                               <td><?php echo $row->AccNumber; ?></td>
                               <td><?php echo $row->AccName; ?></td>
                               <td style="text-align:right"><?php echo $row->Balance; ?></td>
-                              <td><?php echo $row->Date; ?></td>
-                              <td><?php echo $row->BrCode; ?></td>
-                              <td><?php echo $row->BrShort; ?></td>
-                              <td><?php echo $row->ReportDate; ?></td>
+                              <td style="text-align:right"><?php echo $row->Date; ?></td>
+                              <td style="text-align:center"><?php echo $row->BrCode; ?></td>
+                              <td style="text-align:center"><?php echo $row->BrName; ?></td>
+                              <td style="text-align:right"><?php echo $row->ReportDate; ?></td>
                             
                             </tr>
                           <?php }?>
@@ -227,7 +222,7 @@
         alert("Please Choose Branch Name");
       }else
       {
-        window.location.href="<?php echo site_url('DailyCash/DONLOADCASHINFLOW');?>/"+datestart+"/"+dateend+"/"+brname;   
+        window.location.href="<?php echo site_url('DailyCash/DONLOADCASHFULLTRILBALANCE');?>/"+datestart+"/"+brname;   
       }
      
     });
@@ -264,7 +259,7 @@
             window.print();
             //Restore orignal HTML
             document.body.innerHTML = oldPage;
-            window.location.href="<?= site_url("DailyCash/Cashinflow");?>";
+            window.location.href="<?= site_url("DailyCash/FullTrailBalance");?>";
           
         }
     </script>

@@ -1,9 +1,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-        <script src="<?php echo base_url();?>public/vendors/jquery/dist/jquery.min.js"></script>  
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -40,6 +38,7 @@
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                             <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
+                                            <option data-subtext="Select Branch" value="All">ALL</option>
                                             <?php 
                                               if(isset($role)==2){
                                            
@@ -91,12 +90,12 @@
                       <div id="reports">
                         <div class="row" id="logoreports" style="display:none">
                                 <div class="col-md-6">
-                                      <img src="<?php echo base_url();?>public/img/logo_simple.png" class="img-responsive" alt="Cinque Terre">
+                                      <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
                                 </div>
                                 <div class="col-md-6" id="textcenter">
                                     <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
                                     <h2 id="in1" style="text-align:center;">SAHAKRINPHEAP S.T MICROFINANCE PLC</h2>
-                                    <h2 id="in2" style="text-align:center;">Cash Inter-Branch Reports</h2>
+                                    <h2 id="in2" style="text-align:center;">Cash In Flow Reports</h2>
                                     <p id="in3" style="text-align:center">Reports Date:
                                     <?php if(isset($datestart)){echo $datestart;}else{echo date("Y-m-d");}?>
                                       <span style="margin-left:10px;">
@@ -113,7 +112,7 @@
                               <th style="width: 1%;text-align:center" colspan="2">AccNo</th>                                   
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">BANK W/D</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan Collection</th>
-                              <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan Repayment(Defferred)</th>
+                              <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan Prepayment</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">Write Back</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">CBC Fee</th>
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">ADMIN Fee</th>
@@ -124,7 +123,7 @@
                               <th style="text-align:center;white-space: nowrap;overflow: hidden;">Forex Gain</th>
                               <th style="text-align:center">Other</th>
                               <th style="text-align:center">Total</th>
-                              
+                              <!-- <th style="white-space: nowrap;overflow: hidden;text-align:center">Ending Balance</th> -->
                             </tr>
                           </thead>
                           <tbody id="reportsinterbranch">
@@ -169,7 +168,7 @@
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
                                 $row->SURPLUS+$row->FOREXGAIN);
                               ?></td>
-                            
+                            <!-- <td></td> -->
                             </tr>
                           <?php }?> 
                           <tr>
@@ -187,7 +186,7 @@
                             <td><?php echo number_format($FOREXGAIN,0);?></td>
                             <td><?php echo number_format($OTHERS,0);?></td>
                             <td><?php if($TOTAL<0){ echo number_format(-($TOTAL),0);}else{ echo number_format($TOTAL,0);};?></td>
-                            
+                            <!-- <td></td> -->
                            
                             
                           </tr>

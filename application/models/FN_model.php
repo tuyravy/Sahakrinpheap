@@ -83,13 +83,27 @@ class FN_model extends CI_Model {
     }
     PUBLIC FUNCTION CASHBYTRANSITION($startdate,$enddate,$brcode,$page)
     {
-        $result=$this->db->query("select * from dailycashmovement where postdate between '".$startdate."' and '".$enddate."' and BrCode='".$brcode."' limit 10 offset ".$page."");
-        return $result->result();
+        if ($brcode=='All')
+        {
+            $result=$this->db->query("select * from dailycashmovement where postdate between '".$startdate."' and '".$enddate."'");
+            return $result->result();
+
+        }else{
+            $result=$this->db->query("select * from dailycashmovement where postdate between '".$startdate."' and '".$enddate."' and BrCode='".$brcode."' limit 10 offset ".$page."");
+            return $result->result();
+        }
+       
     }
     PUBLIC FUNCTION DOWNLOADCASHBYTRANSITION($startdate,$enddate,$brcode)
     {
-        $result=$this->db->query("select * from dailycashmovement where postdate between '".$startdate."' and '".$enddate."' and BrCode='".$brcode."'");
-        return $result->result();
+        if ($brcode=='All'){
+            $result=$this->db->query("select id,GLAcc,FullTitle,DrAmt,CrAmt,Begining,Ending,PostDate,Note_ContraACC,BrCode,BrShort,NameDate,ReportDate from dailycashmovement where postdate between '".$startdate."' and '".$enddate."'");
+            return $result->result();
+        }else{
+            $result=$this->db->query("select * from dailycashmovement where postdate between '".$startdate."' and '".$enddate."' and BrCode='".$brcode."'");
+            return $result->result();
+        }
+        
     }
     PUBLIC FUNCTION TOTALCASHBYTRANSITON($startdate,$enddate,$brcode)
     {
@@ -126,10 +140,20 @@ class FN_model extends CI_Model {
         }
         return  $arraylist;
     }
-    PUBLIC FUNCTION FULLTRIALBALANCE(){
+    PUBLIC FUNCTION FULLTRIALBALANCE($stardate,$brcode){
 
-        $result=$this->db->query("select * from fn_fulltrialbalance where reportdate='20180930' and brcode='103'");
-        return $result->result();
+        if($brcode=='All')
+        {
+            $result=$this->db->query("select * from fn_fulltrialbalance where reportdate='".$stardate."'");
+            //$this->output->enable_profiler(TRUE); 
+           return $result->result();
+        }else{
+
+            $result=$this->db->query("select * from fn_fulltrialbalance where reportdate='".$stardate."' and brcode='".$brcode."'");
+            //$this->output->enable_profiler(TRUE); 
+           return $result->result();
+        }
+        
 
     }
 }

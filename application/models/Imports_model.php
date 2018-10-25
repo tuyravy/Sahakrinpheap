@@ -25,7 +25,7 @@ class imports_model extends CI_Model {
     {
         $result=$this->db->select(
                         'upload_history.modified_by,
-                         upload_history.report_date,
+                         upload_history.ReportDate,
                          upload_history.file_name,
                          upload_history.pc_name,
                          upload_history.created_date,
@@ -35,7 +35,7 @@ class imports_model extends CI_Model {
                         ->from('upload_history')
                         ->join('users','users.user_id=upload_history.modified_by')
                         ->where('upload_history.flag',1)
-                        ->order_by('upload_history.report_date','DESC')
+                        ->order_by('upload_history.ReportDate','DESC')
                         ->get();
         return $result->result();
     }

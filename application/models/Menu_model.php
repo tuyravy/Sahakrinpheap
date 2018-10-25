@@ -14,7 +14,6 @@ class Menu_model extends CI_Model
     }
    public function returnSegmentName() {
 
-        
         $segment1 = $this->uri->segment(1);//segment1 is Controler Name
         $segment2 = $this->uri->segment(2);//segment2 is Function Name
         return $segment1."/".$segment2;
@@ -174,9 +173,7 @@ class Menu_model extends CI_Model
 
 public function setprofile($userid,$sid)
     {
-        $sidresult=$this->getstaff($sid);
-        if($sidresult==true)
-        {
+        
             $row=$this->input->post();
             $data=array
                 (
@@ -191,11 +188,7 @@ public function setprofile($userid,$sid)
             $this->db->where('user_id',$userid);
             $this->db->update('users',$data);
             return true;
-        }
-        else
-        {
-            return false;
-        }
+        
         
     }
   function getAutosetProfile($userid)
