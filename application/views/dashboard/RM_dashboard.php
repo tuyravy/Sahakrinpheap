@@ -19,7 +19,7 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3  class="font13" style="margin-top: 10px;">Number of loans active in month</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->activeloan,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->Active_Loan,0);?></span></h1>
             </div>
         </div>
         <!--current balance MMI-->
@@ -29,7 +29,7 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3  class="font13" style="margin-top: 10px;">Number of loans disbursement in month</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->disbloan,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->Loan_Disb,0);?></span></h1>
             </div>
         </div>
         <!--current balance FSS-->
@@ -39,7 +39,7 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3  class="font13" style="margin-top: 10px;">Number of loan written-off in month</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->woloan,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->WrittenOff_Loan,0);?></span></h1>
             </div>
         </div>
         <!--pending cash request-->
@@ -49,7 +49,7 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3 class="font13" style="margin-top: 10px;">Number of loan PAR>90days</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->pastloan,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->PastMutiy_Loan,0);?></span></h1>
             </div>
         </div>
         <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -58,8 +58,8 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3 class="font13" style="margin-top: 10px;">Balance of loan written-off collection in month</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->WoAmt,0);?> /
-                     <?php echo number_format($row->AccCollectWOInmonth,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->WrittenOff_Amt,0);?> /
+                     <?php echo number_format($row->Loan_CollectWrittenOffDaily,0);?></span></h1>
             </div>
         </div>
         <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -68,7 +68,7 @@
                 <div class="count" style="font-size: 20px"></div>
                 <h3 class="font13" style="margin-top: 10px;">Total number of loan closed in month</h3>
                 <p><a href="javascript:void(0)">&nbsp;</a></p>
-                <h1><span style="padding:10px;"><?php echo number_format($row->closeloan,0);?></span></h1>
+                <h1><span style="padding:10px;"><?php echo number_format($row->Close_Loan,0);?></span></h1>
             </div>
         </div>
     </div>

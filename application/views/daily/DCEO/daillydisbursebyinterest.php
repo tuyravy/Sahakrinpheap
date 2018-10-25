@@ -263,8 +263,8 @@
                                 $reportdate=date("Y-m-d",strtotime($_GET['dateend']));
                             }else
                             {
-                                $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
-                                $Prereportdate=date("Y-m-d",strtotime($this->Menu_model->getPreCurrRundate()));
+                                $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+                                $Prereportdate=date("Y-m-d",strtotime($this->Function_model->GetPreReportDate($reportdate)));
                             }
 
                             $conspancolumfull=$this->DailyCmr_model->getConspanMonthlyrateFullMonth($Prereportdate,$reportdate);
@@ -588,8 +588,8 @@
                                                 $reportdate=date("Y-m-d",strtotime($_GET['dateend4']));
                                             }else
                                             {
-                                                $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
-                                                $Prereportdate=date("Y-m-d",strtotime($this->Menu_model->getPreMonthCurrRundate()));
+                                                $reportdate=date("Y-m-d",strtotime($this->Function_model->getCurrRundate()));
+                                                $Prereportdate=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate()));
                                             }
 
                                             $conspancolumfull=$this->DailyCmr_model->getConspanMonthlyrateFull($Prereportdate,$reportdate);

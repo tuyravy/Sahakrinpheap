@@ -780,7 +780,7 @@ class Dailydceo extends CI_Controller {
         $data['disbPerPayment']=$this->DailyCmr_model->getdisbPaymentfrequency($reportdate);
 
         $data['mlist']=$this->Menu_model->MainiManu(); 
-        $reportdate=date("Y-m-d",strtotime($this->Menu_model->getCurrRundate()));
+        $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['title'] = lang('system_titel');
         $data['viewpage']='daily/DCEO/daillydisbursebyinterest.php'; 
         $this->load->view('master_page',$data);

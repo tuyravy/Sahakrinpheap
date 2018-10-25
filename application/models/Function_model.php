@@ -18,7 +18,7 @@ class Function_model extends CI_Model
                         FROM workingday
                         WHERE flag=1
                         AND STATUS=1
-                        AND dateworking<".$reportdate.";
+                        AND dateworking<'".$reportdate."';
                         "
         );
         foreach($re->result() as $row)
@@ -26,6 +26,17 @@ class Function_model extends CI_Model
             return $row->dateworking;
         }
     }
+    public function GetPreMonthCurrRundate()
+    {
+        
+        $re=$this->db->query("
+                            select LAST_DAY(NOW() - INTERVAL 2 MONTH) as dateworking;");
+        foreach($re->result() as $row)
+        {
+            return $row->dateworking;
+        }
+    }
+    
     public function status($role,$brcode,$subbrcode)
     {
             $sid=$this->session->userdata('system_id');
