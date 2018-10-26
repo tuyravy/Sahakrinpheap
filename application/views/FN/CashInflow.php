@@ -158,7 +158,7 @@
                             <td><?php echo number_format($row->STAFFPENALTY,0);$STAFFPENALTY+=$row->STAFFPENALTY;?></td>
                             <td><?php echo number_format($row->SURPLUS,0);$SURPLUS+=$row->SURPLUS;?></td>
                             <td><?php echo number_format($row->FOREXGAIN,0);$FOREXGAIN+=$row->FOREXGAIN;?></td>
-                            <td><?php echo number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?>
+                            <td><?php number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?>
                               </td>
                             <td>
                             <?php 
@@ -186,7 +186,7 @@
                             <td><?php echo number_format($STAFFPENALTY,0);?></td>
                             <td><?php echo number_format($SURPLUS,0);?></td>
                             <td><?php echo number_format($FOREXGAIN,0);?></td>
-                            <td><?php echo number_format($OTHERS,0);?></td>
+                            <td><?php number_format($OTHERS,0);?></td>
                             <td><?php if($TOTAL<0){ echo number_format(-($TOTAL),0);}else{ echo number_format($TOTAL,0);};?></td>
                             <!-- <td><?php echo number_format($Total_Ending_Balance,0);?></td> -->
                            
