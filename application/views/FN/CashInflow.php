@@ -164,10 +164,11 @@
                             <?php 
                                 echo number_format($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
-                                $row->SURPLUS+$row->FOREXGAIN,0);
+                                $row->SURPLUS+$row->FOREXGAIN+$row->OTHERS,0);
+
                                 $TOTAL+=($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
-                                $row->SURPLUS+$row->FOREXGAIN);
+                                $row->SURPLUS+$row->FOREXGAIN+$row->OTHERS);
                               ?></td>
                             <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Total_Ending_Balance+=$row->Ending_Balance;?></td> -->
                             </tr>
