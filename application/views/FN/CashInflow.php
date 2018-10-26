@@ -168,7 +168,7 @@
 
                                 $TOTAL+=($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
-                                $row->SURPLUS+$row->FOREXGAIN+$row->OTHERS);
+                                $row->SURPLUS+$row->FOREXGAIN);
                               ?></td>
                             <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Total_Ending_Balance+=$row->Ending_Balance;?></td> -->
                             </tr>
