@@ -141,6 +141,7 @@
                             $FOREXGAIN=0;
                             $OTHERS=0;
                             $TOTAL=0;
+                            $Total_Ending_Balance=0;
                             foreach($cashinflow as $row){?>
                             <tr>
                             <td><?php echo $row->ACC;?></td>
@@ -168,7 +169,7 @@
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
                                 $row->SURPLUS+$row->FOREXGAIN);
                               ?></td>
-                            <!-- <td></td> -->
+                            <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Total_Ending_Balance+=$row->Ending_Balance;?></td> -->
                             </tr>
                           <?php }?> 
                           <tr>
@@ -186,7 +187,7 @@
                             <td><?php echo number_format($FOREXGAIN,0);?></td>
                             <td><?php echo number_format($OTHERS,0);?></td>
                             <td><?php if($TOTAL<0){ echo number_format(-($TOTAL),0);}else{ echo number_format($TOTAL,0);};?></td>
-                            <!-- <td></td> -->
+                            <!-- <td><?php echo number_format($Total_Ending_Balance,0);?></td> -->
                            
                             
                           </tr>

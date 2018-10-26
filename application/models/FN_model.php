@@ -114,7 +114,7 @@ class FN_model extends CI_Model {
         }
         
     }
-    public function GetBrByUser(){
+    public function GetBrByUsers(){
         $sid=$this->session->userdata('system_id');
         $result=$this->db->from('rm')
                     ->where('sid',$sid)
@@ -140,7 +140,7 @@ class FN_model extends CI_Model {
         }
         return  $arraylist;
     }
-    public function GetBrByUsers(){
+    public function GetBrByUser(){
         $userid=$this->session->userdata('user_id');
         $result=$this->db->from('users')
                     ->where('user_id',$userid)

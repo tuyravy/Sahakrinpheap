@@ -119,13 +119,14 @@
                           <?php 
                            $Total_CashIn=0;
                            $Total_CashOut=0;
+                           $Ending_Balance=0;
                           foreach($cashonhand as $row){?>
                           <tr style="text-align:right">
                             <td><?php echo $row->Acc;?></td>
                             <td style="white-space: nowrap;overflow: hidden;text-align:left"><?php echo $row->titel;?></td>
                             <td><?php  echo number_format($row->CASH_IN,0);$Total_CashIn+=$row->CASH_IN;?></td>
                             <td><?php  echo number_format($row->CASH_OUT,0);$Total_CashOut+=$row->CASH_OUT;?></td>                           
-                            <!-- <td></td> -->
+                            <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Ending_Balance+=$row->Ending_Balance;?></td> -->
                           </tr>
                           <?php }?>
                           
@@ -133,7 +134,7 @@
                             <td colspan='2' style="text-align:center">Total</td>                            
                             <td><?php  echo number_format($Total_CashIn,0);?></td>
                             <td><?php  echo number_format($Total_CashOut,0);?></td>
-                            <!-- <td></td> -->
+                            <!-- <td><?php  echo number_format($Ending_Balance,0);?></td> -->
                           
                           </tr>
                         </tbody>
