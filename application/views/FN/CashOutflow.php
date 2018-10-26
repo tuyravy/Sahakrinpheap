@@ -142,7 +142,7 @@
                             <td><?php echo number_format($row->LOANDISBURSEMENT,0);$LOANDISBURSEMENT+=$row->LOANDISBURSEMENT;?></td>
                             <td><?php echo number_format($row->PAYMENTS,0);$PAYMENTS+=$row->PAYMENTS;?></td>
                             <td><?php echo number_format($row->CASHSHORTAGE,0);$CASHSHORTAGE+=$row->CASHSHORTAGE;?></td>
-                            <td><?php echo number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?></td>
+                            <td><?php  number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?></td>
                             <td><?php echo number_format($row->OTHERS+$row->BANKWD+$row->LOANDISBURSEMENT+$row->PAYMENTS+
                             $row->CASHSHORTAGE+$row->OTHERS,0);
                             $TOTAL+=($row->OTHERS+$row->BANKWD+$row->LOANDISBURSEMENT+$row->PAYMENTS+
@@ -160,7 +160,7 @@
                             <td style="text-align:right"><?php echo number_format($LOANDISBURSEMENT,0);?></td>
                             <td style="text-align:right"><?php echo number_format($PAYMENTS,0);?></td>
                             <td style="text-align:right"><?php echo number_format($CASHSHORTAGE,0);?></td>
-                            <td style="text-align:right"><?php echo number_format($OTHERS,0);?></td>
+                            <td style="text-align:right"><?php  number_format($OTHERS,0);?></td>
                             <td style="text-align:right"><?PHP echo number_format($TOTAL,0);?></td>
                             <!-- <td></td> -->
                             <!-- <td></td>
