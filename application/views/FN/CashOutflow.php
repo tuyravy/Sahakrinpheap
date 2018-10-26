@@ -144,7 +144,7 @@
                             <td><?php echo number_format($row->CASHSHORTAGE,0);$CASHSHORTAGE+=$row->CASHSHORTAGE;?></td>
                             <td><?php  number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?></td>
                             <td><?php echo number_format($row->OTHERS+$row->BANKWD+$row->LOANDISBURSEMENT+$row->PAYMENTS+
-                            $row->CASHSHORTAGE+$row->OTHERS,0);
+                            $row->CASHSHORTAGE,0);
                             $TOTAL+=($row->OTHERS+$row->BANKWD+$row->LOANDISBURSEMENT+$row->PAYMENTS+
                             $row->CASHSHORTAGE);?></td>
                             <!-- <td></td> -->

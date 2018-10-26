@@ -164,7 +164,7 @@
                             <?php 
                                 echo number_format($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
-                                $row->SURPLUS+$row->FOREXGAIN+$row->OTHERS,0);
+                                $row->SURPLUS+$row->FOREXGAIN,0);
 
                                 $TOTAL+=($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
