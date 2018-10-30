@@ -461,7 +461,7 @@ class DailyRm extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/RM/repaymentdaily.php'; 
+        $data['viewpage']='daily/RM/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }
