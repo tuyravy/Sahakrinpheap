@@ -46,7 +46,7 @@ class DailyRm extends CI_Controller {
             }
             $data['total_rows'] = $this->RM_model->TotalCobyproduct();       
             $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
-            $base_url= base_url()."index.php/dailyrm/activeBorrower";
+            $base_url= base_url()."index.php/dailyrm/ActiveBorrower";
             $total_rows=$this->RM_model->TotalCobyproduct();
             if(isset($_POST['brname']))
             {
