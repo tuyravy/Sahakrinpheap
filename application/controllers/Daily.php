@@ -84,7 +84,7 @@ class Daily extends CI_Controller {
                 $data['LoanActivebyProduct']=$this->BM_model->loanActiveBorrowerByProduct($page);
             }
             $Utility->pagination_config($total_rows,$base_url);
-            $data['viewpage']='daily/activeBorrower';
+            $data['viewpage']='daily/ActiveBorrower';
             $this->load->view('master_page',$data);
         
     }
