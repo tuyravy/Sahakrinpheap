@@ -141,8 +141,21 @@
                                 $OS_P=0;$Cilent_P=0;$PAR1_Amt_P=0;$PAR7_Amt_P=0;$PAR30_Amt_P=0;$Ratio1day_P=0;$DisbAmtDaily_P=0;$DisbAccDaily_P=0;
                                 $OS_T=0;$Cilent_T=0;$PAR1_Amt_T=0;$PAR7_Amt_T=0;$PAR30_Amt_T=0;$Ratio1day_T=0;$DisbAmtDaily_T=0;$DisbAccDaily_T=0;
                                 foreach($coperforment as $row):
-                                    $OS+=$row->OS;$Cilent+=$row->Cilent;$PAR1_Amt+=$row->PAR1_Amt;$PAR7_Amt+=$row->PAR7_Amt;$PAR30_Amt+=$row->PAR30_Amt;$Ratio1day+=$row->PAR1_Amt/$row->OS;$DisbAmtDaily+=$row->DisbAmtDaily;$DisbAccDaily+=$row->DisbAccDaily;
-                                    $OS_P+=$row->OSPre;$Cilent_P+=$row->CilentPre;$PAR1_Amt_P+=$row->PAR1_AmtPre;$PAR7_Amt_P+=$row->PAR7_AmtPre;$PAR30_Amt_P+=$row->PAR30_AmtPre;$Ratio1day_P+=$row->PAR1_AmtPre/$row->OSPre;$DisbAmtDaily_P+=$row->DisbAmtDailyPre;$DisbAccDaily_P+=$row->DisbAccDailyPre;
+                                    $OS+=$row->OS;$Cilent+=$row->Cilent;$PAR1_Amt+=$row->PAR1_Amt;$PAR7_Amt+=$row->PAR7_Amt;$PAR30_Amt+=$row->PAR30_Amt;
+                                    if($row->PAR1_Amt==0){
+                                        $Ratio1day+=0;
+                                    }else{
+                                        $Ratio1day+=$row->PAR1_Amt/$row->OS;
+                                    }
+                                    
+                                    $DisbAmtDaily+=$row->DisbAmtDaily;$DisbAccDaily+=$row->DisbAccDaily;
+                                    $OS_P+=$row->OSPre;$Cilent_P+=$row->CilentPre;$PAR1_Amt_P+=$row->PAR1_AmtPre;$PAR7_Amt_P+=$row->PAR7_AmtPre;$PAR30_Amt_P+=$row->PAR30_AmtPre;
+                                    if($row->PAR1_AmtPre==0){
+                                        $Ratio1day_P=0;
+                                    }else{
+                                    $Ratio1day_P+=$row->PAR1_AmtPre/$row->OSPre;
+                                    }
+                                    $DisbAmtDaily_P+=$row->DisbAmtDailyPre;$DisbAccDaily_P+=$row->DisbAccDailyPre;
                                     $OS_T+=$row->OS-$row->OSPre;$Cilent_T+=$row->Cilent-$row->CilentPre;$PAR1_Amt_T+=$row->PAR1_Amt-$row->PAR1_AmtPre;$PAR7_Amt_T+=$row->PAR7_Amt-$row->PAR7_AmtPre;$PAR30_Amt_T+=$row->PAR30_Amt-$row->PAR30_AmtPre;$DisbAmtDaily_T+=$row->DisbAmtDaily-$row->DisbAmtDailyPre;$DisbAccDaily_T+=$row->DisbAccDaily-$row->DisbAccDailyPre;
                                 ?>
                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
@@ -194,7 +207,9 @@
                                         <td><?=  number_format($PAR1_Amt_P,0);?></td>
                                         <td><?=  number_format($PAR7_Amt_P,0);?></td>
                                         <td><?=  number_format($PAR30_Amt_P,0);?></td>
-                                        <td><?=  number_format($PAR1_Amt_P/$OS_P*100,2);?>%</td>
+                                        <td>
+                                            <?php if($PAR1_Amt_P==0){echo number_format($PAR1_Amt_P=0,2);}else{ echo  number_format($PAR1_Amt_P/$OS_P*100,2);}?>
+                                         %</td>
                                         <td><?=  number_format($DisbAmtDaily_P,0);?></td>
                                         <td><?=  $DisbAccDaily_P;?></td>
 
@@ -203,7 +218,14 @@
                                         <td><?=  number_format($PAR1_Amt_T,0);?></td>
                                         <td><?=  number_format($PAR7_Amt_T,0);?></td>
                                         <td><?=  number_format($PAR30_Amt_T,0);?></td>
-                                        <td><?= number_format(($PAR1_Amt/$OS-$PAR1_Amt_P/$OS_P)*100,2);?>%</td>
+                                        <td><?php
+                                             if($PAR1_Amt==0 && $PAR1_Amt_P==0){
+                                               echo number_format($PAR1_Amt=0,2);
+                                               
+                                             }else{
+                                                echo number_format((($PAR1_Amt-$PAR1_Amt_P)/($OS-$OS_P))*100,2);
+                                             }?>
+                                             %</td>
                                         <td><?=  number_format($DisbAmtDaily_T,0);?></td>
                                         <td><?=  $DisbAccDaily_T;?></td>
                                         <td colspan="2"></td>

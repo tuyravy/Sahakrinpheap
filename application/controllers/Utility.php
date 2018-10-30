@@ -9,7 +9,7 @@ class Utility
         $config = array();
         $config["base_url"] = $baseurl;
         $config["total_rows"] =$totalrow;
-        $config["per_page"] =10;
+        $config["per_page"] =30;
         //$config["uri_segment"] =2;    
         $config['page_query_string']=TRUE;  
         $config['reuse_query_string'] = FALSE;

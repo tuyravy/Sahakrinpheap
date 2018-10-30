@@ -173,7 +173,7 @@
                             <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Total_Ending_Balance+=$row->Ending_Balance;?></td> -->
                             </tr>
                           <?php }?> 
-                          <tr>
+                          <tr class="active">
                             <td colspan="2" style="text-align:center">Total</td>                    
                             <td><?php echo number_format($BANKWD,0);?></td>
                             <td><?php echo number_format($LOANCOLLECTION,0);?></td>

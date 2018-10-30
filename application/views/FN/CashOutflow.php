@@ -154,7 +154,7 @@
                             <td></td> -->
                           </tr>
                         <?php }?>
-                           <tr>
+                           <tr class="active">
                             <td style="text-align:center" colspan='2'>Total</td>
                             <td style="text-align:right"><?php echo number_format($BANKWD,0);?></td>
                             <td style="text-align:right"><?php echo number_format($LOANDISBURSEMENT,0);?></td>

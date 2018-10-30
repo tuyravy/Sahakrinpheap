@@ -172,9 +172,9 @@ class DailyCash extends CI_Controller {
         }
         $data['role']=$this->session->userdata('role');
         $data['brlist']=$this->FN_model->GetBrByUser();
-        $data['total_rows']=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate);        
+        $data['total_rows']=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate,$brname);        
         $base_url = base_url()."index.php/DailyCash/CashSummary";
-        $total_rows=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate);
+        $total_rows=$this->FN_model->TOTALSUMMARYDETAIL($startdate,$enddate,$brname);
         $utility->pagination_config($total_rows,$base_url);
         $data['BRANCH']=$this->FN_model->GETBRANCH();
         $data['mlist']=$this->Menu_model->MainiManu();
