@@ -121,28 +121,50 @@
                             </tr>
                           </thead>
                           <tbody id="showrationsDaily">
-                            <?php                               
+                            <?php                      
+                                $TotalBalAmt=0;
+                                $TotalPar1=0;
+                                $TotalPar1_Amt=0;
+                                $TotalPar7=0;
+                                $TotalPar7_Amt=0;
+                                $TotalPar30=0;
+                                $TotalPar30_Amt=0;         
                                 foreach($Ratios as $rows){                               
                             ?>
                             <tr style="text-align:right">                              
                               <td style="text-align:center;"><?= $rows->shortcode;?></td>
                               <td style="text-align:center;"><?= $rows->brcode;?></td>
-                              <td><?php echo number_format($rows->BalAmt,0);?></td>
-                              <td><?php echo number_format($rows->PAR1,0);?></td>
-                              <td><?php echo number_format($rows->PAR1_Amt,0);?></td>
+                              <td><?php echo number_format($rows->BalAmt,0);$TotalBalAmt+=$rows->BalAmt;?></td>
+                              <td><?php echo number_format($rows->PAR1,0);$TotalPar1+=$rows->PAR1;?></td>
+                              <td><?php echo number_format($rows->PAR1_Amt,0);$TotalPar1_Amt+=$rows->PAR1_Amt;?></td>
                               <td><?php echo number_format($rows->ParRatio1day*100,2);?>%</td>
-                              <td><?php echo number_format($rows->PAR7,0);?></td>
-                              <td><?php echo number_format($rows->PAR7_Amt,0);?></td>
+                              <td><?php echo number_format($rows->PAR7,0);$TotalPar7+=$rows->PAR7;?></td>
+                              <td><?php echo number_format($rows->PAR7_Amt,0);$TotalPar7_Amt+=$rows->PAR7_Amt;?></td>
                               <td><?php echo number_format($rows->ParRatio7day*100,2);?>%</td>
-                              <td><?php echo number_format($rows->PAR30,0);?></td>
-                              <td><?php echo number_format($rows->PAR30_Amt,0);?></td>                              
+                              <td><?php echo number_format($rows->PAR30,0); $TotalPar30+=$rows->PAR30;?></td>
+                              <td><?php echo number_format($rows->PAR30_Amt,0);$TotalPar30_Amt+=$rows->PAR30_Amt;?></td>                              
                               <td>
                                 <?php echo number_format($rows->ParRatio30day*100,2);?>%
                               </td>
                              
                             </tr>
                            <?php }?>                             
-                                                     
+                           <tr style="text-align:right">                              
+                              <td style="text-align:center;" colspan="2">Total:</td>                             
+                              <td><?php echo number_format($TotalBalAmt,0);?></td>
+                              <td><?php echo number_format($TotalPar1,0);?></td>
+                              <td><?php echo number_format($TotalPar1_Amt,0);?></td>
+                              <td><?php echo number_format($TotalPar1_Amt/$TotalBalAmt*100,2);?>%</td>
+                              <td><?php echo number_format($TotalPar7,0);?></td>
+                              <td><?php echo number_format($TotalPar7_Amt,0);?></td>
+                              <td><?php echo number_format($TotalPar7_Amt/$TotalBalAmt*100,2);?>%</td>
+                              <td><?php echo number_format($TotalPar30,0);?></td>
+                              <td><?php echo number_format($TotalPar30_Amt,0);?></td>                              
+                              <td>
+                                <?php echo number_format($TotalPar30_Amt/$TotalBalAmt*100,2);?>%
+                              </td>
+                             
+                            </tr>                     
                               
                           </tbody>
                            
