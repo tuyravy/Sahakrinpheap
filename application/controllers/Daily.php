@@ -548,7 +548,7 @@ class Daily extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/repaymentdaily.php'; 
+        $data['viewpage']='daily/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }
