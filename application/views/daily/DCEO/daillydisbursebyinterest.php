@@ -549,7 +549,7 @@
                                    <?php
                                        
                                         foreach($getInteratFull as $row){
-                                        $clientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($reportdate,$row->monthlyrate);
+                                        echo $clientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($reportdate,$row->monthlyrate);
                                         $PreclientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($Prereportdate,$row->monthlyrate);
                                     ?>
                                       
