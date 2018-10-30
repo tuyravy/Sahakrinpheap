@@ -35,7 +35,7 @@ class Daily extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/activeBorrower';         
+             
         $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['brlist']=$this->BM_model->GetBrByUser();
             if(isset($_GET['per_page']))
@@ -84,6 +84,7 @@ class Daily extends CI_Controller {
                 $data['LoanActivebyProduct']=$this->BM_model->loanActiveBorrowerByProduct($page);
             }
             $Utility->pagination_config($total_rows,$base_url);
+            $data['viewpage']='daily/activeBorrower';
             $this->load->view('master_page',$data);
         
     }
