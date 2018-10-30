@@ -32,7 +32,7 @@ class DailyRm extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/RM/activeBorrower';         
+        $data['viewpage']='daily/RM/ActiveBorrower';         
         $data['brlist']=$this->RM_model->GetBrByUser();
         $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
  
@@ -46,7 +46,7 @@ class DailyRm extends CI_Controller {
             }
             $data['total_rows'] = $this->RM_model->TotalCobyproduct();       
             $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
-            $base_url= base_url()."index.php/dailyrm/ActiveBorrower";
+            $base_url= base_url()."index.php/dailyrm/activeBorrower";
             $total_rows=$this->RM_model->TotalCobyproduct();
             if(isset($_POST['brname']))
             {
