@@ -130,14 +130,14 @@
                               <td><?php echo number_format($rows->BalAmt,0);?></td>
                               <td><?php echo number_format($rows->PAR1,0);?></td>
                               <td><?php echo number_format($rows->PAR1_Amt,0);?></td>
-                              <td><?php echo number_format($rows->ParRatio1day,2)*100;?>%</td>
+                              <td><?php echo number_format($rows->ParRatio1day*100,4);?>%</td>
                               <td><?php echo number_format($rows->PAR7,0);?></td>
                               <td><?php echo number_format($rows->PAR7_Amt,0);?></td>
-                              <td><?php echo number_format($rows->ParRatio7day,2)*100;?>%</td>
+                              <td><?php echo number_format($rows->ParRatio7day*100,2);?>%</td>
                               <td><?php echo number_format($rows->PAR30,0);?></td>
                               <td><?php echo number_format($rows->PAR30_Amt,0);?></td>                              
                               <td>
-                                <?php echo number_format($rows->ParRatio30day,2)*100;?>%
+                                <?php echo number_format($rows->ParRatio30day*100,4);?>%
                               </td>
                              
                             </tr>
