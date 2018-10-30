@@ -917,4 +917,11 @@ class Daily extends CI_Controller {
                     $this->excel->stream($brcode."_BranchPerforment_Daily_".$reportdate."_and_".$reportend."_.xls",$data);
                 }
     }
+    public function writtenoff()
+    {
+            $data['mlist']=$this->Menu_model->MainiManu();  
+            $data['title'] = lang('system_titel');
+            $data['viewpage']='daily/writtenoff.php'; 
+            $this->load->view('master_page',$data);
+    }
 }
