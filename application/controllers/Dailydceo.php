@@ -33,7 +33,7 @@ class Dailydceo extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/DCEO/activeBorrower';         
+        $data['viewpage']='daily/DCEO/ActiveBorrower';         
         $data['controlbyrm']=$this->DCEO_model->GetRM();
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
         $data['datestart']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
@@ -435,7 +435,7 @@ class Dailydceo extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/DCEO/repaymentdaily.php'; 
+        $data['viewpage']='daily/DCEO/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }
