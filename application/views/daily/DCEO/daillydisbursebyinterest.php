@@ -549,10 +549,19 @@
                                    <?php
                                        
                                         foreach($getInteratFull as $row){
-                                        echo $clientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($reportdate,$row->monthlyrate);
+                                        $clientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($reportdate,$row->monthlyrate);
                                         $PreclientmonthlyrateFull=$this->DailyCmr_model->getClientMonthlyrateFull($Prereportdate,$row->monthlyrate);
                                     ?>
-                                      
+                                        <th style="text-align:right">
+                                        <?php 
+                                        if ($clientmonthlyrateFull==0){
+                                            echo 0;
+                                        }else{
+                                            echo number_format((($clientmonthlyrateFull-$PreclientmonthlyrateFull)/$totalClient)*100,0);
+
+                                        }
+                                        ?>
+                                        %</th>
                                     <?php
                                      }
                                     ?>
