@@ -177,7 +177,7 @@
 
                                 </tr>
                                <?php endforeach;?> 
-                               <tr>
+                               <tr class="active">
                                     <td colspan="2">Total:</td>                                    
                                     <td style="text-align:right;"><?= number_format($TotalBalamt,0);?></td>
                                     <td style="text-align:right;"><?= $TotalClients;?></td>
