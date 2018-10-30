@@ -7,9 +7,7 @@ class Daily extends CI_Controller {
          $this->load->model('Menu_model');        
          $this->load->model('DailyCmr_model');
          $this->load->library("pagination");
-         $this->load->library('Excel');
-         $this->load->helper('url');
-         $this->load->helper('form');    
+         $this->load->library('Excel');    
          $this->load->model('Function_model');
          $this->load->model('BM_model');
          include('Utility.php');
@@ -28,6 +26,8 @@ class Daily extends CI_Controller {
       
     public function activeBorrower()
     {
+        $this->load->helper('url');
+         $this->load->helper('form');
         $Utility=new Utility();
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['brcode']=$this->session->userdata('branch_code');

@@ -107,7 +107,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                           <!-- <?php 
+                           <?php 
                            $totalAcc=0;
                            foreach($LoanActivebyProduct as $re){?>
                             <tr>
@@ -118,7 +118,7 @@
                               <td style="text-align:center"><?php echo $re->shortcode;?></td>
                               <td style="text-align:center"><?php echo $re->brcode;?></td>
                             </tr>
-                           <?php }?> -->
+                           <?php }?>
                            <tr class="active">
                               <td colspan='2' style="text-align:right">Total:</td>                              
                               <td style="text-align:center;"><?php echo $totalAcc;?></td>       
