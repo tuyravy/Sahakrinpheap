@@ -138,7 +138,7 @@
                             <?php }?>                            
                           </tbody>      
                           <tr style="text-align:right">                              
-                            <td style="text-align:center;" colspan="2"><?= $row->shortcode;?></td>                            
+                            <td style="text-align:center;" colspan="2">Total:</td>                            
                               <td><?php echo number_format($TotalBalamt,0);?></td>
                               <td><?php echo number_format($TotalPar1Ex,0);?></td>
                               <td><?php echo number_format($TotalPar7Ex,0);?></td>
