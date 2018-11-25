@@ -78,8 +78,8 @@
                                 <tr>
                                 
                                 <th colspan="8"  style="text-align:center;" class="active"><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
-                                <th colspan="8"  style="text-align:center;" class="danger"><?php if(isset($prereportdate)){echo date('d-M-Y',strtotime($prereportdate));}else{echo date("d-M-Y");};?></th>
-                                <th colspan="10"  style="text-align:center;" class="warning"><?php if(isset($prereportdate)){echo date('d-M-Y',strtotime($prereportdate));}else{echo date("d-M-Y");};?><span style="padding:10px;">/</span><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?></th>
+                                <th colspan="8"  style="text-align:center;" class="danger"><?php if(isset($reportend)){echo date('d-M-Y',strtotime($reportend));}else{echo date("d-M-Y");};?></th>
+                                <th colspan="10"  style="text-align:center;" class="warning"><?php if(isset($reportdate)){echo date('d-M-Y',strtotime($reportdate));}else{echo date("d-M-Y");};?><span style="padding:10px;">/</span><?php if(isset($reportend)){echo date('d-M-Y',strtotime($reportend));}else{echo date("d-M-Y");};?></th>
                                 </tr>
                                 <tr style="white-space: nowrap;overflow: hidden;border-bottom:3pt solid #22d4ae;">
                                 <th  style="text-align:center;" class="active">Total Balance</th>

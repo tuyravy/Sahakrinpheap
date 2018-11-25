@@ -61,15 +61,15 @@
                                           </select>                                        
                                           
                                         </div>
-                                      <div class="form-group">                                       
+                                      <!-- <div class="form-group">                                       
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
                                                placeholder="<?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?>"
                                            value="<?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?>"
                                           readonly="true" style="background:white;">
-                                      </div>  
+                                      </div>   -->
                                       <div class="form-group">                                       
-                                          <label for="exampleInputName2">To:</label>
+                                          <label for="exampleInputName2">ReportDate:</label>
                                           <input type="text" id="dateend" class="form-control" name="dateend" id="exampleInputName2"
                                                placeholder="<?php if(isset($reportend)){echo $reportend;}else{ echo date('Y-m-d');}?>"
                                            value="<?php if(isset($reportend)){echo $reportend;}else{ echo date('Y-m-d');}?>"

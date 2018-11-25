@@ -64,8 +64,8 @@
                                       <div class="form-group">
                                         <label for="exampleInputEmail2">To:</label>
                                          <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
-                                                placeholder="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdate;}?>" 
-                                                value="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdate;}?>"
+                                                placeholder="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdateend;}?>" 
+                                                value="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdateend;}?>"
                                                 readonly="true" style="background:white;">
                                       </div> 
                                      
@@ -87,7 +87,7 @@
                              <?php if(isset($_GET['datestart'])){echo date("d-M-Y",strtotime($_GET['datestart']));}else{ echo date("d-M-Y",strtotime($reportdate));}?>
                             <span style="margin-left:10px;">
                                 To:<span style="margin-left:10px;"></span>
-                            <?php if(isset($_GET['dateend'])){echo date("d-M-Y",strtotime($_GET['datestart']));}else{ echo date("d-M-Y",strtotime($reportdate));}?>
+                            <?php if(isset($_GET['dateend'])){echo date("d-M-Y",strtotime($_GET['datestart']));}else{ echo date("d-M-Y",strtotime($reportdateend));}?>
                             </span>
                               
                             
@@ -224,7 +224,7 @@
                                             <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance,0);?>
+                                                    <?= number_format($pre->Balance/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -233,7 +233,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance,0);?>
+                                                    <?= number_format($row->Balance/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -242,7 +242,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance)-($pre->Balance),0);?>
+                                                    <?= number_format((($row->Balance)-($pre->Balance))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -256,7 +256,7 @@
                                             <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_New,0);?>
+                                                    <?= number_format($pre->Balance_New/4000,0);?>
                                                  </div>
                                              </div>
                                          </td>
@@ -264,7 +264,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_New,0);?>
+                                                    <?= number_format($row->Balance_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -273,7 +273,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_New)-($pre->Balance_New),0);?>
+                                                    <?= number_format((($row->Balance_New)-($pre->Balance_New))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -287,7 +287,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Existing,0);?>
+                                                    <?= number_format($pre->Balance_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -296,7 +296,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Existing,0);?>
+                                                    <?= number_format($row->Balance_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -305,7 +305,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Existing)-($pre->Balance_Existing),0);?>
+                                                    <?= number_format((($row->Balance_Existing)-($pre->Balance_Existing))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -320,7 +320,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disbursed,0);?>
+                                                    <?= number_format($pre->Balance_Disbursed/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -329,7 +329,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disbursed,0);?>
+                                                    <?= number_format($row->Balance_Disbursed/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -338,7 +338,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disbursed)-($pre->Balance_Disbursed),0);?>
+                                                    <?= number_format((($row->Balance_Disbursed)-($pre->Balance_Disbursed))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -351,7 +351,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disburesd_New,0);?>
+                                                    <?= number_format($pre->Balance_Disburesd_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -360,7 +360,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disburesd_New,0);?>
+                                                    <?= number_format($row->Balance_Disburesd_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -369,7 +369,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New),0);?>
+                                                    <?= number_format((($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -382,7 +382,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disburesd_Existing,0);?>
+                                                    <?= number_format($pre->Balance_Disburesd_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -391,7 +391,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disburesd_Existing,0);?>
+                                                    <?= number_format($row->Balance_Disburesd_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -400,7 +400,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing),0);?>
+                                                    <?= number_format((($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -464,7 +464,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->PAR1DAY,0);?>
+                                                    <?= number_format($pre->PAR1DAY/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -473,7 +473,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->PAR1DAY,0);?>
+                                                    <?= number_format($row->PAR1DAY/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -482,7 +482,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->PAR1DAY)-($pre->PAR1DAY),0);?>
+                                                    <?= number_format((($row->PAR1DAY)-($pre->PAR1DAY))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -601,7 +601,7 @@
                                                 <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance,0);?>
+                                                        <?= number_format($pre->Balance/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -610,7 +610,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance,0);?>
+                                                        <?= number_format($row->Balance/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -619,7 +619,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance)-($pre->Balance),0);?>
+                                                        <?= number_format((($row->Balance)-($pre->Balance))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -633,7 +633,7 @@
                                                 <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance_New,0);?>
+                                                        <?= number_format($pre->Balance_New/4000,0);?>
                                                      </div>
                                                  </div>
                                              </td>
@@ -641,7 +641,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance_New,0);?>
+                                                        <?= number_format($row->Balance_New/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -650,7 +650,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance_New)-($pre->Balance_New),0);?>
+                                                        <?= number_format((($row->Balance_New)-($pre->Balance_New))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -664,7 +664,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance_Existing,0);?>
+                                                        <?= number_format($pre->Balance_Existing/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -673,7 +673,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance_Existing,0);?>
+                                                        <?= number_format($row->Balance_Existing/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -682,7 +682,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance_Existing)-($pre->Balance_Existing),0);?>
+                                                        <?= number_format((($row->Balance_Existing)-($pre->Balance_Existing))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -697,7 +697,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance_Disbursed,0);?>
+                                                        <?= number_format($pre->Balance_Disbursed/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -706,7 +706,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance_Disbursed,0);?>
+                                                        <?= number_format($row->Balance_Disbursed/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -715,7 +715,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance_Disbursed)-($pre->Balance_Disbursed),0);?>
+                                                        <?= number_format((($row->Balance_Disbursed)-($pre->Balance_Disbursed))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -728,7 +728,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance_Disburesd_New,0);?>
+                                                        <?= number_format($pre->Balance_Disburesd_New/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -737,7 +737,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance_Disburesd_New,0);?>
+                                                        <?= number_format($row->Balance_Disburesd_New/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -746,7 +746,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New),0);?>
+                                                        <?= number_format((($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -759,7 +759,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($pre->Balance_Disburesd_Existing,0);?>
+                                                        <?= number_format($pre->Balance_Disburesd_Existing/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -768,7 +768,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format($row->Balance_Disburesd_Existing,0);?>
+                                                        <?= number_format($row->Balance_Disburesd_Existing/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -777,7 +777,7 @@
                                                  <div class="row">
                                                   <div class="col-md-2">$</div>
                                                     <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                        <?= number_format(($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing),0);?>
+                                                        <?= number_format((($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing))/4000,0);?>
                                                      </div>
                                                  </div>
                                                  
@@ -982,7 +982,7 @@
                                             <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance,0);?>
+                                                    <?= number_format($pre->Balance/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -991,7 +991,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance,0);?>
+                                                    <?= number_format($row->Balance/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1000,7 +1000,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance)-($pre->Balance),0);?>
+                                                    <?= number_format((($row->Balance)-($pre->Balance))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1014,7 +1014,7 @@
                                             <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_New,0);?>
+                                                    <?= number_format($pre->Balance_New/4000,0);?>
                                                  </div>
                                              </div>
                                          </td>
@@ -1022,7 +1022,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_New,0);?>
+                                                    <?= number_format($row->Balance_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1031,7 +1031,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_New)-($pre->Balance_New),0);?>
+                                                    <?= number_format((($row->Balance_New)-($pre->Balance_New))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1045,7 +1045,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Existing,0);?>
+                                                    <?= number_format($pre->Balance_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1054,7 +1054,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Existing,0);?>
+                                                    <?= number_format($row->Balance_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1063,7 +1063,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Existing)-($pre->Balance_Existing),0);?>
+                                                    <?= number_format((($row->Balance_Existing)-($pre->Balance_Existing))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1078,7 +1078,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disbursed,0);?>
+                                                    <?= number_format($pre->Balance_Disbursed/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1087,7 +1087,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disbursed,0);?>
+                                                    <?= number_format($row->Balance_Disbursed/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1096,7 +1096,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disbursed)-($pre->Balance_Disbursed),0);?>
+                                                    <?= number_format((($row->Balance_Disbursed)-($pre->Balance_Disbursed))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1109,7 +1109,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disburesd_New,0);?>
+                                                    <?= number_format($pre->Balance_Disburesd_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1118,7 +1118,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disburesd_New,0);?>
+                                                    <?= number_format($row->Balance_Disburesd_New/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1127,7 +1127,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New),0);?>
+                                                    <?= number_format((($row->Balance_Disburesd_New)-($pre->Balance_Disburesd_New))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1140,7 +1140,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->Balance_Disburesd_Existing,0);?>
+                                                    <?= number_format($pre->Balance_Disburesd_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1149,7 +1149,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->Balance_Disburesd_Existing,0);?>
+                                                    <?= number_format($row->Balance_Disburesd_Existing/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1158,7 +1158,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing),0);?>
+                                                    <?= number_format((($row->Balance_Disburesd_Existing)-($pre->Balance_Disburesd_Existing))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1222,7 +1222,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($pre->PAR1DAY,0);?>
+                                                    <?= number_format($pre->PAR1DAY/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1231,7 +1231,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format($row->PAR1DAY,0);?>
+                                                    <?= number_format($row->PAR1DAY/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1240,7 +1240,7 @@
                                              <div class="row">
                                               <div class="col-md-2">$</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?= number_format(($row->PAR1DAY)-($pre->PAR1DAY),0);?>
+                                                    <?= number_format((($row->PAR1DAY)-($pre->PAR1DAY))/4000,0);?>
                                                  </div>
                                              </div>
                                              
@@ -1250,7 +1250,7 @@
                                
                                 <?php 
                                 $pre=$this->DCEO_model->getsumary($reportdate);
-                                $row=$this->DCEO_model->getsumary($reportdate);
+                                $row=$this->DCEO_model->getsumary($reportdateend);
                                
                                ?>
                             <tr class="success">

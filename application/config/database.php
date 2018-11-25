@@ -70,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
-$query_builder = TRUE;
+// $active_group = 'default';
+// $query_builder = TRUE;
 
 // $db['default'] = array(
 // 	'dsn'	=> '',
@@ -94,15 +94,16 @@ $query_builder = TRUE;
 // 	'failover' => array(),
 // 	'save_queries' => TRUE
 // );
-// $active_group = 'default';
-// $query_builder = TRUE;
+
+$active_group = 'default';
+$query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '45.40.138.90',
-	'username' => 'spmficom_cbs_uat',
-	'password' => 'RTCn#?O4Pdz,',
-	'database' => 'spmficom_cbs_uat',
+	'hostname' => 'localhost',
+	'username' => 'spmficom_cbs',
+	'password' => 'St4N+!%pZoL%',
+	'database' => 'spmficom_cbs_reporting',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -118,3 +119,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+

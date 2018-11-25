@@ -421,12 +421,20 @@ class DCEO_model extends CI_Model
   }
   public function getRmNamebySID($sid){
 
-    $result=$this->db->select("branch_control,name,sid,rid")
-    ->from("rm")
-    ->where('flag',1)
-    ->where('sid',$sid)
-    ->get()->row();
-    return $result->name;
+        if($sid==1){
+                $result=$this->db->select("branch_control,name,sid,rid")
+                ->from("rm")
+                ->where('flag',1)
+                ->get()->row();
+                return $result->name;
+        }else{
+            $result=$this->db->select("branch_control,name,sid,rid")
+            ->from("rm")
+            ->where('flag',1)
+            ->where('sid',$sid)
+            ->get()->row();
+            return $result->name;
+        }
   }
 
 

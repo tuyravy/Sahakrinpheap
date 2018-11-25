@@ -219,11 +219,20 @@
                                         <td><?=  number_format($PAR7_Amt_T,0);?></td>
                                         <td><?=  number_format($PAR30_Amt_T,0);?></td>
                                         <td><?php
-                                             if($PAR1_Amt==0 && $PAR1_Amt_P==0){
-                                               echo number_format($PAR1_Amt=0,2);
+                                             if($PAR1_Amt==0 || $PAR1_Amt_P==0){
+                                                $PAR1_Amt=0;
+                                                echo number_format($PAR1_Amt,2);
                                                
                                              }else{
-                                                echo number_format((($PAR1_Amt-$PAR1_Amt_P)/($OS-$OS_P))*100,2);
+                                                
+                                                $valpar=$PAR1_Amt-$PAR1_Amt_P;
+                                                if($valpar==0){
+                                                    echo number_format($valpar,2);
+                                                }else{
+                                                    $parvalue=$PAR1_Amt-$PAR1_Amt_P/$OS-$OS_P;                                                
+                                                    echo number_format(($parvalue*100),2);
+                                                }
+                                               
                                              }?>
                                              %</td>
                                         <td><?=  number_format($DisbAmtDaily_T,0);?></td>

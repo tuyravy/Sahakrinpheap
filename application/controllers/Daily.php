@@ -11,14 +11,14 @@ class Daily extends CI_Controller {
          $this->load->model('Function_model');
          $this->load->model('BM_model');
          include('Utility.php');
-        if(!$this->session->userdata('user_id'))
-        {              
-               redirect(site_url('Login'));
-        }    
-        if($this->Menu_model->UserAccURL()==0){
+        // if(!$this->session->userdata('user_id'))
+        // {              
+        //        redirect(site_url('Login'));
+        // }    
+        // if($this->Menu_model->UserAccURL()==0){
 
-            redirect(site_url('logout'));
-        }
+        //     redirect(site_url('logout'));
+        // }
         
     }    
 
@@ -786,7 +786,7 @@ class Daily extends CI_Controller {
                 $data['CoName']=$this->BM_model->GetCoName($brcode);
                 $this->session->set_tempdata(array("datestart"=>$reportdate,"dateend"=>$reportend,"brname"=>$brcode,'idCo'=>$idco),null,300);
                 if($brcode=='All' && $idco=='All'){     
-                    $brcode=$this->session->userdata('system_id');                
+                    $brcode=$this->session->userdata('system_id');                           
                     $data['coperforment']=$this->BM_model->overloaded_DailyCoPerforment($brcode,$idco,$reportdate,$reportend,4);
                 }   
                 else if($idco=='All' && $brcode!='All')
@@ -925,4 +925,15 @@ class Daily extends CI_Controller {
             $data['viewpage']='daily/writtenoff.php'; 
             $this->load->view('master_page',$data);
     }
+    public function jsonDailyChecking($brcode,$reportdate)
+        {
+            
+            $brcode=$this->DailyCmr_model->jsondaiychecking($brcode,$reportdate);
+            echo $brcode;
+        }
+        public function JsonMonthlyChecking($reportdate)
+        {
+            $result=$this->DailyCmr_model->GetJsonDataMonthlyChecking($reportdate);
+            echo json_encode($result);       
+        }
 }

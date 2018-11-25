@@ -32,7 +32,7 @@
                          <br/>
                          <div class="row nopadding">
                           <div class="col-md-12 nopadding">
-                                  <form class="form-inline" action="<?php echo site_url('dailyDCEO/loanDisbInMonth');?>" method="POST">
+                                  <form class="form-inline" action="<?php echo site_url('dailydceo/loanDisbInMonth');?>" method="POST">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific ReportDate:</legend>
                                      <div class="form-group"> 
@@ -152,7 +152,7 @@
             window.print();
             //Restore orignal HTML
             document.body.innerHTML = oldPage;
-            window.location.href="<?= site_url("loanDisbInMonth");?>";
+            window.location.href="<?= site_url("dailydceo/loanDisbInMonth");?>";
           
         }
     </script>
