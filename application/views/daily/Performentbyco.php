@@ -191,7 +191,7 @@
                                         <td><?= $row->brcode;?></td>
                                     </tr>
                                 <?php endforeach;?>
-                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="active">
                                         <td colspan='2' style="text-align:right">Total:</td>                                        
                                         <td><?= number_format($OS,0);?></td>
                                         <td><?= $Cilent;?></td>
@@ -240,7 +240,7 @@
                                         <td colspan="2"></td>
                                        
                                     </tr>
-                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="info">
                                         <td colspan='2' style="text-align:right">Total USD:</td>                                        
                                         <td>$ <?= number_format($OS/4000,0);?></td>
                                         <td><?= $Cilent;?></td>

@@ -156,7 +156,7 @@
 
                                 </tr>
                                <?php endforeach;?>
-                               <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                               <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="active">
                                         <td colspan='2' style="text-align:right">Total:</td>                                        
                                         <td style="text-align:right"><?= number_format($OS,0);?></td>
                                         <td style="text-align:right"><?= $Cilent;?></td>
@@ -187,7 +187,7 @@
                                        
                                        
                                     </tr> 
-                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="info">
                                         <td colspan='2' style="text-align:right">Total USD:</td>                                        
                                         <td style="text-align:right">$ <?= number_format($OS/4000,0);?></td>
                                         <td style="text-align:right"><?= $Cilent;?></td>
