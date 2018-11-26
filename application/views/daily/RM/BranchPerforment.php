@@ -113,11 +113,11 @@
 
                               <th  style="text-align:center;" class="warning">Total Balance</th>
                               <th  style="text-align:center;" class="warning">Clients</th>
-                              <th  style="text-align:center;" class="danger">Clients PAR 1-Days</th>
+                              <th  style="text-align:center;" class="warning">Clients PAR 1-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 1-Days</th>
-                              <th  style="text-align:center;" class="danger">Clients PAR 7-Days</th>
+                              <th  style="text-align:center;" class="warning">Clients PAR 7-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 7-Days</th>
-                              <th  style="text-align:center;" class="danger">Clients PAR 30-Days</th>
+                              <th  style="text-align:center;" class="warning">Clients PAR 30-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 30-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Ratio 1Days(%)</th>
                               <th  style="text-align:center;" class="warning">Disbursement</th>
