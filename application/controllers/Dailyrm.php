@@ -684,7 +684,7 @@ class DailyRm extends CI_Controller {
                     $reportend=date('Y-m-d',strtotime($reportend));        
                     if($brcode=='All'){                   
                         $brcode=$this->session->userdata('system_id');                
-                        $data=$this->RM_model->overloaded_DailyCoPerforment($brcode,$reportdate,$reportend,4);
+                        $data=$this->RM_model->overloaded_DailyCoPerforment($brcode,$reportdate,$reportend,3);
                         $this->excel->stream($brcode."_COPerforment_Daily_".$reportdate."_and_".$reportend."_.xls",$data);
                     }   
                     else{
