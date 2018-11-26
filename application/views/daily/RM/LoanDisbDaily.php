@@ -114,6 +114,13 @@
                                <td colspan="3"></td>
                                
                               </tr>
+                              <tr>
+                               <td colspan="2" style="text-align:center">Total USD:</td>                               
+                               <td style="text-align:right"><?= $totalAcc;?></td>
+                               <td style="text-align:right"><?= $totalDisb/4000;?></td>
+                               <td colspan="3"></td>
+                               
+                              </tr>
                           </tbody>                        
                         </table>                        
                           <!-- <div class="pull-right">
