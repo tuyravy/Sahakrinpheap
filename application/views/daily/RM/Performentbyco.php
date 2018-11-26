@@ -131,7 +131,14 @@
                                         <td><?=  number_format($row->PAR1Days_pre,0);?></td>
                                         <td><?=  number_format($row->PAR7Days_pre,0);?></td>
                                         <td><?=  number_format($row->PAR30Days_pre,0);?></td>
-                                        <td><?=  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);?>%</td>
+                                        <td>
+                                            <?php 
+                                                 if($row->PAR1Days_pre==0){
+                                                    echo number_format(0,2);
+                                                 }else{
+                                                   echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);
+                                                 }
+                                            ?>%</td>
                                         <td><?=  number_format($row->DisbAmt_pre,0);?></td>
                                         <td><?=  $row->ClientDisb_pre;?></td>
 
