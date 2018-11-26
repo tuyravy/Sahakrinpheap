@@ -196,7 +196,7 @@
                                     <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
                                 </tr>
-                                <tr class="active">
+                                <tr class="info">
                                     <td colspan="2">Total USD:</td>                                    
                                     <td style="text-align:right;">$ <?= number_format($TotalBalamt/4000,0);?></td>
                                     <td style="text-align:right;"><?= $TotalClients;?></td>
