@@ -133,11 +133,9 @@
                                         <td><?=  number_format($row->PAR30Days_pre,0);?></td>
                                         <td>
                                             <?php 
-                                                 if($row->PAR1Days_pre==0){
-                                                    echo number_format(0,1);
-                                                 }else{
+                                                 
                                                    echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);
-                                                 }
+                                                 
                                             ?>%</td>
                                         <td><?=  number_format($row->DisbAmt_pre,0);?></td>
                                         <td><?=  $row->ClientDisb_pre;?></td>
@@ -148,11 +146,9 @@
                                         <td><?=  number_format(($row->PAR7Days)-($row->PAR7Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR30Days)-($row->PAR30Days_pre),0);?></td>
                                         <td><?php
-                                             if($row->PAR1Days_pre==0 || $row->PAR1Days==0){
-                                                 echo number_format(0,1);
-                                             }else{
-                                                number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);
-                                             }
+                                             
+                                                echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);
+                                             
                                               ?>%</td>
                                         <td><?=  number_format(($row->DisbAmt)-($row->DisbAmt_pre),0);?></td>
                                         <td><?=  ($row->ClientDisb)-($row->ClientDisb_pre);?></td>
