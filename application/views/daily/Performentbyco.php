@@ -240,6 +240,55 @@
                                         <td colspan="2"></td>
                                        
                                     </tr>
+                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                        <td colspan='2' style="text-align:right">Total USD:</td>                                        
+                                        <td>$ <?= number_format($OS/4000,0);?></td>
+                                        <td><?= $Cilent;?></td>
+                                        <td>$ <?=  number_format($PAR1_Amt/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR7_Amt/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR30_Amt/4000,0);?></td>
+                                        <td><?=  number_format($PAR1_Amt/$OS*100,2);?>%</td>
+                                        <td>$ <?=  number_format($DisbAmtDaily/4000,0);?></td>
+                                        <td><?=  $DisbAccDaily;?></td>
+
+                                        <td>$ <?= number_format($OS_P/4000,0);?></td>
+                                        <td><?= $Cilent_P;?></td>
+                                        <td>$ <?=  number_format($PAR1_Amt_P/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR7_Amt_P/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR30_Amt_P/4000,0);?></td>
+                                        <td>
+                                            <?php if($PAR1_Amt_P==0){echo number_format($PAR1_Amt_P=0,2);}else{ echo  number_format($PAR1_Amt_P/$OS_P*100,2);}?>
+                                         %</td>
+                                        <td>$ <?=  number_format($DisbAmtDaily_P/4000,0);?></td>
+                                        <td><?=  $DisbAccDaily_P;?></td>
+
+                                        <td>$ <?= number_format($OS_T/4000,0);?></td>
+                                        <td><?= $Cilent_T;?></td>
+                                        <td>$ <?=  number_format($PAR1_Amt_T/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR7_Amt_T/4000,0);?></td>
+                                        <td>$ <?=  number_format($PAR30_Amt_T/4000,0);?></td>
+                                        <td><?php
+                                             if($PAR1_Amt==0 || $PAR1_Amt_P==0){
+                                                $PAR1_Amt=0;
+                                                echo number_format($PAR1_Amt,2);
+                                               
+                                             }else{
+                                                
+                                                $valpar=$PAR1_Amt-$PAR1_Amt_P;
+                                                if($valpar==0){
+                                                    echo number_format($valpar,2);
+                                                }else{
+                                                    $parvalue=$PAR1_Amt-$PAR1_Amt_P/$OS-$OS_P;                                                
+                                                    echo number_format(($parvalue*100),2);
+                                                }
+                                               
+                                             }?>
+                                             %</td>
+                                        <td>$ <?=  number_format($DisbAmtDaily_T/4000,0);?></td>
+                                        <td><?=  $DisbAccDaily_T;?></td>
+                                        <td colspan="2"></td>
+                                       
+                                    </tr>
                             </body>
                             </table>
                         </div>

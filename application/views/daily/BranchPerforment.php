@@ -187,6 +187,37 @@
                                        
                                        
                                     </tr> 
+                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
+                                        <td colspan='2' style="text-align:right">Total USD:</td>                                        
+                                        <td style="text-align:right">$ <?= number_format($OS/4000,0);?></td>
+                                        <td style="text-align:right"><?= $Cilent;?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR1_Amt/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR7_Amt/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR30_Amt/4000,0);?></td>
+                                        <td style="text-align:right"><?=  number_format($PAR1_Amt/$OS*100,2);?>%</td>
+                                        <td style="text-align:right">$ <?=  number_format($DisbAmtDaily/4000,0);?></td>
+                                        <td style="text-align:right"><?=  $DisbAccDaily;?></td>
+
+                                        <td style="text-align:right">$ <?= number_format($OS_P/4000,0);?></td>
+                                        <td style="text-align:right"><?= $Cilent_P;?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR1_Amt_P/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR7_Amt_P/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR30_Amt_P/4000,0);?></td>
+                                        <td style="text-align:right"><?=  number_format($PAR1_Amt_P/$OS_P*100,2);?>%</td>
+                                        <td style="text-align:right">$ <?=  number_format($DisbAmtDaily_P/4000,0);?></td>
+                                        <td style="text-align:right"><?=  $DisbAccDaily_P;?></td>
+
+                                        <td style="text-align:right">$ <?= number_format($OS_T/4000,0);?></td>
+                                        <td style="text-align:right"><?= $Cilent_T;?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR1_Amt_T/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR7_Amt_T/4000,0);?></td>
+                                        <td style="text-align:right">$ <?=  number_format($PAR30_Amt_T/4000,0);?></td>
+                                        <td style="text-align:right"><?= number_format(($PAR1_Amt/$OS-$PAR1_Amt_P/$OS_P)*100,2);?>%</td>
+                                        <td style="text-align:right">$ <?=  number_format($DisbAmtDaily_T/4000,0);?></td>
+                                        <td style="text-align:right"><?=  $DisbAccDaily_T;?></td>
+                                       
+                                       
+                                    </tr> 
                            <body>
                            
                            </body>                 
