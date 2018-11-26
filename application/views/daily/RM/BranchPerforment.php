@@ -89,8 +89,11 @@
                             <tr style="white-space: nowrap;overflow: hidden;border-bottom:3pt solid #22d4ae;">
                               <th  style="text-align:center;" class="active">Total Balance</th>
                               <th  style="text-align:center;" class="active">Clients</th>
+                              <th  style="text-align:center;" class="active">Cleint PAR 1-Days</th>
                               <th  style="text-align:center;" class="active">PAR Value 1-Days</th>
+                              <th  style="text-align:center;" class="active">Cleint PAR 7-Days</th>
                               <th  style="text-align:center;" class="active">PAR Value 7-Days</th>
+                              <th  style="text-align:center;" class="active">Cleint PAR 30-Days</th>
                               <th  style="text-align:center;" class="active">PAR Value 30-Days</th>
                               <th  style="text-align:center;" class="active">PAR Ratio 1Days(%)</th>
                               <th  style="text-align:center;" class="active">Disbursement</th>
@@ -98,19 +101,25 @@
 
                               <th  style="text-align:center;" class="danger">Total Balance</th>
                               <th  style="text-align:center;" class="danger">Clients</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 1-Days</th>
                               <th  style="text-align:center;" class="danger">PAR Value 1-Days</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 7-Days</th>
                               <th  style="text-align:center;" class="danger">PAR Value 7-Days</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 30-Days</th>
                               <th  style="text-align:center;" class="danger">PAR Value 30-Days</th>
-                               <th  style="text-align:center;" class="danger">PAR Ratio 1Days(%)</th>
+                              <th  style="text-align:center;" class="danger">PAR Ratio 1Days(%)</th>
                               <th  style="text-align:center;" class="danger">Disbursement</th>
                               <th  style="text-align:center;" class="danger">Client_Dis</th>
 
                               <th  style="text-align:center;" class="warning">Total Balance</th>
                               <th  style="text-align:center;" class="warning">Clients</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 1-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 1-Days</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 7-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 7-Days</th>
+                              <th  style="text-align:center;" class="danger">Cleint PAR 30-Days</th>
                               <th  style="text-align:center;" class="warning">PAR Value 30-Days</th>
-                               <th  style="text-align:center;" class="warning">PAR Ratio 1Days(%)</th>
+                              <th  style="text-align:center;" class="warning">PAR Ratio 1Days(%)</th>
                               <th  style="text-align:center;" class="warning">Disbursement</th>
                               <th  style="text-align:center;" class="warning">Client_Dis</th>
                             </tr>
@@ -139,8 +148,11 @@
                                     <td><?= $row->shortcode;?></td>
                                     <td style="text-align:right;"><?= number_format($row->Balance,0);$TotalBalamt+=$row->Balance;?></td>
                                     <td style="text-align:right;"><?= $row->Clients;$TotalClients+=$row->Clients;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR1Days,0),0);$TotalPar1Days+=$row->PAR1Days;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR7Days,0),0);$TotalPar7Days+=$row->PAR7Days?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR30Days,0),0);$TotalPar30Days+=$row->PAR30Days;?></td>
                                     <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,2);}else{echo number_format($row->PAR1Days/$row->Balance*100,2);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($row->DisbAmt,0),0);$TotalDisbAmt+=$row->DisbAmt;?></td>
@@ -148,8 +160,11 @@
                                     
                                     <td style="text-align:right;"><?= number_format($row->Balance_pre,0);$TotalBalamt_Pre+=$row->Balance_pre;?></td>
                                     <td style="text-align:right;"><?= $row->Clients_pre;$TotalClients_Pre+=$row->Clients_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1_pre;?></td>
                                     <td style="text-align:right;"><?=  number_format($row->PAR1Days_pre,0);$TotalPar1Days_Pre+=$row->PAR1Days_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7_pre;?></td>
                                     <td style="text-align:right;"><?=  number_format($row->PAR7Days_pre,0);$TotalPar7Days_Pre+=$row->PAR7Days_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30_pre;?></td>
                                     <td style="text-align:right;"><?=  number_format($row->PAR30Days_pre,0);$TotalPar30Days_Pre+=$row->PAR30Days_pre;?></td>
                                     <td style="text-align:right;"><?php if($row->PAR1Days_pre==0){echo number_format(0,2);}else{echo  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
                                     <td style="text-align:right;"><?=  number_format($row->DisbAmt_pre,0);$TotalDisbAmt_Pre+=$row->DisbAmt_pre;?></td>
@@ -157,8 +172,11 @@
 
                                     <td style="text-align:right;"><?= number_format($row->Balance-$row->Balance_pre,0);?></td>
                                     <td style="text-align:right;"><?= $row->Clients-$row->Clients_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1-$row->ClientPAR1_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR1Days-$row->PAR1Days_pre,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7-$row->ClientPAR7_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR7Days-$row->PAR7Days_pre,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30-$row->ClientPAR30_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR30Days-$row->PAR30Days_pre,0),0);?></td>
                                     <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,2);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,0);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($row->DisbAmt-$row->DisbAmt_pre,0),0);?></td>
