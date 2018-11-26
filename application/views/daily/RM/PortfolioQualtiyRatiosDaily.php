@@ -181,15 +181,15 @@
                             </tr>         
                             <tr style="text-align:right" class="info">                              
                               <td style="text-align:right">Total USD:</td>
-                              <td><?php echo number_format($Balamt/4000,0);?></td>
-                              <td><?php echo number_format($PAR1/4000,0);?></td>
-                              <td><?php echo number_format($PAR1AMT/4000,0);?></td>
-                              <td><?php if($PAR1AMT==0){ echo number_format(0,2);}else{echo number_format($PAR1AMT/$Balamt,4)*100;}?>%</td>
-                              <td><?php echo number_format($PAR7/4000,0);?></td>
-                              <td><?php echo number_format($PAR7AMT/4000,0);?></td>
-                              <td><?php if($PAR7AMT==0){echo number_format(0,2);}else{echo number_format($PAR7AMT/$Balamt,4)*100;}?>%</td>
-                              <td><?php echo number_format($PAR30/4000,0);?></td>
-                              <td><?php echo number_format($PAR30AMT/4000,0);?></td>                              
+                              <td>$ <?php echo number_format($Balamt/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR1/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR1AMT/4000,0);?></td>
+                              <td> <?php if($PAR1AMT==0){ echo number_format(0,2);}else{echo number_format($PAR1AMT/$Balamt,4)*100;}?>%</td>
+                              <td>$ <?php echo number_format($PAR7/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR7AMT/4000,0);?></td>
+                              <td> <?php if($PAR7AMT==0){echo number_format(0,2);}else{echo number_format($PAR7AMT/$Balamt,4)*100;}?>%</td>
+                              <td>$ <?php echo number_format($PAR30/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR30AMT/4000,0);?></td>                              
                               <td>
                                 <?php if($PAR30AMT==0){echo number_format(0,2);}else{echo number_format($PAR30AMT/$Balamt,4)*100;}?>%
                               </td>

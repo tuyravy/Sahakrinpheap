@@ -111,7 +111,7 @@
                                 <tr>
                                   <td colspan="2" style="text-align:right">Total USD:</td>                                  
                                   <td style="text-align:center"><?= $TotalAcc;?></td>       
-                                  <td style="text-align:right"><?= number_format($TotalBalamt/4000,0);?></td> 
+                                  <td style="text-align:right">$ <?= number_format($TotalBalamt/4000,0);?></td> 
                                   <td colspan="3"></td>                                 
                                 </tr>             
                         </table>

@@ -165,16 +165,16 @@
                             <tr class="info"> 
                                 <td style="text-align:left">Total USD:</td>
                                 <td style="text-align:right"><?= $Total;?></td>
-                                <td style="text-align:right"><?= number_format($TotalBalance/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Principle/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Interest/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Penalty/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($AdminFee/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($TotalBalanceNew/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Principle1/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Interest1/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($Penalty1/4000,0);?></td>
-                                <td style="text-align:right"><?= number_format($AdminFee1/4000,0);?></td>                               
+                                <td style="text-align:right">$ <?= number_format($TotalBalance/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Principle/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Interest/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Penalty/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($AdminFee/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($TotalBalanceNew/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Principle1/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Interest1/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($Penalty1/4000,0);?></td>
+                                <td style="text-align:right">$ <?= number_format($AdminFee1/4000,0);?></td>                               
                                 <td style="text-align:center;" colspan="2"></td>
                                 
                             </tr>

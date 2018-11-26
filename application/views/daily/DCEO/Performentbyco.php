@@ -212,31 +212,31 @@
                                     <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="info">
                                         <td colspan="2">Total USD:</td>
                                         
-                                        <td><?= number_format($TotalBalance/4000,0)?></td>
+                                        <td>$ <?= number_format($TotalBalance/4000,0)?></td>
                                         <td><?= $TotalClients;?></td>
-                                        <td><?=  number_format($TotalPar1Days/4000);?></td>
-                                        <td><?=  number_format($TotalPar7Days/4000);?></td>
-                                        <td><?=  number_format($TotalPar30Days/4000);?></td>
+                                        <td>$ <?=  number_format($TotalPar1Days/4000);?></td>
+                                        <td>$ <?=  number_format($TotalPar7Days/4000);?></td>
+                                        <td>$ <?=  number_format($TotalPar30Days/4000);?></td>
                                         <td><?=  number_format(($TotalPar1Days/$TotalBalance)*100,2);?>%</td>
-                                        <td><?=  number_format($TotalDisbAmt/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalDisbAmt/4000,0);?></td>
                                         <td><?=  $TotalClientDisb?></td>
 
-                                        <td><?= number_format($TotalBalance_Pre/4000,0);?></td>
+                                        <td>$ <?= number_format($TotalBalance_Pre/4000,0);?></td>
                                         <td><?= $TotalClients_Pre;?></td>
-                                        <td><?=  number_format($TotalPar1Days_Pre/4000,0);?></td>
-                                        <td><?=  number_format($TotalPar7Days_Pre/4000,0);?></td>
-                                        <td><?=  number_format($TotalPar30Days_Pre/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalPar1Days_Pre/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalPar7Days_Pre/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalPar30Days_Pre/4000,0);?></td>
                                         <td><?=  number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);?>%</td>
-                                        <td><?=  number_format($TotalDisbAmt_Pre,0);?></td>
+                                        <td>$ <?=  number_format($TotalDisbAmt_Pre,0);?></td>
                                         <td><?=  $TotalClientDisb_Pre;?></td>
 
-                                        <td><?= number_format((($TotalBalance)-($TotalBalance_Pre))/4000,0);?></td>
+                                        <td>$ <?= number_format((($TotalBalance)-($TotalBalance_Pre))/4000,0);?></td>
                                         <td><?= $TotalClients-$TotalClients_Pre;?></td>
-                                        <td><?=  number_format(($TotalPar1Days-$TotalPar1Days_Pre)/4000,0);?></td>
-                                        <td><?=  number_format(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0);?></td>
-                                        <td><?=  number_format(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0);?></td>
+                                        <td>$ <?=  number_format(($TotalPar1Days-$TotalPar1Days_Pre)/4000,0);?></td>
+                                        <td>$ <?=  number_format(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0);?></td>
+                                        <td>$ <?=  number_format(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0);?></td>
                                         <td><?=  number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);?>%</td>
-                                        <td><?=  number_format((($TotalDisbAmt)-($TotalDisbAmt_Pre))/4000,0);?></td>
+                                        <td>$ <?=  number_format((($TotalDisbAmt)-($TotalDisbAmt_Pre))/4000,0);?></td>
                                         <td><?=  ($TotalClientDisb)-($TotalClientDisb_Pre);?></td>
                                         <td></td>
                                         <td></td>

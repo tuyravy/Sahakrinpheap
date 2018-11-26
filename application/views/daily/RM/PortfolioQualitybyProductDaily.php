@@ -157,13 +157,13 @@
                             </tr>     
                             <tr style="text-align:right" class="info">                              
                               <td style="text-align:right">Total USD:</td>
-                              <td><?php echo number_format($BalAmt/4000,0);?></td>
-                              <td><?php echo number_format($PAR1EX/4000,0);?></td>
-                              <td><?php echo number_format($PAR7EX/4000,0);?></td>
-                              <td><?php echo number_format($PAR30EX/4000,0);?></td>
-                              <td><?php echo number_format($PAR1NE/4000,0);?></td>                             
-                              <td><?php echo number_format($PAR7NE/4000,0);?></td>                           
-                             <td><?php echo number_format($PAR30NE/4000,0);?></td>
+                              <td>$ <?php echo number_format($BalAmt/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR1EX/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR7EX/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR30EX/4000,0);?></td>
+                              <td>$ <?php echo number_format($PAR1NE/4000,0);?></td>                             
+                              <td>$ <?php echo number_format($PAR7NE/4000,0);?></td>                           
+                             <td>$ <?php echo number_format($PAR30NE/4000,0);?></td>
                              <td style="text-align:center;" colspan='2'></td>
                             
                             </tr>                            

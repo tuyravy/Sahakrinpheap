@@ -93,7 +93,7 @@
                               <td style="text-align:left" colspan='3'></td>
                           </tr>     
                           <td style="text-align:right" colspan='2'>Total USD:</td>                           
-                              <td style="text-align:right"><?php echo number_format($toalbalamt/4000,0);?></td>
+                              <td style="text-align:right">$ <?php echo number_format($toalbalamt/4000,0);?></td>
                               <td style="text-align:left" colspan='3'></td>
                           </tr>                       
                         </table>
