@@ -149,7 +149,7 @@
                              
                             </tr>
                            <?php }?>                             
-                           <tr style="text-align:right">                              
+                           <tr style="text-align:right" class="active">                              
                               <td style="text-align:center;" colspan="2">Total:</td>                             
                               <td><?php echo number_format($TotalBalAmt,0);?></td>
                               <td><?php echo number_format($TotalPar1,0);?></td>
@@ -160,6 +160,22 @@
                               <td><?php echo number_format($TotalPar7_Amt/$TotalBalAmt*100,2);?>%</td>
                               <td><?php echo number_format($TotalPar30,0);?></td>
                               <td><?php echo number_format($TotalPar30_Amt,0);?></td>                              
+                              <td>
+                                <?php echo number_format($TotalPar30_Amt/$TotalBalAmt*100,2);?>%
+                              </td>
+                             
+                            </tr>    
+                            <tr style="text-align:right" class="info">                              
+                              <td style="text-align:center;" colspan="2">Total:</td>                             
+                              <td>$ <?php echo number_format($TotalBalAmt/4000,0);?></td>
+                              <td><?php echo number_format($TotalPar1,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar1_Amt/4000,0);?></td>
+                              <td><?php echo number_format($TotalPar1_Amt/$TotalBalAmt*100,2);?>%</td>
+                              <td><?php echo number_format($TotalPar7,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar7_Amt/4000,0);?></td>
+                              <td><?php echo number_format($TotalPar7_Amt/$TotalBalAmt*100,2);?>%</td>
+                              <td><?php echo number_format($TotalPar30,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar30_Amt/4000,0);?></td>                              
                               <td>
                                 <?php echo number_format($TotalPar30_Amt/$TotalBalAmt*100,2);?>%
                               </td>

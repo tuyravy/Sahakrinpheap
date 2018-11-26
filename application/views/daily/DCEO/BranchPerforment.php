@@ -207,6 +207,37 @@
                                     <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
                                 </tr>
+                                    
+                                <tr class="active">
+                                    <td colspan="2">Total USD:</td>                                    
+                                    <td style="text-align:right;">$ <?= number_format($TotalBalamt/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $TotalClients;?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round($TotalPar1Days/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round($TotalPar7Days/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round($TotalPar30Days/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format($TotalPar1Days/$TotalBalamt*100,2);?> % </td>
+                                    <td style="text-align:right;">$ <?= number_format(round($TotalDisbAmt/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?= $TotalClientDisb;?></td>
+                                    
+                                    <td style="text-align:right;">$ <?= number_format($TotalBalamt_Pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $TotalClients_Pre;?></td>
+                                    <td style="text-align:right;">$ <?=  number_format($TotalPar1Days_Pre/4000,0);?></td>
+                                    <td style="text-align:right;">$ <?=  number_format($TotalPar7Days_Pre/4000,0);?></td>
+                                    <td style="text-align:right;">$ <?=  number_format($TotalPar30Days_Pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?=  number_format($TotalPar1Days_Pre/$TotalBalamt_Pre*100,2);?>%</td>
+                                    <td style="text-align:right;">$ <?=  number_format($TotalDisbAmt_Pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?=  $TotalClientDisb_Pre;?></td>
+
+                                    <td style="text-align:right;">$ <?= number_format(($TotalBalamt-$TotalBalamt_Pre)/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $TotalClients-$TotalClients_Pre;?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round(($TotalPar1Days-$TotalPar1Days_Pre)/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format(round(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0),0);?></td>
+                                    <td style="text-align:right;">$ <?= number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);?> % </td>
+                                    <td style="text-align:right;">$ <?= number_format(round(($TotalDisbAmt-$TotalDisbAmt_Pre)/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
+
+                                </tr>
 
                            <body>
                            

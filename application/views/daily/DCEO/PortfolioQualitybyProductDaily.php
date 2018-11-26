@@ -137,7 +137,7 @@
                             </tr>
                             <?php }?>                            
                           </tbody>      
-                          <tr style="text-align:right">                              
+                          <tr style="text-align:right" class="active">                              
                             <td style="text-align:center;" colspan="2">Total:</td>                            
                               <td><?php echo number_format($TotalBalamt,0);?></td>
                               <td><?php echo number_format($TotalPar1Ex,0);?></td>
@@ -146,9 +146,18 @@
                               <td><?php echo number_format($TotalPar1NE,0);?></td>                             
                               <td><?php echo number_format($TotalPar7NE,0);?></td>                           
                              <td><?php echo number_format($TotalPar30NE,0);?></td>
+                            </tr>
+                            <tr style="text-align:right" class="info">                              
+                            <td style="text-align:center;" colspan="2">Total:</td>                            
+                              <td>$ <?php echo number_format($TotalBalamt/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar1Ex/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar7Ex/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar30/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar1NE/4000,0);?></td>                             
+                              <td>$ <?php echo number_format($TotalPar7NE/4000,0);?></td>                           
+                             <td>$ <?php echo number_format($TotalPar30NE/4000,0);?></td>
                             
                             </tr>
-
                         </table>
                         
                         </div>   
