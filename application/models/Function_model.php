@@ -92,7 +92,7 @@ class Function_model extends CI_Model
         if($status>=1)
         {
             $result=$this->db->query("
-                select max(dateworking) as dateworking
+                select min(dateworking) as dateworking
                 from workingday
                 where flag=1
                 and status=1
@@ -109,7 +109,7 @@ class Function_model extends CI_Model
                 from workingday
                 where flag=1
                 and status=1
-                AND dateworking<='".$datenow."'"
+                AND dateworking<'".$datenow."'"
             );
             foreach($result->result() as $row)
             {
