@@ -113,49 +113,163 @@
                                 </tr>                               
                             </thead>
                             <body>
-                            <?php $i=1;foreach($coperforment as $row):?>
+                            <?php $i=1;
+                                $TotalBalance=0;
+                                $TotalClients=0;
+                                $TotalPar1Days=0;
+                                $TotalPar7Days=0;
+                                $TotalPar30Days=0;
+                               
+                                $TotalDisbAmt=0;
+                                $TotalClientDisb=0;
+
+                                $TotalBalance_Pre=0;
+                                $TotalClients_Pre=0;
+                                $TotalPar1Days_Pre=0;
+                                $TotalPar7Days_Pre=0;
+                                $TotalPar30Days_Pre=0;
+                                $TotalRaito1Day_Pre=0;
+                                $TotalDisbAmt_Pre=0;
+                                $TotalClientDisb_Pre=0;
+
+
+
+                                foreach($coperforment as $row):?>
                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;">
                                         <td><?= $i++;?></td>
                                         <td style="text-align:left;"><?= $row->COName;?></td>
-                                        <td><?= number_format($row->Balance,0);?></td>
-                                        <td><?= $row->Clients;?></td>
-                                        <td><?=  number_format($row->PAR1Days,0);?></td>
-                                        <td><?=  number_format($row->PAR7Days,0);?></td>
-                                        <td><?=  number_format($row->PAR30Days,0);?></td>
-                                        <td><?=  number_format($row->PAR1Days/$row->Balance*100,2);?>%</td>
-                                        <td><?=  number_format($row->DisbAmt,0);?></td>
-                                        <td><?=  $row->ClientDisb;?></td>
-
-                                        <td><?= number_format($row->Balance_pre,0);?></td>
-                                        <td><?= $row->Clients;?></td>
-                                        <td><?=  number_format($row->PAR1Days_pre,0);?></td>
-                                        <td><?=  number_format($row->PAR7Days_pre,0);?></td>
-                                        <td><?=  number_format($row->PAR30Days_pre,0);?></td>
+                                        <td><?= number_format($row->Balance,0);$TotalBalance+=$row->Balance;?></td>
+                                        <td><?= $row->Clients;$TotalClients+=$row->Clients;?></td>
+                                        <td><?=  number_format($row->PAR1Days,0);$TotalPar1Days+=$row->PAR1Days;?></td>
+                                        <td><?=  number_format($row->PAR7Days,0);$TotalPar7Days+=$row->PAR7Days;?></td>
+                                        <td><?=  number_format($row->PAR30Days,0);$TotalPar30Days+=$row->PAR30Days;?></td>
                                         <td>
-                                            <?php 
-                                                 
-                                                   echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);
-                                                 
-                                            ?>%</td>
-                                        <td><?=  number_format($row->DisbAmt_pre,0);?></td>
-                                        <td><?=  $row->ClientDisb_pre;?></td>
+                                        <?php  
+                                            if($row->PAR1Days==0 || $row->Balance==0){ echo 0;}
+                                            else{
+                                             number_format($row->PAR1Days/$row->Balance*100,2);
+                                            }?>%</td>
+                                        <td><?=  number_format($row->DisbAmt,0);$TotalDisbAmt+=$row->DisbAmt;?></td>
+                                        <td><?=  $row->ClientDisb;$TotalClientDisb+= $row->ClientDisb;?></td>
+
+                                        <td><?= number_format($row->Balance_pre,0); $TotalBalance_Pre+=$row->Balance_pre;?></td>
+                                        <td><?= $row->Clients_pre;$TotalClients_Pre+=$row->Clients_pre;?></td>
+                                        <td><?=  number_format($row->PAR1Days_pre,0);$TotalPar1Days_Pre+=$row->PAR1Days_pre;?></td>
+                                        <td><?=  number_format($row->PAR7Days_pre,0);$TotalPar7Days_Pre+=$row->PAR7Days_pre;?></td>
+                                        <td><?=  number_format($row->PAR30Days_pre,0);$TotalPar30Days_Pre+=$row->PAR30Days_pre;?></td>
+                                        <td><?php
+                                            if($row->PAR1Days_pre==0 || $row->Balance_pre==0){echo 0;}else{
+                                          number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);
+                                            }?>%</td>
+                                        <td><?=  number_format($row->DisbAmt_pre,0);$TotalDisbAmt_Pre+=$row->DisbAmt_pre;?></td>
+                                        <td><?=  $row->ClientDisb_pre;$TotalClientDisb_Pre+=$row->ClientDisb_pre;?></td>
 
                                         <td><?= number_format(($row->Balance)-($row->Balance_pre),0);?></td>
                                         <td><?= ($row->Clients)-($row->Clients);?></td>
                                         <td><?=  number_format(($row->PAR1Days)-($row->PAR1Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR7Days)-($row->PAR7Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR30Days)-($row->PAR30Days_pre),0);?></td>
-                                        <td><?php
-                                             
-                                                echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);
-                                             
-                                              ?>%</td>
+                                        <td><?=  number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);?>%</td>
                                         <td><?=  number_format(($row->DisbAmt)-($row->DisbAmt_pre),0);?></td>
                                         <td><?=  ($row->ClientDisb)-($row->ClientDisb_pre);?></td>
                                         <td style="text-align:left;"><?=  $row->BrName;?></td>
                                         <td><?=  $row->BrCode;?></td>
                                     </tr>
                                 <?php endforeach;?>
+                                <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="active">
+                                        <td colspan="2">Total:</td>
+                                        
+                                        <td><?= number_format($TotalBalance,0)?></td>
+                                        <td><?= $TotalClients;?></td>
+                                        <td><?=  number_format($TotalPar1Days);?></td>
+                                        <td><?=  number_format($TotalPar7Days);?></td>
+                                        <td><?=  number_format($TotalPar30Days);?></td>
+                                        <td><?php
+                                            if($TotalPar1Days==0 || $TotalBalance==0){
+                                                echo 0;
+                                            }else{
+                                            number_format(($TotalPar1Days/$TotalBalance)*100,2);
+                                            }?>%</td>
+                                        <td><?=  number_format($TotalDisbAmt,0);?></td>
+                                        <td><?=  $TotalClientDisb?></td>
+
+                                        <td><?= number_format($TotalBalance_Pre,0);?></td>
+                                        <td><?= $TotalClients_Pre;?></td>
+                                        <td><?=  number_format($TotalPar1Days_Pre,0);?></td>
+                                        <td><?=  number_format($TotalPar7Days_Pre,0);?></td>
+                                        <td><?=  number_format($TotalPar30Days_Pre,0);?></td>
+                                        <td><?php
+                                          if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0){
+                                              echo 0;
+                                          }else{
+                                          number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);
+                                          }?>%</td>
+                                        <td><?=  number_format($TotalDisbAmt_Pre,0);?></td>
+                                        <td><?=  $TotalClientDisb_Pre;?></td>
+
+                                        <td><?= number_format(($TotalBalance)-($TotalBalance_Pre),0);?></td>
+                                        <td><?= $TotalClients-$TotalClients_Pre;?></td>
+                                        <td><?=  number_format($TotalPar1Days-$TotalPar1Days_Pre,0);?></td>
+                                        <td><?=  number_format($TotalPar7Days-$TotalPar7Days_Pre,0);?></td>
+                                        <td><?=  number_format($TotalPar30Days-$TotalPar30Days_Pre,0);?></td>
+                                        <td><?php
+                                          if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0 || $TotalPar1Days==0 ||$TotalBalance==0){
+                                            echo 0;
+                                        }else{
+                                          number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
+                                        }?>%</td>
+                                        <td><?=  number_format(($TotalDisbAmt)-($TotalDisbAmt_Pre),0);?></td>
+                                        <td><?=  ($TotalClientDisb)-($TotalClientDisb_Pre);?></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="text-align:right;white-space: nowrap;overflow: hidden;" class="info">
+                                        <td colspan="2">Total USD:</td>
+                                        
+                                        <td>$ <?= number_format($TotalBalance/4000,0)?></td>
+                                        <td><?= $TotalClients;?></td>
+                                        <td>$ <?=  number_format($TotalPar1Days/4000);?></td>
+                                        <td>$ <?=  number_format($TotalPar7Days/4000);?></td>
+                                        <td>$ <?=  number_format($TotalPar30Days/4000);?></td>
+                                        <td><?php
+                                         if($TotalPar1Days==0 || $TotalBalance==0){
+                                            echo 0;
+                                            }else{
+                                          number_format(($TotalPar1Days/$TotalBalance)*100,2);
+                                            }?>%</td>
+                                        <td>$ <?=  number_format($TotalDisbAmt/4000,0);?></td>
+                                        <td><?=  $TotalClientDisb?></td>
+
+                                        <td>$ <?= number_format($TotalBalance_Pre/4000,0);?></td>
+                                        <td><?= $TotalClients_Pre;?></td>
+                                        <td>$ <?=  number_format($TotalPar1Days_Pre/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalPar7Days_Pre/4000,0);?></td>
+                                        <td>$ <?=  number_format($TotalPar30Days_Pre/4000,0);?></td>
+                                        <td><?php
+                                        if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0){
+                                            echo 0;
+                                        }else{
+                                          number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);
+                                        }?>%</td>
+                                        <td>$ <?=  number_format($TotalDisbAmt_Pre,0);?></td>
+                                        <td><?=  $TotalClientDisb_Pre;?></td>
+
+                                        <td>$ <?= number_format((($TotalBalance)-($TotalBalance_Pre))/4000,0);?></td>
+                                        <td><?= $TotalClients-$TotalClients_Pre;?></td>
+                                        <td>$ <?=  number_format(($TotalPar1Days-$TotalPar1Days_Pre)/4000,0);?></td>
+                                        <td>$ <?=  number_format(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0);?></td>
+                                        <td>$ <?=  number_format(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0);?></td>
+                                        <td><?php
+                                        if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0 || $TotalPar1Days==0 ||$TotalBalance==0){
+                                            echo 0;
+                                        }else{
+                                         number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
+                                        }?>%</td>
+                                        <td><?=  number_format((($TotalDisbAmt)-($TotalDisbAmt_Pre))/4000,0);?></td>
+                                        <td>$ <?=  ($TotalClientDisb)-($TotalClientDisb_Pre);?></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                             </body>
                             </table>
                         </div>
