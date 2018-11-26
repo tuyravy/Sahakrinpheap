@@ -70,14 +70,14 @@
                               <th colspan="11"  style="text-align:center;" class="warning">Varaince</th>
                             </tr>
                             <tr>
-                              <th colspan="8"  style="text-align:center;"  class="active">
+                              <th colspan="11"  style="text-align:center;"  class="active">
                               <?php if(isset($reportend)){echo $reportend;}else{ echo date('Y-m-d');}?>
                               </th>
 
-                              <th colspan="8"  style="text-align:center;" class="danger">
+                              <th colspan="11"  style="text-align:center;" class="danger">
                               <?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?>  
                               </th>
-                              <th colspan="8"  style="text-align:center;" class="warning">
+                              <th colspan="11"  style="text-align:center;" class="warning">
                    
                                       <span style="padding:10px;">
                                       <?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?> /
