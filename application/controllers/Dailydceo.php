@@ -33,7 +33,7 @@ class Dailydceo extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/DCEO/activeBorrower';         
+        $data['viewpage']='daily/DCEO/ActiveBorrower';         
         $data['controlbyrm']=$this->DCEO_model->GetRM();
         $page = $this->uri->segment(3) ? $this->uri->segment(3):0;
         $data['datestart']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
@@ -152,7 +152,7 @@ class Dailydceo extends CI_Controller {
                 if($systemid=='All'){ 
                     $data['total_rows'] =count($this->DCEO_model->overloaded_method($systemid,$datestart,2));
                     $total_rows=count($this->DCEO_model->overloaded_method($systemid,$datestart,2));                               
-                    $data['LoanActivebyProduct']=$this->DCEO_model->overloaded_loanPortfolioByProduct($sid,$reportdate,2);
+                    $data['LoanActivebyProduct']=$this->DCEO_model->overloaded_loanPortfolioByProduct($systemid,$reportdate,2);
                 }   
                 else{
                     $data['total_rows'] =count($this->DCEO_model->overloaded_method($systemid,$datestart,2));
@@ -202,10 +202,10 @@ class Dailydceo extends CI_Controller {
                 $data['reportdate']=$reportdate;               
                 $this->session->set_tempdata(array("datestart"=>$reportdate,"systemid"=>$sid),null,300);
                 if($sid=='All'){                   
-                    $data['loanDisbInMonth']=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,1);
+                    $data['loanDisbInMonth']=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,0);
                 }   
                 else{                                                   
-                    $data['loanDisbInMonth']=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,2);
+                    $data['loanDisbInMonth']=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,1);
                 }                   
                 $data['total_rows'] = 1; 
             }else{
@@ -225,12 +225,12 @@ class Dailydceo extends CI_Controller {
             {                
                     $reportdate=date('Y-m-d',strtotime($reportdate));             
                     if($sid=='All'){                   
-                        $data=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,1);
+                        $data=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,0);
                         $this->excel->stream($sid."_LoanDisbursement_Inmonth_".$reportdate."_.xls",$data);
                     }   
                     else{                        
                        
-                        $data=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,2);
+                        $data=$this->DCEO_model->overloaded_LoanDisbInmonth($sid,$reportdate,1);
                         $this->excel->stream($sid."_LoanDisbursement_Inmonth_".$reportdate."_.xls",$data);
                     }                   
                  
@@ -435,7 +435,7 @@ class Dailydceo extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/DCEO/repaymentdaily.php'; 
+        $data['viewpage']='daily/DCEO/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }
@@ -739,8 +739,8 @@ class Dailydceo extends CI_Controller {
         $data['role']=$this->session->userdata('role');   
         $data['sid']=$this->session->userdata('system_id');
         $data['type']=$this->session->userdata('types');
-        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
         $data['mlist']=$this->Menu_model->MainiManu();  
         $data['title'] = lang('system_titel');
         $data['viewpage']='daily/DCEO/dcmrsahakrinceo.php'; 
@@ -752,7 +752,7 @@ class Dailydceo extends CI_Controller {
         $data['role']=$this->session->userdata('role');   
         $data['sid']=$this->session->userdata('system_id');
         $data['type']=$this->session->userdata('types');
-        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
         $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['mlist']=$this->Menu_model->MainiManu();  
         $data['title'] = lang('system_titel');

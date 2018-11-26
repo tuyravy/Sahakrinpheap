@@ -64,9 +64,9 @@ class FN_model extends CI_Model {
        //end of new code
         return $res;
     }
-    PUBLIC FUNCTION TOTALSUMMARYDETAIL($startdate,$enddate)
+    PUBLIC FUNCTION TOTALSUMMARYDETAIL($startdate,$enddate,$brcode)
     {
-        $result=$this->db->query("select count(distinct(postdate)) as total from dailycashmovement where postdate between '".$startdate."' and '".$enddate."'");
+        $result=$this->db->query("select count(distinct(postdate)) as total from dailycashmovement where postdate between '".$startdate."' and '".$enddate."' and BrCode='".$brcode."'");
         foreach($result->result() as $row){
             return $row->total;
         }

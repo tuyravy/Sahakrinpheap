@@ -239,15 +239,15 @@ class RM_model extends CI_Model
         role=4 filter all branch all co
     */
     public function RepaymentMonthly($role){
-        $result=$this->db->query("Call Cmr_RepaymentRM('".$this->Reportdate."','".$this->Reportdate."','".$this->brcode."','".$role."');");     
+        $result=$this->db->query("Call Cmr_RepaymentRM('".$this->Reportdate."','".$this->brcode."','".$role."');");     
         $res= $result->result(); 
         $result->next_result(); 
         $result->free_result(); 
         //$this->output->enable_profiler(TRUE);       
         return $res;        
     }
-    public function overloaded_RepaymentMonthly($brcode,$reportdate,$reportend,$role){
-        $result=$this->db->query("Call Cmr_RepaymentRM('".$reportdate."','".$reportend."','".$brcode."','".$role."');");     
+    public function overloaded_RepaymentMonthly($brcode,$reportend,$role){
+        $result=$this->db->query("Call Cmr_RepaymentRM('".$reportend."','".$brcode."','".$role."');");     
         $res= $result->result(); 
         $result->next_result(); 
         $result->free_result(); 

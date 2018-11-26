@@ -666,6 +666,22 @@ class DailyCmr_model extends CI_Model
        return $row->TotalGrantedAmt;
        }
   }
+  public function jsondaiychecking($brcode,$reportdate)
+  {
+      $result=$this->db->query("select brcode from dis_values where reportdate='".$reportdate."' 
+                            and brcode in(select brcode from par_values where reportdate='".$reportdate."'
+                             and brcode=".$brcode.") limit 1;");
+      foreach($result->result() as $row)
+      {
+          return $row->brcode;
+      };
+  }
+  public function GetJsonDataMonthlyChecking($reportdate)
+  {    
+
+    $result=$this->db->query("select brcode as BrCodeCMR,sum(balamt) as BalAmtCMR from par_values where reportdate='".date("Y-m-d",strtotime($reportdate))."' group by brcode order by brcode");
+    return $result->result();
+  }
   public function getClientPer($reportdate)
   {
        $result=$this->db->query("

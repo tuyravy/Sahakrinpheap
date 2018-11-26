@@ -113,23 +113,51 @@
                              </tr>                                                     
                           </thead>
                           <tbody id="showproductdaily">
-                            <?php                                 
+                            <?php                        
+                                $TotalBalamt=0;
+                                $TotalPar1Ex=0;
+                                $TotalPar7Ex=0;
+                                $TotalPar30=0;
+                                $TotalPar1NE=0;
+                                $TotalPar7NE=0;
+                                $TotalPar30NE=0;         
                                 foreach($quality as $row){
                               ?>
                             <tr style="text-align:right">                              
                             <td style="text-align:center;"><?= $row->shortcode;?></td>
                              <td style="text-align:center;"><?= $row->brcode;?></td>
-                              <td><?php echo number_format($row->BalAmt,0);?></td>
-                              <td><?php echo number_format($row->PAR1EX,0);?></td>
-                              <td><?php echo number_format($row->PAR7EX,0);?></td>
-                              <td><?php echo number_format($row->PAR30EX,0);?></td>
-                              <td><?php echo number_format($row->PAR1NE,0);?></td>                             
-                              <td><?php echo number_format($row->PAR7NE,0);?></td>                           
-                             <td><?php echo number_format($row->PAR30NE,0);?></td>
+                              <td><?php echo number_format($row->BalAmt,0);$TotalBalamt+=$row->BalAmt;?></td>
+                              <td><?php echo number_format($row->PAR1EX,0);$TotalPar1Ex+=$row->PAR1EX;?></td>
+                              <td><?php echo number_format($row->PAR7EX,0);$TotalPar7Ex+=$row->PAR7EX;?></td>
+                              <td><?php echo number_format($row->PAR30EX,0);$TotalPar30+=$row->PAR30EX;?></td>
+                              <td><?php echo number_format($row->PAR1NE,0);$TotalPar1NE+=$row->PAR1NE;?></td>                             
+                              <td><?php echo number_format($row->PAR7NE,0);$TotalPar7NE+=$row->PAR7NE;?></td>                           
+                             <td><?php echo number_format($row->PAR30NE,0);$TotalPar30NE+=$row->PAR30NE;?></td>
                             
                             </tr>
                             <?php }?>                            
                           </tbody>      
+                          <tr style="text-align:right" class="active">                              
+                            <td style="text-align:center;" colspan="2">Total:</td>                            
+                              <td><?php echo number_format($TotalBalamt,0);?></td>
+                              <td><?php echo number_format($TotalPar1Ex,0);?></td>
+                              <td><?php echo number_format($TotalPar7Ex,0);?></td>
+                              <td><?php echo number_format($TotalPar30,0);?></td>
+                              <td><?php echo number_format($TotalPar1NE,0);?></td>                             
+                              <td><?php echo number_format($TotalPar7NE,0);?></td>                           
+                             <td><?php echo number_format($TotalPar30NE,0);?></td>
+                            </tr>
+                            <tr style="text-align:right" class="info">                              
+                            <td style="text-align:center;" colspan="2">Total:</td>                            
+                              <td>$ <?php echo number_format($TotalBalamt/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar1Ex/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar7Ex/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar30/4000,0);?></td>
+                              <td>$ <?php echo number_format($TotalPar1NE/4000,0);?></td>                             
+                              <td>$ <?php echo number_format($TotalPar7NE/4000,0);?></td>                           
+                             <td>$ <?php echo number_format($TotalPar30NE/4000,0);?></td>
+                            
+                            </tr>
                         </table>
                         
                         </div>   

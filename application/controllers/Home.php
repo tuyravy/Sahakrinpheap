@@ -9,6 +9,7 @@ public function __construct()
          $this->load->model('Login_model');
          $this->load->model('Function_model');
          $this->load->model('DailyCmr_model');
+         $this->load->model('BM_model'); 
          $this->load->helper('url');
          $this->load->helper('form');
          if(!$this->session->userdata('user_id'))
@@ -18,14 +19,18 @@ public function __construct()
     }    
 	public function index()
 	{              
+            
             if($this->Menu_model->GetStatusImport()==0){
-            $this->Menu_model->AutoImportScript($checking);
+                $checking=$this->BM_model->CheckUpload(); 
+                $this->Menu_model->AutoImportScript($checking);
             }
             $data['title'] = lang('system_titel');
             $data['mlist']=$this->Menu_model->MainiManu(); 
             $role=$this->session->userdata('role');
             $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
-            $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
+            $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));   
+            $Prereportdate=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate()));    
+            
             switch($role)
             {
                 case 1:
@@ -35,8 +40,7 @@ public function __construct()
 
                     $types=$this->session->userdata('types');
                     $data['types']=$this->session->userdata('types');
-                    $brcode=$this->session->userdata('branch_code');
-                    $this->load->model('BM_model');      
+                    $brcode=$this->session->userdata('branch_code');                         
                     $checking=$this->BM_model->CheckUpload(); 
                     $this->session->set_tempdata(array("errortrue"=>$checking),null,300);
                     $data['alert']=$checking;
@@ -66,11 +70,20 @@ public function __construct()
                     $this->session->set_tempdata(array("errortrue"=>$checking),null,300);    
                     $data['alert']=$checking;     
                     $data['row']=$this->DCEO_model->SummaryCEO($reportdate);
-                    $data['pre']=$this->DCEO_model->SummaryCEO($reportdate);
+                    $data['pre']=$this->DCEO_model->SummaryCEO($Prereportdate);
                     $data['viewpage']='dashboard/DCEO_dashboard';//manager or RM
 
                 break;
                 case 5:
+                    $this->load->model('DCEO_model');
+                    $data['types']=$this->session->userdata('types');
+                    $checking=$this->DCEO_model->CheckUpload();        
+                    $data['alert']=$checking;
+                    $this->session->set_tempdata(array("errortrue"=>$checking),null,300);    
+                    $data['alert']=$checking;     
+                    $data['row']=$this->DCEO_model->SummaryCEO($reportdate);
+                    $data['pre']=$this->DCEO_model->SummaryCEO($Prereportdate);
+                    $data['viewpage']='dashboard/DCEO_dashboard';//manager or RM
                 break;
                 case 6:
                 break;

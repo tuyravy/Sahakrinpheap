@@ -32,7 +32,7 @@ class DailyRm extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/RM/activeBorrower';         
+        $data['viewpage']='daily/RM/ActiveBorrower';         
         $data['brlist']=$this->RM_model->GetBrByUser();
         $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
  
@@ -361,15 +361,15 @@ class DailyRm extends CI_Controller {
         {
                 $brcode=$this->input->post('brname');
               
-                $reportdate=date('Y-m-d',strtotime($this->input->post('datestart')));
+                //$reportdate=date('Y-m-d',strtotime($this->input->post('datestart')));
                 $reportend=date('Y-m-d',strtotime($this->input->post('dateend')));
                 $data['brname']=$brcode;               
-                $data['reportdate']=$reportdate;
+              
                 $data['reportend']=$reportend;               
-                $this->session->set_tempdata(array("datestart"=>$reportdate,"dateend"=>$reportend,"brname"=>$brcode),null,300);
+                $this->session->set_tempdata(array("dateend"=>$reportend,"brname"=>$brcode),null,300);
                 if($brcode=='All'){     
                     $brcode=$this->session->userdata('system_id');                
-                    $data['Repayment']=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportdate,$reportend,3);
+                    $data['Repayment']=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportend,3);
                 }   
                 else{
                     
@@ -377,7 +377,7 @@ class DailyRm extends CI_Controller {
                        $brcode=$this->session->userdata('branch_code');
                        
                     }                                       
-                    $data['Repayment']=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportdate,$reportend,2);
+                    $data['Repayment']=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportend,2);
                 }                   
                 $data['total_rows'] = 1; 
             }else{
@@ -392,30 +392,30 @@ class DailyRm extends CI_Controller {
         
     }
 
-    public function Downloadrepaymentinmonth($brcode=null,$reportdate,$reportend)
+    public function Downloadrepaymentinmonth($brcode=null,$reportend)
     {
         $this->excel->setActiveSheetIndex(0);
         if($brcode!=null)
             {                
-                    $reportdate=date('Y-m-d',strtotime($reportdate));     
+                   // $reportdate=date('Y-m-d',strtotime($reportdate));     
                     $reportend=date('Y-m-d',strtotime($reportend));        
                     if($brcode=='All'){                   
                         $brcode=$this->session->userdata('system_id');                
-                        $data=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportdate,$reportend,3);
-                        $this->excel->stream($brcode."_repayment_inmonth_".$reportdate."_and_".$reportend."_.xls",$data);
+                        $data=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportend,3);
+                        $this->excel->stream($brcode."_repayment_inmonth_and_".$reportend."_.xls",$data);
                     }   
                    else{
                         
                         if($brcode==null){
                          $brcode=$this->session->userdata('branch_code');                         
                         } 
-                        $data=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportdate,$reportend,2);
-                        $this->excel->stream($brcode."_repayment_inmonth_".$reportdate."_and_".$reportend."_.xls",$data);
+                        $data=$this->RM_model->overloaded_RepaymentMonthly($brcode,$reportend,2);
+                        $this->excel->stream($brcode."_repayment_inmonth_and_".$reportend."_.xls",$data);
                     }                   
                  
                 }else{
                     $data=$this->RM_model->RepaymentMonthly(1);
-                    $this->excel->stream($brcode."_repayment_inmonth_".$reportdate."_and_".$reportend."_.xls",$data);
+                    $this->excel->stream($brcode."_repayment_inmonth_and_".$reportend."_.xls",$data);
                 }
     }
 
@@ -461,7 +461,7 @@ class DailyRm extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/RM/repaymentdaily.php'; 
+        $data['viewpage']='daily/RM/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }

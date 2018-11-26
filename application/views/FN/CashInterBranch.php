@@ -130,7 +130,7 @@
                           </tr>
                           <?php }?>
                           
-                          <tr style="text-align:right"  >
+                          <tr style="text-align:right"  class="active">
                             <td colspan='2' style="text-align:center">Total</td>                            
                             <td><?php  echo number_format($Total_CashIn,0);?></td>
                             <td><?php  echo number_format($Total_CashOut,0);?></td>

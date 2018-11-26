@@ -30,7 +30,7 @@ class Function_model extends CI_Model
     {
         
         $re=$this->db->query("
-                            select LAST_DAY(NOW() - INTERVAL 2 MONTH) as dateworking;");
+                            select LAST_DAY(NOW() - INTERVAL 1 MONTH) as dateworking;");
         foreach($re->result() as $row)
         {
             return $row->dateworking;

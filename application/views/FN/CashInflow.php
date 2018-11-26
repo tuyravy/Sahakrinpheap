@@ -158,13 +158,14 @@
                             <td><?php echo number_format($row->STAFFPENALTY,0);$STAFFPENALTY+=$row->STAFFPENALTY;?></td>
                             <td><?php echo number_format($row->SURPLUS,0);$SURPLUS+=$row->SURPLUS;?></td>
                             <td><?php echo number_format($row->FOREXGAIN,0);$FOREXGAIN+=$row->FOREXGAIN;?></td>
-                            <td><?php echo number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?>
+                            <td><?php number_format($row->OTHERS,0);$OTHERS+=$row->OTHERS;?>
                               </td>
                             <td>
                             <?php 
                                 echo number_format($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
                                 $row->SURPLUS+$row->FOREXGAIN,0);
+
                                 $TOTAL+=($row->BANKWD+$row->LOANCOLLECTION+$row->LOANPREPAYMENT+$row->WRITEBACK+
                                 $row->CBCFEE+$row->ADMINFEE+$row->STAMPFEE+$row->LOANPENALTY+$row->STAFFPENALTY+
                                 $row->SURPLUS+$row->FOREXGAIN);
@@ -172,7 +173,7 @@
                             <!-- <td><?php  echo number_format($row->Ending_Balance,0);$Total_Ending_Balance+=$row->Ending_Balance;?></td> -->
                             </tr>
                           <?php }?> 
-                          <tr>
+                          <tr class="active">
                             <td colspan="2" style="text-align:center">Total</td>                    
                             <td><?php echo number_format($BANKWD,0);?></td>
                             <td><?php echo number_format($LOANCOLLECTION,0);?></td>
@@ -185,7 +186,7 @@
                             <td><?php echo number_format($STAFFPENALTY,0);?></td>
                             <td><?php echo number_format($SURPLUS,0);?></td>
                             <td><?php echo number_format($FOREXGAIN,0);?></td>
-                            <td><?php echo number_format($OTHERS,0);?></td>
+                            <td><?php number_format($OTHERS,0);?></td>
                             <td><?php if($TOTAL<0){ echo number_format(-($TOTAL),0);}else{ echo number_format($TOTAL,0);};?></td>
                             <!-- <td><?php echo number_format($Total_Ending_Balance,0);?></td> -->
                            

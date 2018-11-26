@@ -78,7 +78,11 @@ $db['default'] = array(
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => '',
+<<<<<<< HEAD
 	'database' => 'sahakrinpheap_reports',
+=======
+	'database' => 'skp_reports',
+>>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,15 +98,26 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00
 // $active_group = 'default';
 // $query_builder = TRUE;
 
 // $db['default'] = array(
 // 	'dsn'	=> '',
+<<<<<<< HEAD
 // 	'hostname' => '45.40.138.90',
 // 	'username' => 'spmficom_cbs_uat',
 // 	'password' => 'RTCn#?O4Pdz,',
 // 	'database' => 'spmficom_cbs_uat',
+=======
+// 	'hostname' => 'localhost',
+// 	'username' => 'spmficom_cbs',
+// 	'password' => 'St4N+!%pZoL%',
+// 	'database' => 'spmficom_cbs_reporting',
+>>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00
 // 	'dbdriver' => 'mysqli',
 // 	'dbprefix' => '',
 // 	'pconnect' => FALSE,
@@ -118,3 +133,7 @@ $db['default'] = array(
 // 	'failover' => array(),
 // 	'save_queries' => TRUE
 // );
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00

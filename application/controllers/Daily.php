@@ -7,20 +7,18 @@ class Daily extends CI_Controller {
          $this->load->model('Menu_model');        
          $this->load->model('DailyCmr_model');
          $this->load->library("pagination");
-         $this->load->library('Excel');
-         $this->load->helper('url');
-         $this->load->helper('form');    
+         $this->load->library('Excel');    
          $this->load->model('Function_model');
          $this->load->model('BM_model');
          include('Utility.php');
-        if(!$this->session->userdata('user_id'))
-        {              
-               redirect(site_url('Login'));
-        }    
-        if($this->Menu_model->UserAccURL()==0){
+        // if(!$this->session->userdata('user_id'))
+        // {              
+        //        redirect(site_url('Login'));
+        // }    
+        // if($this->Menu_model->UserAccURL()==0){
 
-            redirect(site_url('logout'));
-        }
+        //     redirect(site_url('logout'));
+        // }
         
     }    
 
@@ -28,6 +26,8 @@ class Daily extends CI_Controller {
       
     public function activeBorrower()
     {
+        $this->load->helper('url');
+         $this->load->helper('form');
         $Utility=new Utility();
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['brcode']=$this->session->userdata('branch_code');
@@ -35,7 +35,7 @@ class Daily extends CI_Controller {
         $data['types']=$this->session->userdata('types');
         $data['sid']=$this->session->userdata('system_id');
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/activeBorrower';         
+             
         $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['brlist']=$this->BM_model->GetBrByUser();
             if(isset($_GET['per_page']))
@@ -84,6 +84,7 @@ class Daily extends CI_Controller {
                 $data['LoanActivebyProduct']=$this->BM_model->loanActiveBorrowerByProduct($page);
             }
             $Utility->pagination_config($total_rows,$base_url);
+            $data['viewpage']='daily/ActiveBorrower';
             $this->load->view('master_page',$data);
         
     }
@@ -547,7 +548,7 @@ class Daily extends CI_Controller {
             }               
                       
         $data['title'] = lang('system_titel');
-        $data['viewpage']='daily/repaymentdaily.php'; 
+        $data['viewpage']='daily/Repaymentdaily.php'; 
         $this->load->view('master_page',$data);       
 
     }
@@ -785,7 +786,7 @@ class Daily extends CI_Controller {
                 $data['CoName']=$this->BM_model->GetCoName($brcode);
                 $this->session->set_tempdata(array("datestart"=>$reportdate,"dateend"=>$reportend,"brname"=>$brcode,'idCo'=>$idco),null,300);
                 if($brcode=='All' && $idco=='All'){     
-                    $brcode=$this->session->userdata('system_id');                
+                    $brcode=$this->session->userdata('system_id');                           
                     $data['coperforment']=$this->BM_model->overloaded_DailyCoPerforment($brcode,$idco,$reportdate,$reportend,4);
                 }   
                 else if($idco=='All' && $brcode!='All')
@@ -917,4 +918,22 @@ class Daily extends CI_Controller {
                     $this->excel->stream($brcode."_BranchPerforment_Daily_".$reportdate."_and_".$reportend."_.xls",$data);
                 }
     }
+    public function writtenoff()
+    {
+            $data['mlist']=$this->Menu_model->MainiManu();  
+            $data['title'] = lang('system_titel');
+            $data['viewpage']='daily/writtenoff.php'; 
+            $this->load->view('master_page',$data);
+    }
+    public function jsonDailyChecking($brcode,$reportdate)
+        {
+            
+            $brcode=$this->DailyCmr_model->jsondaiychecking($brcode,$reportdate);
+            echo $brcode;
+        }
+        public function JsonMonthlyChecking($reportdate)
+        {
+            $result=$this->DailyCmr_model->GetJsonDataMonthlyChecking($reportdate);
+            echo json_encode($result);       
+        }
 }
