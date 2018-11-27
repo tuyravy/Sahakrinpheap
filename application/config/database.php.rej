@@ -1,0 +1,13 @@
+diff a/application/config/database.php b/application/config/database.php	(rejected hunks)
+@@ -78,11 +78,7 @@
+ 	'hostname' => '127.0.0.1',
+ 	'username' => 'root',
+ 	'password' => '',
+-<<<<<<< HEAD
+ 	'database' => 'sahakrinpheap_reports',
+-=======
+-	'database' => 'skp_reports',
+->>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00
+ 	'dbdriver' => 'mysqli',
+ 	'dbprefix' => '',
+ 	'pconnect' => FALSE,
