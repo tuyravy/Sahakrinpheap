@@ -26,13 +26,10 @@ date_default_timezone_get();
 | a PHP script and you can easily do that on your own.
 |
 */
-<<<<<<< HEAD
+
 $config['base_url'] = 'http://localhost:8080/sahakrinpheap';
 
-=======
-//$config['base_url'] = 'http://www.app.sahakrinpheap.com/skp_reports/';
-$config['base_url'] = 'http://localhost:81/sahakrinpheap';
->>>>>>> 8c83064e1c9509560434f5946e30acd47e3c5b00
+
 /*
 |--------------------------------------------------------------------------
 | Index File
