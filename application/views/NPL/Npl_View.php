@@ -104,6 +104,7 @@
                                   <th colspan='2' style="text-align:center;white-space: nowrap;overflow: hidden;">លទ្ធផលសរុប</th>
                                   
                                 </tr>
+                                
                                 <tr style="border-bottom:3pt solid #22d4ae;">
                                     
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន</th>
