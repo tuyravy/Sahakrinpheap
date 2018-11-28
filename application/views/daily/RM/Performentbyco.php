@@ -249,7 +249,7 @@
                                         if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0){
                                             echo 0;
                                         }else{
-                                          number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);
+                                         echo number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);
                                         }?>%</td>
                                         <td>$ <?=  number_format($TotalDisbAmt_Pre,0);?></td>
                                         <td><?=  $TotalClientDisb_Pre;?></td>
@@ -263,7 +263,7 @@
                                         if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0 || $TotalPar1Days==0 ||$TotalBalance==0){
                                             echo 0;
                                         }else{
-                                         number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
+                                        echo number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
                                         }?>%</td>
                                         <td><?=  number_format((($TotalDisbAmt)-($TotalDisbAmt_Pre))/4000,0);?></td>
                                         <td>$ <?=  ($TotalClientDisb)-($TotalClientDisb_Pre);?></td>
