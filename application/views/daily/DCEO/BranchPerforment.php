@@ -172,7 +172,7 @@
                                     <td style="text-align:right;"><?= number_format(round($row->PAR7Days,0),0);$TotalPar7Days+=$row->PAR7Days?></td>
                                     <td style="text-align:right;"><?= $row->ClientPAR30; $TotalClient30+=$row->ClientPAR30;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR30Days,0),0);$TotalPar30Days+=$row->PAR30Days;?></td>
-                                    <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,2);}else{echo number_format($row->PAR1Days/$row->Balance*100,2);}?> % </td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,0);}else{echo number_format($row->PAR1Days/$row->Balance*100,2);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($row->DisbAmt,0),0);$TotalDisbAmt+=$row->DisbAmt;?></td>
                                     <td style="text-align:right;"><?= $row->ClientDisb;$TotalClientDisb+=$row->ClientDisb;?></td>
                                     
@@ -184,7 +184,7 @@
                                     <td style="text-align:right;"><?=  number_format($row->PAR7Days_pre,0);$TotalPar7Days_Pre+=$row->PAR7Days_pre;?></td>
                                     <td style="text-align:right;"><?= $row->ClientPAR30_pre;$TotalClient30_pre+=$row->ClientPAR30_pre;?></td>
                                     <td style="text-align:right;"><?=  number_format($row->PAR30Days_pre,0);$TotalPar30Days_Pre+=$row->PAR30Days_pre;?></td>
-                                    <td style="text-align:right;"><?php if($row->PAR1Days_pre==0){echo number_format(0,2);}else{echo  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days_pre==0){echo number_format(0,0);}else{echo  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
                                     <td style="text-align:right;"><?=  number_format($row->DisbAmt_pre,0);$TotalDisbAmt_Pre+=$row->DisbAmt_pre;?></td>
                                     <td style="text-align:right;"><?=  $row->ClientDisb_pre;$TotalClientDisb_Pre+=$row->ClientDisb_pre;?></td>
 
