@@ -217,7 +217,7 @@
                                     <td style="text-align:right;"><?= number_format(round($TotalPar7Days,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30;?></td>
                                     <td style="text-align:right;"><?= number_format(round($TotalPar30Days,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){ echo number_format(0,2);}else{echo number_format($TotalPar1Days/$TotalBalamt*100,2);}?> % </td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){ echo number_format(0,0);}else{echo number_format($TotalPar1Days/$TotalBalamt*100,2);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($TotalDisbAmt,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClientDisb;?></td>
                                     
@@ -229,7 +229,7 @@
                                     <td style="text-align:right;"><?=  number_format($TotalPar7Days_Pre,0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30_pre;?></td>
                                     <td style="text-align:right;"><?=  number_format($TotalPar30Days_Pre,0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days_Pre==0){echo number_format(0,2);}else{echo number_format($TotalPar1Days_Pre/$TotalBalamt_Pre*100,2);}?>%</td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days_Pre==0){echo number_format(0,0);}else{echo number_format($TotalPar1Days_Pre/$TotalBalamt_Pre*100,2);}?>%</td>
                                     <td style="text-align:right;"><?=  number_format($TotalDisbAmt_Pre,0);?></td>
                                     <td style="text-align:right;"><?=  $TotalClientDisb_Pre;?></td>
 
@@ -241,7 +241,7 @@
                                     <td style="text-align:right;"><?= number_format(round($TotalPar7Days-$TotalPar7Days_Pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30-$TotalClient30_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($TotalPar30Days-$TotalPar30Days_Pre,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){echo number_format(0,2);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){echo number_format(0,0);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($TotalDisbAmt-$TotalDisbAmt_Pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
@@ -256,7 +256,7 @@
                                     <td style="text-align:right;">$ <?= number_format(round($TotalPar7Days/4000,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30;?></td>
                                     <td style="text-align:right;">$ <?= number_format(round($TotalPar30Days/4000,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){ echo number_format(0,2);}else{echo number_format($TotalPar1Days/$TotalBalamt*100,2);}?> % </td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){ echo number_format(0,0);}else{echo number_format($TotalPar1Days/$TotalBalamt*100,2);}?> % </td>
                                     <td style="text-align:right;">$ <?= number_format(round($TotalDisbAmt/4000,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClientDisb;?></td>
                                     
@@ -268,7 +268,7 @@
                                     <td style="text-align:right;">$ <?=  number_format($TotalPar7Days_Pre/4000,0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30_pre;?></td>
                                     <td style="text-align:right;">$ <?=  number_format($TotalPar30Days_Pre/4000,0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days_Pre==0){echo number_format(0,2);}else{echo number_format($TotalPar1Days_Pre/$TotalBalamt_Pre*100,2);}?>%</td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days_Pre==0){echo number_format(0,0);}else{echo number_format($TotalPar1Days_Pre/$TotalBalamt_Pre*100,2);}?>%</td>
                                     <td style="text-align:right;">$ <?=  number_format($TotalDisbAmt_Pre/4000,0);?></td>
                                     <td style="text-align:right;"><?=  $TotalClientDisb_Pre;?></td>
 
@@ -280,7 +280,7 @@
                                     <td style="text-align:right;">$ <?= number_format(round(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30-$TotalClient30_pre;?></td>
                                     <td style="text-align:right;">$ <?= number_format(round(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){echo number_format(0,2);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){echo number_format(0,0);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
                                     <td style="text-align:right;">$ <?= number_format(round(($TotalDisbAmt-$TotalDisbAmt_Pre)/4000,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
