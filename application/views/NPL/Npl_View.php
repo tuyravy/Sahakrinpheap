@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">NPL and WO Collection</span>
+                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">របាយការណ៍ប្រមូលទឹកប្រាក់កម្ចីធំជាង ៩០ ថ្ងៃ និងអិតិថិជនកាត់ចេញពីបញ្ជីរប្រចាំថ្ងៃ</span>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -48,14 +48,14 @@
                                       <div class="form-group" style="margin-top:10px;">                                       
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
-                                          placeholder=">" 
+                                          placeholder="<?php echo date('Y-m-d');?>" 
                                           value=""
                                           readonly="true" style="background:white;">
                                       </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
-                                        placeholder="" 
+                                        placeholder="<?php echo date('Y-m-d');?>" 
                                         value=""
                                         readonly="true" style="background:white;">
                                 </div> 
@@ -73,25 +73,7 @@
                       <!-- start project list -->
                     <div class="row">
                         <div class="panel-body table-responsive">
-                          <div id="reports">
-                            <div class="row" id="logoreports" style="display:none">
-                                    <div class="col-md-6">
-                                          <img src="<?php echo base_url();?>public/images/logo_simple.png" class="img-responsive" alt="Cinque Terre">
-                                    </div>
-                                    <div class="col-md-6" id="textcenter">
-                                        <h2 id="in" style="font-size:25px;text-align:center">សហគ្រិនភាព ម៉ាយក្រួហ្វាយនែន ភិអិលស៊ី</h2>
-                                        <h2 id="in1" style="text-align:center;">SAHAKRINPHEAP S.T MICROFINANCE PLC</h2>
-                                        <h2 id="in2" style="text-align:center;">Cash Summary Reports</h2>
-                                        <p id="in3" style="text-align:center">Reports Date:
-                                        
-                                          <span style="margin-left:10px;">
-                                              To:<span style="margin-left:10px;">
-                                                
-                                                </span>
-                                          </span>
-                                        </p>
-                                    </div>   
-                            </div> 
+                          <div id="reports">                            
                             <table class="table table-bordered projects" id="datatable-buttons">
                                 <thead>
                                 <tr>
@@ -105,59 +87,48 @@
                                   
                                 </tr>
                                 
-                                <tr style="border-bottom:3pt solid #22d4ae;">
-                                    
+                                <tr style="border-bottom:3pt solid #22d4ae;">                                    
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MB</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់ខ្ចប់ទុកបញ្ចូល MB</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន  </th>
-                                   <!--  <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan collection</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan Prepayment(Defferred)</th> -->
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន  </th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MB</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់ខ្ចប់ទុកបញ្ចូល MB</th>
-                                    <!-- <th style="text-align:center;white-space: nowrap;overflow: hidden;">Admin Fee</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Stamp Fee</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan penalty</th>
-                                    <th style="width: 20%;white-space: nowrap;overflow: hidden;">Staff Penalty</th>
-                                    <th>Surplus</th> -->
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់ខ្ចប់ទុកបញ្ចូល MB</th>                                    
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់</th>
-                                   <!--  <th style="text-align:center">Total</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Deposit with bank</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Loan Disbursement</th>
-                                    <th style="text-align:center">Payments</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">Cash shortage</th> -->
-                                   <!--  <th style="text-align:center">Others</th> -->
-                                   
                                 </tr>
                                 </thead>
-                                <tbody id="reportsinterbranch">
-                                
-                                
-                                
+                                <tbody> 
+                                  <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td> 
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3" style="text-align:right">សរុប</td>                                   
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td> 
+                                  </tr>
                                 </tbody>
-                            </table>
-                            <div class="col-sm-12" id="foldershow" style="display:none;">
-                                    <p>ថ្ងៃទី.......ខែ.....ឆ្នាំ..<?php echo date('Y');?></p>
-                                    <p style="margin-left:40px;">ហត្ថលេខា</p>
-                                    <p>................................</p>
-                                    <p><span style="margin-left:30px;"><?php echo $this->session->userdata('fullname');?></span></p>
-                                  <br/>
-                            </div>
+                            </table>                            
                           </div>
                         </div>
                     </div>
-                      <div class="title_right">
-                         <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <div style="margin-top: 25px;margin-bottom: -12px;">
-                                  <label>Total <span class="label label-default"></span>records</label>
-                                  </div>  
-                                  <br/>
-                               
-                            </div>
-                          </div>
-                        </div>                      
+                                          
                     </div>
                   </div>
                 </div>
@@ -267,57 +238,4 @@
     });
    
 </script>
-<script>
-  $(document).ready(function()
-  {
-    $("#downloadinterbranch").on("click",function()
-    {
-      var brname=$("#brname").val();
-      var datestart=$("#datestart").val();
-      var dateend=$("#dateend").val();
-      
-      if(brname==''){
-        alert("Please Choose Branch Name");
-      }else
-      {
-        window.location.href="<?php echo site_url('DailyCash/DOWNLOADCASHSUMMARY');?>/"+datestart+"/"+dateend+"/"+brname;   
-      }
-     
-    });
-  });
-</script>
-<script language="javascript" type="text/javascript">
-        function printDiv(divID) {
-            
-            //Get the HTML of div
-            var divElements = document.getElementById(divID).innerHTML;
-            //Get the HTML of whole page
-            var oldPage = document.body.innerHTML;
-            //Reset the page's HTML with div's HTML onl
-            document.body.innerHTML = 
-              "<html><head><title></title></head><body>" + 
-              divElements + "</body>";
-              document.getElementById("foldershow").style.display= "inline-block";   
-              document.getElementById("logoreports").style.display= "inline-block";  
-              document.getElementById("textcenter").style.margin = "0px 100px 10px 210px";
-              var table=document.getElementById("reportsinterbranch");
-              var r=0;
-              while(row=table.rows[r++])
-              {
-                var c=9;
-                while(cell=row.cells[c++])
-                {
-                  //cell.innerHTML='[Row='+r+',Col='+c+']'; // do sth with cell
-                  cell.innerHTML=""; // do sth with cell
 
-                }
-              }
-              
-            //Print Page
-            window.print();
-            //Restore orignal HTML
-            document.body.innerHTML = oldPage;
-            window.location.href="<?= site_url("npl/nplcollection");?>";
-          
-        }
-    </script>
