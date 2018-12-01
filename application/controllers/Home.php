@@ -30,7 +30,7 @@ public function __construct()
             $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));     
             $reportdate=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate()));   
             // $Prereportdate=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate()));    
-            $Prereportdate=date("Y-m-d",'2018-10-31'); 
+            $Prereportdate='2018-10-31'; 
             switch($role)
             {
                 case 1:
