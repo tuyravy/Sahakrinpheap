@@ -33,7 +33,15 @@ class Function_model extends CI_Model
                             select LAST_DAY(NOW() - INTERVAL 1 MONTH) as dateworking;");
         foreach($re->result() as $row)
         {
-            return $row->dateworking;
+            if($this->GetCurrRunDate()==$row->dateworking)
+            {
+                $dateworking=$this->db->query("
+                            select LAST_DAY(NOW() - INTERVAL 2 MONTH) as dateworking;")->row();
+                return $dateworking;
+            }else{
+                return $row->dateworking;
+            }
+            
         }
     }
     
