@@ -185,7 +185,7 @@
                                         <td><?=  number_format($TotalPar1Days);?></td>
                                         <td><?=  number_format($TotalPar7Days);?></td>
                                         <td><?=  number_format($TotalPar30Days);?></td>
-                                        <td><?=  number_format(($TotalPar1Days/$TotalBalance)*100,2);?>%</td>
+                                        <td><?php if($TotalPar1Days==0 ||$TotalBalance==0){$TotalPar1Days=1;$TotalBalance=1;echo number_format(($TotalPar1Days/$TotalBalance)*100,2);}else{echo number_format(($TotalPar1Days/$TotalBalance)*100,2);}?>%</td>
                                         <td><?=  number_format($TotalDisbAmt,0);?></td>
                                         <td><?=  $TotalClientDisb?></td>
 
@@ -194,7 +194,7 @@
                                         <td><?=  number_format($TotalPar1Days_Pre,0);?></td>
                                         <td><?=  number_format($TotalPar7Days_Pre,0);?></td>
                                         <td><?=  number_format($TotalPar30Days_Pre,0);?></td>
-                                        <td><?=  number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);?>%</td>
+                                        <td><?php if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0){$TotalPar1Days_Pre=1;$TotalBalance_Pre=1;echo number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);}else{ echo number_format($TotalPar1Days_Pre/$TotalBalance_Pre*100,2);}?>%</td>
                                         <td><?=  number_format($TotalDisbAmt_Pre,0);?></td>
                                         <td><?=  $TotalClientDisb_Pre;?></td>
 
