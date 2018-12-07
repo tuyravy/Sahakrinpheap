@@ -289,7 +289,7 @@
                                   <?php
                                   }
                                   ?>
-                                  <tr class="active">
+                                  <tr>
                                     <td colspan="2" style="white-space: nowrap;overflow: hidden;font-weight: bold;">Grand Total-KHR:</td>                                    
                                     <td style="text-align:right;font-weight: bold;"><?= number_format($TotalBalamt,0);?></td>
                                     <td style="text-align:right;font-weight: bold;"><?= $TotalClients;?></td>
@@ -328,7 +328,7 @@
                                     <td style="text-align:right;font-weight: bold;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
                                 </tr>
-                                <tr class="info">
+                                <tr class="danger">
                                     <td colspan="2">Grand Total-USD:</td>                                    
                                     <td style="text-align:right;font-weight: bold;">$ <?= number_format($TotalBalamt/4000,0);?></td>
                                     <td style="text-align:right;font-weight: bold;"><?= $TotalClients;?></td>
