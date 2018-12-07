@@ -1,8 +1,8 @@
         <?php
         if(isset($_GET['datestart']))
         {
-            $reportdateend=$_GET['datestart'];
-            $reportdate=$_GET['dateend'];
+            $reportdate=$_GET['datestart'];
+            $reportdateend=$_GET['dateend'];
         }
         ?>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
