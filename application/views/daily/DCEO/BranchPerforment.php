@@ -77,19 +77,19 @@
                             <tr style="white-space: nowrap;overflow: hidden;">
                               <th rowspan="3"  style="vertical-align: middle;text-align:center;white-space: nowrap;overflow: hidden;border-bottom:3pt solid #22d4ae;" class="active">No</th>
                               <th rowspan="3"  style="vertical-align: middle;text-align:center;white-space: nowrap;overflow: hidden;border-bottom:3pt solid #22d4ae;" class="active">Branch</th>
-                              <th colspan="12"  style="text-align:center;" class="active">Result Current</th>
-                              <th colspan="12"  style="text-align:center;" class="danger">Result Previous</th>
-                              <th colspan="12"  style="text-align:center;" class="warning">Varaince</th>
+                              <th colspan="11"  style="text-align:center;" class="active">Result Current</th>
+                              <th colspan="11"  style="text-align:center;" class="danger">Result Previous</th>
+                              <th colspan="11"  style="text-align:center;" class="warning">Varaince</th>
                             </tr>
                             <tr>
-                              <th colspan="8"  style="text-align:center;"  class="active">
+                              <th colspan="11"  style="text-align:center;"  class="active">
                               <?php if(isset($reportend)){echo $reportend;}else{ echo date('Y-m-d');}?>
                               </th>
 
-                              <th colspan="8"  style="text-align:center;" class="danger">
+                              <th colspan="1"  style="text-align:center;" class="danger">
                               <?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?>  
                               </th>
-                              <th colspan="8"  style="text-align:center;" class="warning">
+                              <th colspan="1"  style="text-align:center;" class="warning">
                    
                                       <span style="padding:10px;">
                                       <?php if(isset($reportdate)){echo $reportdate;}else{ echo date('Y-m-d');}?> /
