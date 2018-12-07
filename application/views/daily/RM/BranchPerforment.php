@@ -185,7 +185,7 @@
                                     <td style="text-align:right;"><?= number_format(round($row->PAR7Days-$row->PAR7Days_pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $row->ClientPAR30-$row->ClientPAR30_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($row->PAR30Days-$row->PAR30Days_pre,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,2);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,0);}?> % </td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days==0 || $row->PAR1Days_pre==0){echo number_format(0,2);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,0);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($row->DisbAmt-$row->DisbAmt_pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $row->ClientDisb-$row->ClientDisb_pre;?></td>
 
