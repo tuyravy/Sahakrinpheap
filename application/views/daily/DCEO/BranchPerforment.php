@@ -34,7 +34,7 @@
                                                   <option value="<?php echo $row->sid;?>"><?php echo $row->name;?></option>
                                                 <?php }}?>
                                             <option value="AllRM">All by RM</option>
-                                            <option value="All">All</option>
+                                            <option value="All">All Branch</option>
                                           </select> 
                                     <!-- <select class="selectpicker" data-show-subtext="true" data-live-search="true" id="branchname" name="brname">
                                     <option value=''>Select Branch</option>

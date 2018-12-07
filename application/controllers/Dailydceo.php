@@ -685,18 +685,22 @@ class Dailydceo extends CI_Controller {
                 $data['reportend']=$reportend;
                 
                 $this->session->set_tempdata(array("datestart"=>$reportdate,"dateend"=>$reportend,"systemid"=>$sid),null,300);
-                if($sid=='All'){     
+                if($sid=='All'){   
+
                     $data['brperforment']=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,2);
+                }else if($sid=="AllRM"){
+                    
                 }   
                 else{
                                                        
                     $data['brperforment']=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,1);
                 }                   
                 $data['total_rows'] = 1; 
-                }else{
+
+        }else{
                 
-                    $data['brperforment']=$this->DCEO_model->DailyBrPerforment();
-                }
+            $data['brperforment']=$this->DCEO_model->DailyBrPerforment();
+        }
                         
                 $data['title'] = lang('system_titel');
                 $data['viewpage']='daily/DCEO/BranchPerforment.php'; 
