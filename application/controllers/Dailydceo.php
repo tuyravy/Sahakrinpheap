@@ -739,8 +739,8 @@ class Dailydceo extends CI_Controller {
         $data['role']=$this->session->userdata('role');   
         $data['sid']=$this->session->userdata('system_id');
         $data['type']=$this->session->userdata('types');
-        $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
-        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
         $data['mlist']=$this->Menu_model->MainiManu();  
         $data['title'] = lang('system_titel');
         $data['viewpage']='daily/DCEO/dcmrsahakrinceo.php'; 
@@ -752,8 +752,8 @@ class Dailydceo extends CI_Controller {
         $data['role']=$this->session->userdata('role');   
         $data['sid']=$this->session->userdata('system_id');
         $data['type']=$this->session->userdata('types');
-        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
-        $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
+        $data['reportdateend']=date("Y-m-d",strtotime($this->Function_model->GetPreMonthCurrRundate())); 
+        $data['reportdate']=date("Y-m-d",strtotime($this->Function_model->GetCurrRunDate())); 
         $data['mlist']=$this->Menu_model->MainiManu();  
         $data['title'] = lang('system_titel');
         $data['bra']=$this->DCEO_model->GetRM();
