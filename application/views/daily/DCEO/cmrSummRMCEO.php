@@ -1213,7 +1213,7 @@
                                              <div class="row">
                                               <div class="col-md-2">%</div>
                                                 <div class="col-md-10 text-right" style="margin-left:-10px;">
-                                                    <?php if($row->PAR1DAY==0){echo 0;}else{ echo number_format(($row->PAR1DAY/$row->Balance*100)-($pre->PAR1DAY/$pre->Balance*100),2);}?>
+                                                    <?php if($row->PAR1DAY==0 || $pre->PAR1DAY==0){echo 0;}else{ echo number_format(($row->PAR1DAY/$row->Balance*100)-($pre->PAR1DAY/$pre->Balance*100),2);}?>
                                                  </div>
                                              </div>
                                              
