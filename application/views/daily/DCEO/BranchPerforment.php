@@ -315,8 +315,7 @@
                                     $brperforment=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,3);
                                     foreach($brperforment as $row):?>                                   
                                     <tr>
-                                    <td><?= $i++;?></td>
-                                    <td><?= $row->shortcode;?></td>
+                                    <td colspan="2">Grand Total-KHR:</td>                                   
                                     <td style="text-align:right;"><?= number_format($row->Balance,0);?></td>
                                     <td style="text-align:right;"><?= $row->Clients;?></td>
                                     <td style="text-align:right;"><?= $row->ClientPAR1;?></td>
@@ -351,6 +350,45 @@
                                     <td style="text-align:right;"><?= number_format(round($row->PAR30Days-$row->PAR30Days_pre,0),0);?></td>
                                     <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,0);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,0);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($row->DisbAmt-$row->DisbAmt_pre,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientDisb-$row->ClientDisb_pre;?></td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Grand Total-USD:</td>                                   
+                                    <td style="text-align:right;"><?= number_format($row->Balance/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->Clients;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR1Days/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR7Days/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR30Days/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,0);}else{echo number_format($row->PAR1Days/$row->Balance*100,2);}?> % </td>
+                                    <td style="text-align:right;"><?= number_format(round($row->DisbAmt/4000,0),0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientDisb;?></td>
+                                    
+                                    <td style="text-align:right;"><?= number_format($row->Balance_pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->Clients_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1_pre;?></td>
+                                    <td style="text-align:right;"><?=  number_format($row->PAR1Days_pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7_pre;?></td>
+                                    <td style="text-align:right;"><?=  number_format($row->PAR7Days_pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30_pre;?></td>
+                                    <td style="text-align:right;"><?=  number_format($row->PAR30Days_pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days_pre==0){echo number_format(0,0);}else{echo  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
+                                    <td style="text-align:right;"><?=  number_format($row->DisbAmt_pre/4000,0);?></td>
+                                    <td style="text-align:right;"><?=  $row->ClientDisb_pre;?></td>
+
+                                    <td style="text-align:right;"><?= number_format(($row->Balance-$row->Balance_pre)/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->Clients-$row->Clients_pre;?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR1-$row->ClientPAR1_pre;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR1Days-$row->PAR1Days_pre,0)/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR7-$row->ClientPAR7_pre;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR7Days-$row->PAR7Days_pre,0)/4000,0);?></td>
+                                    <td style="text-align:right;"><?= $row->ClientPAR30-$row->ClientPAR30_pre;?></td>
+                                    <td style="text-align:right;"><?= number_format(round($row->PAR30Days-$row->PAR30Days_pre,0)/4000,0);?></td>
+                                    <td style="text-align:right;"><?php if($row->PAR1Days==0){echo number_format(0,0);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,0);}?> % </td>
+                                    <td style="text-align:right;"><?= number_format(round($row->DisbAmt-$row->DisbAmt_pre,0)/4000,0);?></td>
                                     <td style="text-align:right;"><?= $row->ClientDisb-$row->ClientDisb_pre;?></td>
 
                                 </tr>
