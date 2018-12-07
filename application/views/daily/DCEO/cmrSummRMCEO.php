@@ -1253,8 +1253,8 @@
                                <?php }?>
                                
                                 <?php 
-                                $pre=$this->DCEO_model->getsumary($reportdate);
-                                $row=$this->DCEO_model->getsumary($reportdateend);
+                                $pre=$this->DCEO_model->getsumary($reportdateend);
+                                $row=$this->DCEO_model->getsumary($reportdate);
                                
                                ?>
                             <tr class="success">
