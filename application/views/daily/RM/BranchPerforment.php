@@ -230,7 +230,7 @@
                                     <td style="text-align:right;"><?= number_format(round($TotalPar7Days-$TotalPar7Days_Pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClient30-$TotalClient30_pre;?></td>
                                     <td style="text-align:right;"><?= number_format(round($TotalPar30Days-$TotalPar30Days_Pre,0),0);?></td>
-                                    <td style="text-align:right;"><?php if($TotalPar1Days==0){echo number_format(0,2);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
+                                    <td style="text-align:right;"><?php if($TotalPar1Days==0 ||$TotalPar1Days_Pre==0){echo number_format(0,2);}else{echo number_format(($TotalPar1Days/$TotalBalamt-$TotalPar1Days_Pre/$TotalBalamt_Pre)*100,0);}?> % </td>
                                     <td style="text-align:right;"><?= number_format(round($TotalDisbAmt-$TotalDisbAmt_Pre,0),0);?></td>
                                     <td style="text-align:right;"><?= $TotalClientDisb-$TotalClientDisb_Pre;?></td>
 
