@@ -165,7 +165,30 @@
                                   if($sid=="AllRM"){
                                     foreach($bra as $rm){
                                       $brperforment=$this->DCEO_model->overloaded_DailyBrPerforment($rm->sid,$reportdate,$reportend,1);
-                                      foreach($brperforment as $row):?>                                   
+                                      $TotalBalamt=0;
+                                      $TotalClients=0;
+                                      $TotalPar1Days=0;
+                                      $TotalPar7Days=0;
+                                      $TotalPar30Days=0;
+                                      $TotalDisbAmt=0;
+                                      $TotalClientDisb=0;
+                                      
+                                      $TotalBalamt_Pre=0;
+                                      $TotalClients_Pre=0;
+                                      $TotalPar1Days_Pre=0;
+                                      $TotalPar7Days_Pre=0;
+                                      $TotalPar30Days_Pre=0;
+                                      $TotalDisbAmt_Pre=0;
+                                      $TotalClientDisb_Pre=0;
+
+                                      $TotalClient1=0;
+                                      $TotalClient7=0;
+                                      $TotalClient30=0;
+                                      $TotalClient1_pre=0;
+                                      $TotalClient7_pre=0;
+                                      $TotalClient30_pre=0;
+                                      foreach($brperforment as $row):?>    
+                                                                     
                                       <tr>
                                       <td><?= $i++;?></td>
                                       <td><?= $row->shortcode;?></td>
