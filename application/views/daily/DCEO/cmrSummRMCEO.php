@@ -113,8 +113,8 @@
                                     if($_GET['rmvalues']=="0000"){  
                                         $a=1;                       
                                        foreach($bra as $rm){                                           
-                                        $row=$this->DCEO_model->getcmrsummRMCEO($rm->sid,$reportdate,$type);
-                                        $pre=$this->DCEO_model->getcmrsummRMCEO($rm->sid,$reportdateend,$type);
+                                        $row=$this->DCEO_model->getcmrsummRMCEO($rm->sid,$reportdateend,$type);
+                                        $pre=$this->DCEO_model->getcmrsummRMCEO($rm->sid,$reportdate,$type);
                                 ?>
                                     <tr class="info">
                                          <td style="padding:3px 0px 0px 3px;text-align:center;font-weight:bold;font-size:16px;"><?= $a++;?></td>
@@ -490,8 +490,8 @@
                                     </tr>
                            <?php }}else{    
                                         $a=1;
-                                        $row=$this->DCEO_model->getcmrsummRMCEO($_GET['rmvalues'],$reportdate,$type);
-                                        $pre=$this->DCEO_model->getcmrsummRMCEO($_GET['rmvalues'],$reportdateend,$type);
+                                        $row=$this->DCEO_model->getcmrsummRMCEO($_GET['rmvalues'],$reportdateend,$type);
+                                        $pre=$this->DCEO_model->getcmrsummRMCEO($_GET['rmvalues'],$reportdate,$type);
                                 ?>
                                         <tr class="info">
                                              <td style="padding:3px 0px 0px 3px;text-align:center;font-weight:bold;font-size:16px;"><?= 1;?></td>
