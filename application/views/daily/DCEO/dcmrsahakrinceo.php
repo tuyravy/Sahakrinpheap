@@ -1,10 +1,10 @@
          <?php
              if(isset($_GET['datestart'])){
-                $reportdate=$_GET['datestart'];
-                $reportdateend=$_GET['dateend'];
+                $reportdateend=$_GET['datestart'];
+                $reportdate=$_GET['dateend'];
              }
-             $row=$this->DCEO_model->SummaryCEO($reportdateend);
-             $pre=$this->DCEO_model->SummaryCEO($reportdate);
+             $row=$this->DCEO_model->SummaryCEO($reportdate);
+             $pre=$this->DCEO_model->SummaryCEO($reportdateend);
          ?>
          <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
                         <a href="<?= base_url();?>">Home</a>
