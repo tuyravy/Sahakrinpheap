@@ -870,7 +870,11 @@
                                     $a=1;
                                     $row=$this->DCEO_model->getcmrsummRMCEO('344',$reportdate,$type);
                                     $pre=$this->DCEO_model->getcmrsummRMCEO('344',$reportdateend,$type);
-            
+                                    if(isset($sid)){
+                                        if($sid==""){
+                                            $sid='344';
+                                        }
+                                    }
                                   
                                
                             ?>
