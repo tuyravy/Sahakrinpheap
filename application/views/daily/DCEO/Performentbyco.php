@@ -161,7 +161,7 @@
                                         <td><?=  number_format($row->PAR1Days_pre,0);$TotalPar1Days_Pre+=$row->PAR1Days_pre;?></td>
                                         <td><?=  number_format($row->PAR7Days_pre,0);$TotalPar7Days_Pre+=$row->PAR7Days_pre;?></td>
                                         <td><?=  number_format($row->PAR30Days_pre,0);$TotalPar30Days_Pre+=$row->PAR30Days_pre;?></td>
-                                        <td><?php if($row->PAR1Days_pre==0){$PAR1Days_pres=1;echo number_format($PAR1Days_pres/$row->Balance_pre*100,2);}else{ echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
+                                        <td><?php if($row->PAR1Days_pre==0||$row->Balance_pre==0){$PAR1Days_pres=1;$Balance_pre=1;echo number_format($PAR1Days_pres/$Balance_pre*100,2);}else{ echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
                                         <td><?=  number_format($row->DisbAmt_pre,0);$TotalDisbAmt_Pre+=$row->DisbAmt_pre;?></td>
                                         <td><?=  $row->ClientDisb_pre;$TotalClientDisb_Pre+=$row->ClientDisb_pre;?></td>
 
