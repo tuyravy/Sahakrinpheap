@@ -152,7 +152,7 @@
                                         <td><?=  number_format($row->PAR1Days,0);$TotalPar1Days+=$row->PAR1Days;?></td>
                                         <td><?=  number_format($row->PAR7Days,0);$TotalPar7Days+=$row->PAR7Days;?></td>
                                         <td><?=  number_format($row->PAR30Days,0);$TotalPar30Days+=$row->PAR30Days;?></td>
-                                        <td><?=  number_format($row->PAR1Days/$row->Balance*100,2);?>%</td>
+                                        <td><?php if($row->PAR1Days==0){ echo number_format(1/$row->Balance*100,2);}else{ echo number_format($row->PAR1Days/$row->Balance*100,2);}?>%</td>
                                         <td><?=  number_format($row->DisbAmt,0);$TotalDisbAmt+=$row->DisbAmt;?></td>
                                         <td><?=  $row->ClientDisb;$TotalClientDisb+= $row->ClientDisb;?></td>
 
@@ -161,7 +161,7 @@
                                         <td><?=  number_format($row->PAR1Days_pre,0);$TotalPar1Days_Pre+=$row->PAR1Days_pre;?></td>
                                         <td><?=  number_format($row->PAR7Days_pre,0);$TotalPar7Days_Pre+=$row->PAR7Days_pre;?></td>
                                         <td><?=  number_format($row->PAR30Days_pre,0);$TotalPar30Days_Pre+=$row->PAR30Days_pre;?></td>
-                                        <td><?=  number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);?>%</td>
+                                        <td><?php if($row->PAR1Days_pre==0){$PAR1Days_pre=1;number_format($PAR1Days_pre/$row->Balance_pre*100,2);}else{ echo number_format($row->PAR1Days_pre/$row->Balance_pre*100,2);}?>%</td>
                                         <td><?=  number_format($row->DisbAmt_pre,0);$TotalDisbAmt_Pre+=$row->DisbAmt_pre;?></td>
                                         <td><?=  $row->ClientDisb_pre;$TotalClientDisb_Pre+=$row->ClientDisb_pre;?></td>
 
@@ -170,7 +170,7 @@
                                         <td><?=  number_format(($row->PAR1Days)-($row->PAR1Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR7Days)-($row->PAR7Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR30Days)-($row->PAR30Days_pre),0);?></td>
-                                        <td><?=  number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);?>%</td>
+                                        <td><?php if($row->PAR1Days==0 || $row->PAR1Days_pre==0){ $PAR1Days=1;$PAR1Days_pre=1;echo number_format(($PAR1Days/$row->Balance-$PAR1Days_pre/$row->Balance_pre)*100,2);}else{echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);}?>%</td>
                                         <td><?=  number_format(($row->DisbAmt)-($row->DisbAmt_pre),0);?></td>
                                         <td><?=  ($row->ClientDisb)-($row->ClientDisb_pre);?></td>
                                         <td style="text-align:left;"><?=  $row->shortcode;?></td>
