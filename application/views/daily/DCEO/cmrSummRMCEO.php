@@ -57,15 +57,15 @@
                                       <div class="form-group">
                                         <label for="exampleInputName2">From:</label>
                                         <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
-                                               placeholder="<?php if(isset($_GET['datestart'])){echo $_GET['datestart'];}else{ echo $reportdate;}?>"
-                                        value="<?php if(isset($_GET['datestart'])){echo $_GET['datestart'];}else{ echo $reportdate;}?>"
+                                               placeholder="<?php if(isset($_GET['datestart'])){echo $_GET['datestart'];}else{ echo $reportdateend;}?>"
+                                        value="<?php if(isset($_GET['datestart'])){echo $_GET['datestart'];}else{ echo $reportdateend;}?>"
                                         readonly="true" style="background:white;">
                                       </div>
                                       <div class="form-group">
                                         <label for="exampleInputEmail2">To:</label>
                                          <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
-                                                placeholder="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdateend;}?>" 
-                                                value="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdateend;}?>"
+                                                placeholder="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdate;}?>" 
+                                                value="<?php if(isset($_GET['dateend'])){echo $_GET['dateend'];}else{ echo $reportdate;}?>"
                                                 readonly="true" style="background:white;">
                                       </div> 
                                      
