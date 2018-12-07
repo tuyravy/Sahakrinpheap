@@ -880,7 +880,7 @@
                             ?>
                                     <tr class="info">
                                          <td style="padding:3px 0px 0px 3px;text-align:center;font-weight:bold;font-size:16px;"><?= 1;?></td>
-                                         <td style="padding:3px 0px 0px 3px;font-weight:bold;font-size:16px;"><?= $this->DCEO_model->getRmNamebySID($sid);?></td>
+                                         <td style="padding:3px 0px 0px 3px;font-weight:bold;font-size:16px;"><?= $this->DCEO_model->getRmNamebySID('344');?></td>
                                          <td style="padding:3px 0px 0px 3px;text-align:center">USD</td>
                                          <td style="padding:3px 0px 0px 3px;text-align:center">USD</td>
                                          <td style="padding:3px 0px 0px 3px;text-align:center">USD</td>
