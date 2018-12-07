@@ -689,7 +689,8 @@ class Dailydceo extends CI_Controller {
 
                     $data['brperforment']=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,2);
                 }else if($sid=="AllRM"){
-                    
+                    $data['sid']="AllRM";
+                    $data['bra']=$this->DCEO_model->GetRM();
                 }   
                 else{
                                                        
