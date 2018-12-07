@@ -172,7 +172,7 @@
                                         <td style="text-align:right"><?=  number_format($PAR1_Amt_P,0);?></td>
                                         <td style="text-align:right"><?=  number_format($PAR7_Amt_P,0);?></td>
                                         <td style="text-align:right"><?=  number_format($PAR30_Amt_P,0);?></td>
-                                        <td style="text-align:right"><?=  number_format($PAR1_Amt_P/$OS_P*100,2);?>%</td>
+                                        <td style="text-align:right"><?php if($PAR1_Amt_P==0 ||$OS_P==0){$PAR1_Amt_P=1;$OS_P=1;echo number_format($PAR1_Amt_P/$OS_P*100,2);}else{echo number_format($PAR1_Amt_P/$OS_P*100,2);}?>%</td>
                                         <td style="text-align:right"><?=  number_format($DisbAmtDaily_P,0);?></td>
                                         <td style="text-align:right"><?=  $DisbAccDaily_P;?></td>
 
