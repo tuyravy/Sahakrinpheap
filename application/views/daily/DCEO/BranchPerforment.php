@@ -288,7 +288,8 @@
 
                                   <?php
                                   }
-                                  $brperforment=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,3);
+                                  
+                                    $brperforment=$this->DCEO_model->overloaded_DailyBrPerforment($sid,$reportdate,$reportend,3);
                                     foreach($brperforment as $row):?>                                   
                                     <tr>
                                     <td><?= $i++;?></td>
@@ -331,6 +332,7 @@
 
                                 </tr>
                                <?php endforeach;?> 
+
                                   <?php
                                   }else{
                                   foreach($brperforment as $row):?>
