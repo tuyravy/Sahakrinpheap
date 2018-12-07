@@ -169,7 +169,14 @@
                                         <td><?=  number_format(($row->PAR1Days)-($row->PAR1Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR7Days)-($row->PAR7Days_pre),0);?></td>
                                         <td><?=  number_format(($row->PAR30Days)-($row->PAR30Days_pre),0);?></td>
-                                        <td><?=  number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);?>%</td>
+                                        <td><?php
+                                          if($row->PAR1Days==0 || $row->Balance==0 || $row->PAR1Days_pre==0 || $row->Balance_pre==0)
+                                          {
+                                            $PAR1Days=1;$PAR1Days_pre=1;$Balance_pre=1;$Balance=1;
+                                            echo number_format(($PAR1Days/$Balance-$PAR1Days_pre/$Balance_pre)*100,2);
+                                          }else{
+                                            echo number_format(($row->PAR1Days/$row->Balance-$row->PAR1Days_pre/$row->Balance_pre)*100,2);
+                                          }?>%</td>
                                         <td><?=  number_format(($row->DisbAmt)-($row->DisbAmt_pre),0);?></td>
                                         <td><?=  ($row->ClientDisb)-($row->ClientDisb_pre);?></td>
                                         <td style="text-align:left;"><?=  $row->BrName;?></td>
@@ -260,7 +267,8 @@
                                         <td>$ <?=  number_format(($TotalPar7Days-$TotalPar7Days_Pre)/4000,0);?></td>
                                         <td>$ <?=  number_format(($TotalPar30Days-$TotalPar30Days_Pre)/4000,0);?></td>
                                         <td><?php
-                                        if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0 || $TotalPar1Days==0 ||$TotalBalance==0){
+                                        if($TotalPar1Days_Pre==0 || $TotalBalance_Pre==0 || $TotalPar1Days==0 || $TotalBalance==0){
+
                                             echo 0;
                                         }else{
                                         echo number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
@@ -299,3 +307,21 @@
     })
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!--ដើម្បីក្លាយជាបុគ្លលិកល្អមាន១៣ចំណុច-->
+<!--
+
+    1-អ្នកចុះសម្រុងល្អជាមួយមិត្តរូមការងារ
+    2-ភាពស្មោះត្រង់
+    3-អ្នកជាបុគ្លលិតចេះអភិវ ខ្លួន
+    4-ជាបុគ្លលិកប្រកាន់ភ្ជាប់នូវទំនូលខុសត្រូវ
+    5-ជាបុគ្គលិកដែលអាចជឿទុកចិត្តបាន
+    6-ជាបុគ្គលិកដែលគោរពតាមគោលការណ៏ស្ដាបន័
+    7-អ្នកអាចដឹងនាំអ្នកដទៃបាន
+    8-ជាបុគ្លលិកសកម្ម
+    9-ហ៊ានលើកឡើងគ្រប់បញ្ហា
+    10-ពេញចិត្តការងារជាគ្រុម
+    11-ផ្លល់ភាពជឿជាក់
+    12-ជាបុគ្គលិកដែលបង្ហើយការងារ
+    13-ជាបុគ្គលិកមានមនសិកា
+-->
+
