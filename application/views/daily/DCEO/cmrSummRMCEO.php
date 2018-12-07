@@ -87,7 +87,7 @@
                              <?php if(isset($_GET['datestart'])){echo date("d-M-Y",strtotime($_GET['datestart']));}else{ echo date("d-M-Y",strtotime($reportdateend));}?>
                             <span style="margin-left:10px;">
                                 To:<span style="margin-left:10px;"></span>
-                            <?php if(isset($_GET['dateend'])){echo date("d-M-Y",strtotime($_GET['datestart']));}else{ echo date("d-M-Y",strtotime($reportdate));}?>
+                            <?php if(isset($_GET['dateend'])){echo date("d-M-Y",strtotime($_GET['dateend']));}else{ echo date("d-M-Y",strtotime($reportdate));}?>
                             </span>
                               
                             
