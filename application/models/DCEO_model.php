@@ -427,8 +427,8 @@ class DCEO_model extends CI_Model
                 ->where('flag',1)
                 ->get()->row();
                 return $result->name;
-        }elseif($sid=""){
-            
+        }else if($sid==""){
+
             $result=$this->db->select("branch_control,name,sid,rid")
                 ->from("rm")
                 ->where('flag',1)
