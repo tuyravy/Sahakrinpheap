@@ -353,7 +353,7 @@
                                     <td style="text-align:right;"><?= $row->ClientDisb-$row->ClientDisb_pre;?></td>
 
                                 </tr>
-                                <tr>
+                                <tr class="danger">
                                     <td colspan="2">Grand Total-USD:</td>                                   
                                     <td style="text-align:right;">$ <?= number_format($row->Balance/4000,0);?></td>
                                     <td style="text-align:right;"><?= $row->Clients;?></td>
