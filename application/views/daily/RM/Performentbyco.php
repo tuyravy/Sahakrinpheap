@@ -145,7 +145,7 @@
                                         <td><?=  number_format($row->PAR30Days,0);$TotalPar30Days+=$row->PAR30Days;?></td>
                                         <td>
                                         <?php  
-                                            if($row->PAR1Days==0 || $row->Balance==0){ echo 0;}
+                                            if($row->PAR1Days==0){ $PAR1Days=1;echo number_format($PAR1Days/$row->Balance*100,2);}else if($row->Balance==0){$Balance=1;echo number_format($PAR1Days/$Balance*100,2);}
                                             else{
                                              echo number_format($row->PAR1Days/$row->Balance*100,2);
                                             }?>%</td>
