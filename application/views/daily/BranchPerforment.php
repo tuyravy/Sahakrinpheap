@@ -121,7 +121,7 @@
                                     $OS_T=0;$Cilent_T=0;$PAR1_Amt_T=0;$PAR7_Amt_T=0;$PAR30_Amt_T=0;$Ratio1day_T=0;$DisbAmtDaily_T=0;$DisbAccDaily_T=0;
                                     foreach($brperforment as $row):
                                     $OS+=$row->OS;$Cilent+=$row->Cilent;$PAR1_Amt+=$row->PAR1_Amt;$PAR7_Amt+=$row->PAR7_Amt;$PAR30_Amt+=$row->PAR30_Amt;$Ratio1day+=$row->PAR1_Amt/$row->OS;$DisbAmtDaily+=$row->DisbAmtDaily;$DisbAccDaily+=$row->DisbAccDaily;
-                                    $OS_P+=$row->OSPre;$Cilent_P+=$row->CilentPre;$PAR1_Amt_P+=$row->PAR1_AmtPre;$PAR7_Amt_P+=$row->PAR7_AmtPre;$PAR30_Amt_P+=$row->PAR30_AmtPre;$Ratio1day_P+=$row->PAR1_AmtPre/$row->OSPre;$DisbAmtDaily_P+=$row->DisbAmtDailyPre;$DisbAccDaily_P+=$row->DisbAccDailyPre;
+                                    $OS_P+=$row->OSPre;$Cilent_P+=$row->CilentPre;$PAR1_Amt_P+=$row->PAR1_AmtPre;$PAR7_Amt_P+=$row->PAR7_AmtPre;$PAR30_Amt_P+=$row->PAR30_AmtPre;if($row->PAR1_AmtPre==0){ $PAR1_AmtPre=1;$Ratio1day_P+=$PAR1_AmtPre/$row->OSPre;}else{$Ratio1day_P+=$row->PAR1_AmtPre/$row->OSPre;};$DisbAmtDaily_P+=$row->DisbAmtDailyPre;$DisbAccDaily_P+=$row->DisbAccDailyPre;
                                     $OS_T+=$row->OS-$row->OSPre;$Cilent_T+=$row->Cilent-$row->CilentPre;$PAR1_Amt_T+=$row->PAR1_Amt-$row->PAR1_AmtPre;$PAR7_Amt_T+=$row->PAR7_Amt-$row->PAR7_AmtPre;$PAR30_Amt_T+=$row->PAR30_Amt-$row->PAR30_AmtPre;$DisbAmtDaily_T+=$row->DisbAmtDaily-$row->DisbAmtDailyPre;$DisbAccDaily_T+=$row->DisbAccDaily-$row->DisbAccDailyPre;
                                     ?>
                                     <tr>
