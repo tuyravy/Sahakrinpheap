@@ -328,7 +328,7 @@
                                             <?php if($row->PAR1DAY==0){echo 0;}else{echo number_format($row->PAR1DAY/$row->Balance*100,2);}?>
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
-                                        <?php if($row->PAR1DAY==0){echo 0;}else{ echo number_format(($row->PAR1DAY/$row->Balance-$pre->PAR1DAY/$pre->Balance)*100,2);}?>%</td>
+                                        <?php if($row->PAR1DAY==0 || $row->Balance==0 ||$pre->PAR1DAY==0){echo 0;}else{ echo number_format(($row->PAR1DAY/$row->Balance-$pre->PAR1DAY/$pre->Balance)*100,2);}?>%</td>
 
                                       </tr>
                                       <tr style="white-space: nowrap;overflow: hidden;">
@@ -343,7 +343,7 @@
                                             <?php if($row->PAR7DAY==0){echo 0;}else{echo number_format($row->PAR7DAY/$row->Balance*100,2);}?>
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
-                                        <?php if($row->PAR7DAY==0){echo 0;}else{echo number_format(($row->PAR7DAY/$row->Balance-$pre->PAR7DAY/$pre->Balance)*100,2);}?>%</td>
+                                        <?php if($row->PAR7DAY==0 ||$pre->PAR7DAY==0){echo 0;}else{echo number_format(($row->PAR7DAY/$row->Balance-$pre->PAR7DAY/$pre->Balance)*100,2);}?>%</td>
 
                                       </tr>
                                       <tr style="white-space: nowrap;overflow: hidden;">
@@ -358,7 +358,7 @@
                                             <?php if($row->PAR30DAY==0){echo 0;}else{echo number_format($row->PAR30DAY/$row->Balance*100,2);}?>
                                             %</td>                                           
                                         <td style="text-align:right;font-weight:bold;">
-                                        <?php if($row->PAR30DAY==0){echo 0;}else{echo number_format(($row->PAR30DAY/$row->Balance-$pre->PAR30DAY/$pre->Balance)*100,2);}?>%</td>
+                                        <?php if($row->PAR30DAY==0 ||$pre->PAR30DAY==0){echo 0;}else{echo number_format(($row->PAR30DAY/$row->Balance-$pre->PAR30DAY/$pre->Balance)*100,2);}?>%</td>
 
                                       </tr>                                     
                                       

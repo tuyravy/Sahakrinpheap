@@ -145,5 +145,104 @@ class Function_model extends CI_Model
          return $result->result();
         
     }
+    public function getBrname()
+    {
+         $role=$this->session->userdata('role');
+         $systemid=$this->session->userdata('system_id');
+        switch($role){
+            case 1:
+                $brname=$this->db->from('users')
+                                 ->where('system_id',$systemid)
+                                 ->where('flag',1)
+                                 ->get()->row();
+                $brlist=$this->db->from('tbl_branch')
+                                 ->where_in('brCode',$brname->subbranch)
+                                 ->where('flage',1)
+                                 ->get();
+                return $brlist->result();
+
+            break;
+
+            case 2:
+
+                $brname=$this->db->from('users')
+                            ->where('system_id',$systemid)
+                            ->where('flag',1)
+                            ->get();
+                $arraylist=array();
+                foreach($brname->result() as $k=>$val)
+                {
+                    $arraylist=explode(",",$val->subbranch);
+    
+                }                
+                $brlist=$this->db->from('tbl_branch')
+                            ->where_in('brCode',$arraylist)
+                            ->where('flage',1)
+                            ->get();
+                return $brlist->result();
+
+            break;
+
+            case 3:
+
+                   
+                $brname=$this->db->from('rm')
+                            ->where('sid',$systemid)
+                            ->where('flag',1)
+                            ->get();
+                $arraylist=array();
+                foreach($brname->result() as $k=>$val)
+                {
+                    $arraylist=explode(",",$val->branch_control);
+    
+                }
+
+                $brlist=$this->db->from('tbl_branch')
+                            ->where_in('brCode',$arraylist)
+                            ->where('flage',1)
+                            ->get();
+                return $brlist->result();
+               
+
+            break;
+
+            case 4:
+
+                $brname=$this->db->from('rm')
+                            ->where('sid',$systemid)
+                            ->where('type',1)
+                            ->get();
+                $arraylist=array();
+                foreach($brname->result() as $k=>$val)
+                {
+                    $arraylist=explode(",",$val->branch_control);
+    
+                }
+                
+                $brlist=$this->db->from('tbl_branch')
+                            ->where_in('brCode',$arraylist)
+                            ->where('flage',1)
+                            ->get();
+                
+                //$this->output->enable_profiler(TRUE);       
+                return $brlist->result();
+
+            break;
+
+            case 5:
+
+            break;
+
+            case 6:
+
+            break;
+
+            case 7:
+
+            break;
+
+        }
+    }
 }
+
 ?>

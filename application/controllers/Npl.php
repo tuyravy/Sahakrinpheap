@@ -26,6 +26,7 @@ class npl extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $data['mlist']=$this->Menu_model->MainiManu();
+        $data['brlist']=$this->Function_model->getBrname();  
         $data['viewpage']='NPL/Npl_View';
         $this->load->view('master_page',$data);
     }
@@ -34,6 +35,7 @@ class npl extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $data['mlist']=$this->Menu_model->MainiManu();
+        $data['brlist']=$this->Function_model->getBrname();        
         $data['viewpage']='NPL/Npl_detail';
         $this->load->view('master_page',$data);
     }

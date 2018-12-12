@@ -39,7 +39,12 @@
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                           <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
-                                           
+                                                <?php foreach($brlist as $row){
+                                                    if(isset($brname)){?>
+                                                    <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
+                                                    <?php }else{?>
+                                                    <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
+                                                <?php }}?>
                                             <option data-subtext="Select Branch" value="All">All</option>
                                            
                                             </select>
