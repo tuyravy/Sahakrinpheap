@@ -42,7 +42,7 @@
                     <div class="x_content">
                       <div class="row">
                           <div class="col-md-12">
-                              <form class="form-inline" action="<?php echo site_url('DailyCash/CashSummary');?>" method="post">
+                              <form class="form-inline" action="<?php echo site_url('npl/npldeferpaymant');?>" method="post">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific Period:</legend>
                                       <div class="form-group" style="margin-top:-10px;">                                       
@@ -50,9 +50,14 @@
                                           <div class="row-fluid">
                                           <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
                                            
-                                            <option data-subtext="Select Branch" value="All">All</option>
-                                           
-                                            </select>
+                                           <option data-subtext="Select Branch" value="All">All</option>
+                                               <?php foreach($brlist as $row){
+                                                   if(isset($brname)){?>
+                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
+                                                   <?php }else{?>
+                                                   <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
+                                               <?php }}?>
+                                           </select>
                                         </div>
                                       </div>
                                       <div class="form-group" style="margin-top:10px;">                                       
@@ -69,7 +74,7 @@
                                         value=""
                                         readonly="true" style="background:white;">
                                 </div> 
-                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="
+                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
                                <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
                                 glyphicon glyphicon-download-alt"></span><span style="margin-left:5px;">Download Excel Files</span></button>
@@ -98,14 +103,20 @@
                                 </tr>
                                 </thead>
                                 <tbody> 
+                                <?php 
+                                  $i=1;
+                                  if(isset($viewdiff_mb)){
+                                  foreach($viewdiff_mb as $row):?>
                                   <tr>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?= $i++;?></td>
+                                    <td><?= $row->BrCode;?></td>
+                                    <td><?= $row->BrName;?></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                   </tr>
+                                  <?php endforeach;}?>
                                   <tr>
                                     <td colspan="4" style="text-align:right">សរុប</td>                                   
                                     <td></td>
