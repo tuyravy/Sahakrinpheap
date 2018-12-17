@@ -114,7 +114,7 @@
                                     <td><?= $row->GlAcc;?></td>
                                     <td style="text-align:right;"><?= number_format($row->DrAmt,0);?></td>
                                     <td><?= $row->PostDate;?></td>
-                                    <td></td>
+                                    <!-- <td></td> -->
                                   </tr>
                                   <?php endforeach;}?>
                                   <tr>
