@@ -94,12 +94,13 @@ $query_builder = TRUE;
 // 	'failover' => array(),
 // 	'save_queries' => TRUE
 // );
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'sahakrinpheap_reports',
+	'database' => 'skp_reports',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -115,3 +116,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
