@@ -42,7 +42,7 @@
                     <div class="x_content">
                       <div class="row">
                           <div class="col-md-12">
-                              <form class="form-inline" action="<?php echo site_url('DailyCash/CashSummary');?>" method="post">
+                              <form class="form-inline" action="<?php echo site_url('npl/npldetail');?>" method="post">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific Period:</legend>
                                       <div class="form-group" style="margin-top:-10px;">                                       
@@ -64,19 +64,19 @@
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
                                           placeholder="<?php echo date('Y-m-d');?>" 
-                                          value=""
+                                          value="<?php if(isset($datestart)){echo $datestart;}else{ echo date('Y-m-d');}?>"
                                           readonly="true" style="background:white;">
                                       </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
                                         placeholder="<?php echo date('Y-m-d');?>" 
-                                        value=""
+                                        value="<?php if(isset($dateend)){echo $dateend;}else{ echo date('Y-m-d');}?>"
                                         readonly="true" style="background:white;">
                                 </div> 
-                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="
+                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
-                               <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
+                               <button type="button" class="btn btn-success" id="downloadnplcollectiontoloan" style="margin-top:15px;"><span class="
                                 glyphicon glyphicon-download-alt"></span><span style="margin-left:5px;">Download Excel Files</span></button>
                                <button type="button" class="btn btn-default" onclick="javascript:printDiv('reports')" id="btnPrint" style="margin-top:15px;">
                                <span class="
@@ -99,22 +99,26 @@
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះមន្ត្រីឥណទាន</th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">តួនាទី</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខគណនីអតិថិជន</th>                                    
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បង់ចូលគណនីអតិថិជន</th>
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបង់</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេកប្រមូល</th>
                                 </tr>
                                 </thead>
                                 <tbody> 
+                                  <?php 
+                                  $i=1;
+                                  if(isset($viewnpl_toloan)){
+                                  foreach($viewnpl_toloan as $row):?>
                                   <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
+                                    <td><?= $i++;?></td>
+                                    <td><?= $row->BrCode;?></td>
+                                    <td><?= $row->BrName;?></td>
+                                    <td><?= $row->CoName;?></td>
+                                    <td><?= $row->Position;?></td>
+                                    <td><?= $row->Acc;?></td>
+                                    <td><?= $row->TrnAmt;?></td>
+                                    <td><?= $row->TrnDate;?></td>  
                                   </tr>
+                                  <?php endforeach;}?>
                                   <tr>
                                     <td colspan="6" style="text-align:right">សរុប</td>                                   
                                     <td></td>
@@ -138,47 +142,25 @@
 
           <!-- /page content -->
           <script>
-            $(document).ready(function()
-               {
-               $("#datatable-buttons #looptr").on("click","#edit",function()
-               {
-                  $("#exampleModalCenter").modal('show');
-               });
-               $("#datatable-buttons #looptr").on("click","#view",function(){
-                  $("#exampleModalCenterviewtable").modal('show');
-               });
-               $("#datatable-buttons #looptr").on("click",".sweet-4",function()
-                   {
-                    
-                      
-                       swal({
-                       title: "Are you sure?",
-                       text: "",
-                       type: "warning",
-                       showCancelButton: true,
-                       confirmButtonClass: 'btn-danger ok',
-                       confirmButtonText: 'Yes, delete it!',
-                       closeOnConfirm: false,
-                       closeOnCancel: false
-                       },  
-                       function(isConfirm) {
-                           if (isConfirm) {
-                               swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                               onclick=function(){
-                                 
-                               }
-                           } else {
-                               swal("Cancelled", "Your imaginary file is safe :)", "error");
-                           }
-                       }         
-                       /*function(){
-                       swal("", "Your record has been deleted!", "success");
-                       }*/,
-                       
-                       );
-                   })
-               });
-            </script>
+  $(document).ready(function()
+  {
+    $("#downloadnplcollectiontoloan").on("click",function()
+    {
+    
+      var brname=$("#brname").val();
+      var datestart=$("#datestart").val();
+      var dateend=$("#dateend").val();
+      
+      if(brname==''){
+        alert("Please Choose Branch Name");
+      }else
+      {
+        window.location.href="<?php echo site_url('npl/downloadnpldetail');?>/"+brname+"/"+datestart+"/"+dateend
+      }
+     
+    });
+  });
+</script>        
   <style>
   fieldset.scheduler-border {
     border: 1px groove #ddd !important;
