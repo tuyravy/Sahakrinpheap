@@ -96,7 +96,7 @@
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ល.រ</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខកូដសាខា</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះសាខា</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះមន្ត្រីឥណទាន</th>                                   
+                                    <!-- <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះមន្ត្រីឥណទាន</th>                                    -->
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខគណនី Written Off</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MBWIN</th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេទប្រមូល</th>
@@ -107,13 +107,13 @@
                                   $i=1;
                                   if(isset($viewWO_gl)){
                                   foreach($viewWO_gl as $row):?>
-                                  <tr>
+                                  <tr style="text-align:center;">
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
-                                    <td><?= $row->COName;?></td>
+                                    <!-- <td><?= $row->COName;?></td> -->
                                     <td><?= $row->GlAcc;?></td>
-                                    <td><?= $row->CrAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->CrAmt,0);?></td>
                                     <td><?= $row->PostDate;?></td>                                  
                                     
                                   </tr>

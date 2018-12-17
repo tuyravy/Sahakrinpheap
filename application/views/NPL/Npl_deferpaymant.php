@@ -107,12 +107,12 @@
                                   $i=1;
                                   if(isset($viewdiff_mb)){
                                   foreach($viewdiff_mb as $row):?>
-                                  <tr>
+                                  <tr style="text-align:center;">
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
                                     <td><?= $row->GlAcc;?></td>
-                                    <td><?= $row->DrAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->DrAmt,0);?></td>
                                     <td><?= $row->PostDate;?></td>
                                     <td></td>
                                   </tr>

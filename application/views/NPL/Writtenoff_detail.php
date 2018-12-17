@@ -108,14 +108,14 @@
                                 $i=1;
                                   if(isset($viewWO_Tool)){
                                   foreach($viewWO_Tool as $row):?>
-                                  <tr>
+                                  <tr style="text-align:center;">
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
                                     <td><?= $row->COName;?></td>
                                     <td><?= $row->Position;?></td>
                                     <td><?= $row->AccountNumber;?></td>
-                                    <td><?= $row->TotalCollectedAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TotalCollectedAmt,0);?></td>
                                     <td><?= $row->CollectDate;?></td>
                                     
                                   </tr>

@@ -108,14 +108,14 @@
                                   $i=1;
                                   if(isset($viewnpl_toloan)){
                                   foreach($viewnpl_toloan as $row):?>
-                                  <tr>
+                                  <tr style="text-align:center;">
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
                                     <td><?= $row->CoName;?></td>
                                     <td><?= $row->Position;?></td>
                                     <td><?= $row->Acc;?></td>
-                                    <td><?= $row->TrnAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TrnAmt,0);?></td>
                                     <td><?= $row->TrnDate;?></td>  
                                   </tr>
                                   <?php endforeach;}?>

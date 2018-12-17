@@ -21,7 +21,7 @@ class npl extends CI_Controller {
 
         //     redirect(site_url('logout'));
         // }
-        
+         
     } 
     public function nplcollection()
     {
@@ -102,6 +102,7 @@ class npl extends CI_Controller {
         $mlist=$this->Menu_model->MainiManu();
         $brlist=$this->Function_model->getBrname();  
         $viewpage='NPL/Writtenoff_withgl';
+
         $this->load->view('master_page',compact('mlist','brlist','viewpage','viewWO_gl','datestart','dateend','brname'));
     }
 }
