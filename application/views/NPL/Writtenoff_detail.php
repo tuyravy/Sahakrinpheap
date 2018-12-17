@@ -8,7 +8,7 @@
                         <a href="<?= base_url();?>">ទំព័រដើម</a>
                         <a href="<?= site_url('npl/npldetail');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន</a>
                         <a href="<?= site_url('npl/npldeferpaymant');?>">ប្រាក់ប្រមូលបានបង់ខ្ចប់ទុក</a>
-                        <a href="<?= site_url('npl/writtenoffdetail');?>" class="active">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីរបង់ចូល SKP_Tools</a>
+                        <a href="<?= site_url('npl/writtenoffdetail');?>" class="active">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីបង់ចូល SKP_Tools</a>
                         <a href="<?= site_url('npl/writtenoffwithgl');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនី Written Off</a>
                         
                         
@@ -42,7 +42,7 @@
                     <div class="x_content">
                       <div class="row">
                           <div class="col-md-12">
-                              <form class="form-inline" action="<?php echo site_url('DailyCash/CashSummary');?>" method="post">
+                              <form class="form-inline" action="<?php echo site_url('npl/writtenoffdetail');?>" method="post">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific Period:</legend>
                                       <div class="form-group" style="margin-top:-10px;">                                       
@@ -50,9 +50,14 @@
                                           <div class="row-fluid">
                                           <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
                                            
-                                            <option data-subtext="Select Branch" value="All">All</option>
-                                           
-                                            </select>
+                                           <option data-subtext="Select Branch" value="All">All</option>
+                                               <?php foreach($brlist as $row){
+                                                   if(isset($brname)){?>
+                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
+                                                   <?php }else{?>
+                                                   <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
+                                               <?php }}?>
+                                           </select>
                                         </div>
                                       </div>
                                       <div class="form-group" style="margin-top:10px;">                                       
@@ -69,7 +74,7 @@
                                         value=""
                                         readonly="true" style="background:white;">
                                 </div> 
-                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="
+                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
                                <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
                                 glyphicon glyphicon-download-alt"></span><span style="margin-left:5px;">Download Excel Files</span></button>
@@ -95,21 +100,26 @@
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">តួនាទី</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខគណនីអតិថិជន</th>                                    
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូលក្នុង SKP_Tools</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេកប្រមូល</th>
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេទប្រមូល</th>
                                 </tr>
                                 </thead>
                                 <tbody> 
+                                <?php
+                                $i=1;
+                                  if(isset($viewWO_Tool)){
+                                  foreach($viewWO_Tool as $row):?>
                                   <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?= $i++;?></td>
+                                    <td><?= $row->BrCode;?></td>
+                                    <td><?= $row->BrName;?></td>
+                                    <td><?= $row->COName;?></td>
+                                    <td><?= $row->Position;?></td>
+                                    <td><?= $row->AccountNumber;?></td>
+                                    <td><?= $row->TotalCollectedAmt;?></td>
+                                    <td><?= $row->CollectDate;?></td>
                                     
                                   </tr>
+                                  <?php endforeach;}?>
                                   <tr>
                                     <td colspan="6" style="text-align:right">សរុប</td>                                   
                                     <td></td>

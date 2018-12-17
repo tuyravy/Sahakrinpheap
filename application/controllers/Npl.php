@@ -75,17 +75,33 @@ class npl extends CI_Controller {
     }
   
     public function writtenoffdetail(){
+        if(isset($_POST['submit'])){
+            $datestart=date('Y-m-d',strtotime($this->input->post('datestart')));
+            $dateend=date('Y-m-d',strtotime($this->input->post('dateend')));
+            $brname=$this->input->post('brname');
+            $viewWO_Tool=$this->Npl_model->getWO_collection($brname,$datestart,$dateend);
+       }
+
         $this->load->helper('url');
         $this->load->helper('form');
-        $data['mlist']=$this->Menu_model->MainiManu();
-        $data['viewpage']='NPL/writtenoff_detail';
-        $this->load->view('master_page',$data);
+        $mlist=$this->Menu_model->MainiManu();
+        $brlist=$this->Function_model->getBrname();  
+        $viewpage='NPL/writtenoff_detail';
+        $this->load->view('master_page',compact('mlist','brlist','viewpage','viewWO_Tool','datestart','dateend','brname'));
     }
     public function writtenoffwithgl(){
+        if(isset($_POST['submit'])){
+            $datestart=date('Y-m-d',strtotime($this->input->post('datestart')));
+            $dateend=date('Y-m-d',strtotime($this->input->post('dateend')));
+            $brname=$this->input->post('brname');
+            $viewWO_gl=$this->Npl_model->getWO_gl($brname,$datestart,$dateend);
+       }
+
         $this->load->helper('url');
         $this->load->helper('form');
-        $data['mlist']=$this->Menu_model->MainiManu();
-        $data['viewpage']='NPL/Writtenoff_withgl';
-        $this->load->view('master_page',$data);
+        $mlist=$this->Menu_model->MainiManu();
+        $brlist=$this->Function_model->getBrname();  
+        $viewpage='NPL/Writtenoff_withgl';
+        $this->load->view('master_page',compact('mlist','brlist','viewpage','viewWO_gl','datestart','dateend','brname'));
     }
 }

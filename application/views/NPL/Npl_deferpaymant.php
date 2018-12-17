@@ -8,7 +8,7 @@
                         <a href="<?= base_url();?>">ទំព័រដើម</a>
                         <a href="<?= site_url('npl/npldetail');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន</a>
                         <a href="<?= site_url('npl/npldeferpaymant');?>" class="active">ប្រាក់ប្រមូលបានបង់ខ្ចប់ទុក</a>
-                        <a href="<?= site_url('npl/writtenoffdetail');?>">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីរបង់ចូល SKP_Tools</a>
+                        <a href="<?= site_url('npl/writtenoffdetail');?>">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីបង់ចូល SKP_Tools</a>
                         <a href="<?= site_url('npl/writtenoffwithgl');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនី Written Off</a>
                         
                         
@@ -98,7 +98,7 @@
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះសាខា</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខគណនីខ្ចប់ទុក</th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MBWIN</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេកប្រមូល</th>                                  
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេទប្រមូល</th>                                  
                                    
                                 </tr>
                                 </thead>
@@ -111,9 +111,9 @@
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?= $row->GlAcc;?></td>
+                                    <td><?= $row->DrAmt;?></td>
+                                    <td><?= $row->PostDate;?></td>
                                     <td></td>
                                   </tr>
                                   <?php endforeach;}?>

@@ -53,7 +53,51 @@ class Npl_model extends CI_Model
             ->where('PostDate>=',$DateStart)
             ->where('PostDate<=',$DateEnd)
             ->get();
-            $this->output->enable_profiler(TRUE);
+           // $this->output->enable_profiler(TRUE);
             return $npl->result(); 
         } 
+        public function getWO_collection($BrCode,$DateStart,$DateEnd){
+            $arraylist=0;
+            if($BrCode=="All"){
+                $brcontrol=$this->Function_model->getBrname();
+                $arraylist=array();
+                foreach($brcontrol as $row){
+                    array_push($arraylist,$row->brCode);
+                }
+            }
+            else{
+                $arraylist=$BrCode;
+            }
+            $npl=$this->db->from("wocollection")
+            ->where_in("BrCode",$arraylist)
+            ->where('collectDate>=',$DateStart)
+            ->where('collectDate<=',$DateEnd)
+            ->get();
+            //$this->output->enable_profiler(TRUE);
+            return $npl->result();
+            
+
+        }
+        public function getWO_gl($BrCode,$DateStart,$DateEnd){
+
+            $arraylist=0;
+            if($BrCode=="All"){
+                $brcontrol=$this->Function_model->getBrname();
+                $arraylist=array();
+                foreach($brcontrol as $row){
+                    array_push($arraylist,$row->brCode);
+                }
+            }
+            else{
+                    $arraylist=$BrCode;
+            }
+            
+                $npl=$this->db->from("npl_wo_glcollection")
+                ->where_in("BrCode",$arraylist)
+                ->where('PostDate>=',$DateStart)
+                ->where('PostDate<=',$DateEnd)
+                ->get();
+               // $this->output->enable_profiler(TRUE);
+                return $npl->result(); 
+            } 
 }
