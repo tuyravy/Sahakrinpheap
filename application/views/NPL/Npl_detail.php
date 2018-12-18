@@ -105,6 +105,7 @@
                                 </thead>
                                 <tbody> 
                                   <?php 
+                                  $Total=0;
                                   $i=1;
                                   if(isset($viewnpl_toloan)){
                                   foreach($viewnpl_toloan as $row):?>
@@ -115,14 +116,14 @@
                                     <td><?= $row->CoName;?></td>
                                     <td><?= $row->Position;?></td>
                                     <td><?= $row->Acc;?></td>
-                                    <td style="text-align:right;"><?= number_format($row->TrnAmt,0);?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TrnAmt,0); $Total+=$row->TrnAmt;?></td>
                                     <td><?= $row->TrnDate;?></td>  
                                   </tr>
                                   <?php endforeach;}?>
                                   <tr>
                                     <td colspan="6" style="text-align:right">សរុប</td>                                   
-                                    <td></td>
-                                    <td></td>
+                                    <td style="text-align:right;"> <?= number_format($Total,0);?></td>
+                                    <!-- <td></td> -->
                                   </tr>
                                 </tbody>
                             </table>                            

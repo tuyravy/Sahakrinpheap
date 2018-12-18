@@ -64,19 +64,19 @@
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
                                           placeholder="<?php echo date('Y-m-d');?>" 
-                                          value=""
+                                          value="<?php if(isset($datestart)){echo $datestart;}else{ echo date('Y-m-d');}?>"
                                           readonly="true" style="background:white;">
                                       </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
                                         placeholder="<?php echo date('Y-m-d');?>" 
-                                        value=""
+                                        value="<?php if(isset($dateend)){echo $dateend;}else{ echo date('Y-m-d');}?>"
                                         readonly="true" style="background:white;">
                                 </div> 
-                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
+                                <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
-                               <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
+                               <button type="button" class="btn btn-success" id="downloadnplcollectiontoloan" style="margin-top:15px;"><span class="
                                 glyphicon glyphicon-download-alt"></span><span style="margin-left:5px;">Download Excel Files</span></button>
                                <button type="button" class="btn btn-default" onclick="javascript:printDiv('reports')" id="btnPrint" style="margin-top:15px;">
                                <span class="
@@ -105,6 +105,7 @@
                                 </thead>
                                 <tbody> 
                                 <?php
+                                $Total=0;
                                 $i=1;
                                   if(isset($viewWO_Tool)){
                                   foreach($viewWO_Tool as $row):?>
@@ -115,15 +116,15 @@
                                     <td><?= $row->COName;?></td>
                                     <td><?= $row->Position;?></td>
                                     <td><?= $row->AccountNumber;?></td>
-                                    <td style="text-align:right;"><?= number_format($row->TotalCollectedAmt,0);?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TotalCollectedAmt,0);$Total+=$row->TotalCollectedAmt;?></td>
                                     <td><?= $row->CollectDate;?></td>
                                     
                                   </tr>
                                   <?php endforeach;}?>
                                   <tr>
                                     <td colspan="6" style="text-align:right">សរុប</td>                                   
-                                    <td></td>
-                                    <td></td>
+                                    <td style="text-align:right"><?= number_format($Total,0);?></td>
+                                    <!-- <td></td> -->
                                   </tr>
                                 </tbody>
                             </table>                            
@@ -142,6 +143,26 @@
 
 
           <!-- /page content -->
+          <script>
+  $(document).ready(function()
+  {
+    $("#downloadnplcollectiontoloan").on("click",function()
+    {
+    
+      var brname=$("#brname").val();
+      var datestart=$("#datestart").val();
+      var dateend=$("#dateend").val();
+      
+      if(brname==''){
+        alert("Please Choose Branch Name");
+      }else
+      {
+        window.location.href="<?php echo site_url('npl/downloadnpldetail');?>/"+brname+"/"+datestart+"/"+dateend
+      }
+     
+    });
+  });
+</script>        
           <script>
             $(document).ready(function()
                {
