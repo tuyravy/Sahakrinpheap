@@ -52,12 +52,15 @@ class Npl_model extends CI_Model
             ->where_in("BrCode",$arraylist)
             ->where('PostDate>=',$DateStart)
             ->where('PostDate<=',$DateEnd)
+            ->where('GlAcc','3898016')
+            ->where('TrnType','820')
             ->get();
            // $this->output->enable_profiler(TRUE);
             return $npl->result(); 
         } 
         public function getWO_collection($BrCode,$DateStart,$DateEnd){
             $arraylist=0;
+           
             if($BrCode=="All"){
                 $brcontrol=$this->Function_model->getBrname();
                 $arraylist=array();
@@ -71,7 +74,7 @@ class Npl_model extends CI_Model
             $npl=$this->db->from("wocollection")
             ->where_in("BrCode",$arraylist)
             ->where('collectDate>=',$DateStart)
-            ->where('collectDate<=',$DateEnd)
+            ->where('collectDate<=',$DateEnd)           
             ->get();
             //$this->output->enable_profiler(TRUE);
             return $npl->result();
@@ -96,6 +99,8 @@ class Npl_model extends CI_Model
                 ->where_in("BrCode",$arraylist)
                 ->where('PostDate>=',$DateStart)
                 ->where('PostDate<=',$DateEnd)
+                ->where('GlAcc','5744011')
+                ->where('TrnType','820')
                 ->get();
                // $this->output->enable_profiler(TRUE);
                 return $npl->result(); 
