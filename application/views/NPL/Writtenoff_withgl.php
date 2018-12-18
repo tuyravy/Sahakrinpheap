@@ -99,12 +99,15 @@
                                     <!-- <th style="text-align:center;white-space: nowrap;overflow: hidden;">ឈ្មោះមន្ត្រីឥណទាន</th>                                    -->
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">លេខគណនី Written Off</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MBWIN</th>                                   
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បាន​ ADJ ក្នុង MBWIN</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">កាលបរិច្ឆេទប្រមូល</th>
                                 </tr>
                                 </thead>
                                 <tbody> 
                                 <?php 
                                   $i=1;
+                                  $Total=0;
+                                  $TotalDr=0;
                                   if(isset($viewWO_gl)){
                                   foreach($viewWO_gl as $row):?>
                                   <tr style="text-align:center;">
@@ -113,14 +116,16 @@
                                     <td><?= $row->BrName;?></td>
                                     <!-- <td><?= $row->COName;?></td> -->
                                     <td><?= $row->GlAcc;?></td>
-                                    <td style="text-align:right;"><?= number_format($row->CrAmt,0);?></td>
+                                    <td style="text-align:right;"><?= number_format($row->CrAmt,0);$Total+=$row->CrAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->DrAmt,0);$TotalDr+=$row->DrAmt;?></td>
                                     <td><?= $row->PostDate;?></td>                                  
                                     
                                   </tr>
                                   <?php endforeach;}?>
                                   <tr>
-                                    <td colspan="5" style="text-align:right">សរុប</td>                                   
-                                    <td></td>
+                                    <td colspan="4" style="text-align:right">សរុប</td>                                   
+                                    <td style="text-align:right"><?= number_format($Total,0);?></td>
+                                    <td style="text-align:right"><?= number_format($TotalDr,0);?></td>
                                     <td></td>
                                   </tr>
                                 </tbody>

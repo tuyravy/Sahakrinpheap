@@ -6,7 +6,7 @@
          <!-- page content -->
          <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
                         <a href="<?= base_url();?>">ទំព័រដើម</a>
-                        <a href="<?= site_url('npl/npldetail');?>" class="active">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន</a>
+                        <a href="<?= site_url('npl/npldetail');?>" class="active">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន​ (កម្ចីធំជាង ៩០​ថ្ងៃ)</a>
                         <a href="<?= site_url('npl/npldeferpaymant');?>">ប្រាក់ប្រមូលបានបង់ខ្ចប់ទុក</a>
                         <a href="<?= site_url('npl/writtenoffdetail');?>">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីរបង់ចូល SKP_Tools</a>
                         <a href="<?= site_url('npl/writtenoffwithgl');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនី Written Off</a>

@@ -53,7 +53,7 @@ class Npl_model extends CI_Model
             ->where('PostDate>=',$DateStart)
             ->where('PostDate<=',$DateEnd)
             ->where('GlAcc','3898016')
-            ->where('TrnType','820')
+            ->where('TrnType','819')
             ->get();
            // $this->output->enable_profiler(TRUE);
             return $npl->result(); 
@@ -99,8 +99,7 @@ class Npl_model extends CI_Model
                 ->where_in("BrCode",$arraylist)
                 ->where('PostDate>=',$DateStart)
                 ->where('PostDate<=',$DateEnd)
-                ->where('GlAcc','5744011')
-                ->where('TrnType','820')
+                ->where('GlAcc','5744011')                
                 ->get();
                // $this->output->enable_profiler(TRUE);
                 return $npl->result(); 
