@@ -3,6 +3,7 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
      
+        
          <!-- page content -->
          <div role="main">
             <div class="">
@@ -32,41 +33,41 @@
                     <div class="x_content">
                       <div class="row">
                           <div class="col-md-12">
-                              <form class="form-inline" action="<?php echo site_url('DailyCash/CashSummary');?>" method="post">
+                              <form class="form-inline" action="<?php echo site_url('npl/nplcollection');?>" method="post">
                                   <fieldset class="scheduler-border">
                                     <legend class="scheduler-border">Specific Period:</legend>
                                       <div class="form-group" style="margin-top:-10px;">                                       
                                           <label for="exampleInputName2">FITTER BRACH</label>
                                           <div class="row-fluid">
                                           <select class="selectpicker" id="brname" data-show-subtext="true" data-live-search="true" name="brname" required>
-                                                <?php foreach($brlist as $row){
-                                                    if(isset($brname)){?>
-                                                    <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
-                                                    <?php }else{?>
-                                                    <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
-                                                <?php }}?>
-                                            <option data-subtext="Select Branch" value="All">All</option>
                                            
-                                            </select>
+                                           <option data-subtext="Select Branch" value="All">All</option>
+                                               <?php foreach($brlist as $row){
+                                                   if(isset($brname)){?>
+                                                   <option value="<?php echo $row->brCode;?>" <?php if($row->brCode==$brname){ echo  'selected';}?>><?php echo $row->shortcode  ;?></option>
+                                                   <?php }else{?>
+                                                   <option value="<?php echo $row->brCode;?>"><?php echo $row->shortcode;?></option>
+                                               <?php }}?>
+                                           </select>
                                         </div>
                                       </div>
                                       <div class="form-group" style="margin-top:10px;">                                       
                                           <label for="exampleInputName2">From:</label>
                                           <input type="text" id="datestart" class="form-control" name="datestart" id="exampleInputName2"
                                           placeholder="<?php echo date('Y-m-d');?>" 
-                                          value=""
+                                          value="<?php if(isset($datestart)){echo $datestart;}else{ echo date('Y-m-d');}?>"
                                           readonly="true" style="background:white;">
                                       </div>
-                                <div class="form-group" style="margin-top:10px;">
+                                      <div class="form-group" style="margin-top:10px;">
                                     <label for="exampleInputEmail2">To:</label>
                                         <input type="text" class="form-control" id="dateend" name="dateend" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-start-date="+2d" 
                                         placeholder="<?php echo date('Y-m-d');?>" 
-                                        value=""
+                                        value="<?php if(isset($dateend)){echo $dateend;}else{ echo date('Y-m-d');}?>"
                                         readonly="true" style="background:white;">
                                 </div> 
-                               <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;"><span class="
+                                <button type="submit" class="btn btn-primary" id="dailyloandisb" style="margin-top:15px;" name="submit"><span class="
                                glyphicon glyphicon-search"></span><span style="margin-left:5px;">Search</span></button>
-                               <button type="button" class="btn btn-success" id="downloadinterbranch" style="margin-top:15px;"><span class="
+                               <button type="button" class="btn btn-success" id="downloadnplcollectiontoloan" style="margin-top:15px;"><span class="
                                 glyphicon glyphicon-download-alt"></span><span style="margin-left:5px;">Download Excel Files</span></button>
                                <button type="button" class="btn btn-default" onclick="javascript:printDiv('reports')" id="btnPrint" style="margin-top:15px;">
                                <span class="
@@ -87,7 +88,7 @@
                                     <th rowspan='2' valign="middle" style="vertical-align: middle;text-align:center;border-bottom:3pt solid #22d4ae;">លេខកូដសាខា</th>
                                       <th rowspan='2' valign="middle" style="vertical-align: middle;text-align:center;border-bottom:3pt solid #22d4ae;">ឈ្មោះសាខា</th>
                                   <th colspan='3' style="text-align:center;white-space: nowrap;overflow: hidden;"> កម្ចីធំជាង ៩០ ថ្ងៃ(NPL) របស់អនុប្រធានសាខា</th>
-                                  <th colspan='3' style="text-align:center;white-space: nowrap;overflow: hidden;">កម្ចីលុបចេញពីបញ្ជី(WO)</th>                                  
+                                  <th colspan='4' style="text-align:center;white-space: nowrap;overflow: hidden;">កម្ចីលុបចេញពីបញ្ជី(WO)</th>                                  
                                   <th colspan='2' style="text-align:center;white-space: nowrap;overflow: hidden;">លទ្ធផលសរុប</th>
                                   
                                 </tr>
@@ -98,25 +99,33 @@
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់ខ្ចប់ទុកបញ្ចូល MB</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន  </th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល MB</th>
-                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់ខ្ចប់ទុកបញ្ចូល MB</th>                                    
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់បានបញ្ចូល SKP TOOLS</th> 
+                                    <th style="text-align:center;white-space: nowrap;overflow: hidden;">លំអៀង</th>                                   
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនអតិថិជន</th>
                                     <th style="text-align:center;white-space: nowrap;overflow: hidden;">ចំនួនទឹកប្រាក់</th>
                                 </tr>
                                 </thead>
                                 <tbody> 
+                                <?php
+                                $Total=0;
+                                $i=1;
+                                  if(isset($viewnplwo)){
+                                  foreach($viewnplwo as $row):?>
                                   <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td> 
+                                    <td><?= $i++;?></td>
+                                    <td><?= $row->BrCode;?></td>
+                                    <td><?= $row->BrName;?></td>
+                                    <td style="text-align:center;"><?= $row->NumClient;?></td>
+                                    <td style="text-align:right;"><?= $row->TrnAmt;?></td>
+                                    <td style="text-align:right;"><?= $row->AmtMB;?></td>
+                                    <td style="text-align:center;"><?= $row->TotalClient;?></td>
+                                    <td style="text-align:right;"><?= $row->AmtWOMB;?></td>
+                                    <td style="text-align:right;"><?= $row->TotalBalWOTools;?></td>
+                                    <td style="text-align:right;"><?php echo number_format($row->AmtWOMB-$row->TotalBalWOTools,0);?></td>
+                                    <td style="text-align:right;"><?php echo number_format($row->NumClient+$row->TotalClient,0);?></td> 
+                                    <td style="text-align:right;"><?php echo number_format($row->TrnAmt+$row->AmtWOMB,0);?></td> 
                                   </tr>
+                                  <?php endforeach;}?>
                                   <tr>
                                     <td colspan="3" style="text-align:right">សរុប</td>                                   
                                     <td></td>
@@ -126,7 +135,8 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td> 
+                                    <td></td>
+                                    <td></td>    
                                   </tr>
                                 </tbody>
                             </table>                            
@@ -145,6 +155,26 @@
 
 
           <!-- /page content -->
+          <script>
+  $(document).ready(function()
+  {
+    $("#downloadnplcollectiontoloan").on("click",function()
+    {
+    
+      var brname=$("#brname").val();
+      var datestart=$("#datestart").val();
+      var dateend=$("#dateend").val();
+      
+      if(brname==''){
+        alert("Please Choose Branch Name");
+      }else
+      {
+        window.location.href="<?php echo site_url('npl/downloadnplwo');?>/"+brname+"/"+datestart+"/"+dateend
+      }
+     
+    });
+  });
+</script>        
           <script>
             $(document).ready(function()
                {

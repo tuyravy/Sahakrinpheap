@@ -27,11 +27,23 @@ class npl extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->helper('form');
-        $data['mlist']=$this->Menu_model->MainiManu();
-        $data['brlist']=$this->Function_model->getBrname();  
-        $data['viewpage']='NPL/Npl_View';
-        $this->Npl_model->summary_npl_wo();
-        $this->load->view('master_page',$data);
+        if(isset($_POST['submit'])){
+            $datestart=date('Y-m-d',strtotime($this->input->post('datestart')));
+            $dateend=date('Y-m-d',strtotime($this->input->post('dateend')));
+            $brname=$this->input->post('brname');
+            $viewnplwo=$this->Npl_model->summary_npl_wo($brname,$datestart,$dateend);
+        }
+            $this->load->helper('url');
+            $this->load->helper('form');
+            $mlist=$this->Menu_model->MainiManu();
+            $brlist=$this->Function_model->getBrname();  
+            $viewpage='NPL/Npl_View';
+            
+            $this->load->view('master_page',compact('mlist','brlist','viewpage','viewnplwo','datestart','dateend','brname'));
+      
+        
+
+        // $this->load->view('master_page',$data);
     }
     public function npldetail(){
 
@@ -131,4 +143,13 @@ class npl extends CI_Controller {
         $this->excel->stream($brcode."_Loan_WO_Collection in MB_".$datestart."_and_".$dateend."_.xls",$data);
 
     }
+    public function downloadnplwo(){
+        $datestart=date('Y-m-d',strtotime($datestart));
+        $dateend=date('Y-m-d',strtotime($dateend));
+        $this->excel->setActiveSheetIndex(0);
+        $data=$this->Npl_model->summary_npl_wo($brcode,$datestart,$dateend);  
+        $this->excel->stream($brcode."_Loan_WO_and NPL_Collection_".$datestart."_and_".$dateend."_.xls",$data);
+
+    }
+    
 }
