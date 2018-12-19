@@ -104,4 +104,27 @@ class Npl_model extends CI_Model
                // $this->output->enable_profiler(TRUE);
                 return $npl->result(); 
             } 
-}
+    /**
+     * Store in blog NPL model
+     * get from table npl_collection,npl_glwo_collection,wocollection
+     * return array list to display in npl and wo 
+     * @param @Brcode,@startdate,@enddate
+     * 
+     */
+    public function summary_npl_wo(){
+
+        $nplwo=$this->db->query("select 
+            n.BrCode,n.BrName,
+            count(n.IdClient) as NumClient,
+            sum(n.TrnAmt) as TrnAmt,
+            case
+                when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) IS NULL then 
+                0
+            else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) 
+            end as AmtMB
+            from nplcollection n group by n.BrCode,n.BrName;
+
+    ");
+        return $nplwo->result();
+    }
+}   

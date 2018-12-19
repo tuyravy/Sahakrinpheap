@@ -30,6 +30,7 @@ class npl extends CI_Controller {
         $data['mlist']=$this->Menu_model->MainiManu();
         $data['brlist']=$this->Function_model->getBrname();  
         $data['viewpage']='NPL/Npl_View';
+        $this->Npl_model->summary_npl_wo();
         $this->load->view('master_page',$data);
     }
     public function npldetail(){
