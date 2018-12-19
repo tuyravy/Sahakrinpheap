@@ -159,7 +159,7 @@
         alert("Please Choose Branch Name");
       }else
       {
-        window.location.href="<?php echo site_url('npl/downloadnpldetail');?>/"+brname+"/"+datestart+"/"+dateend
+        window.location.href="<?php echo site_url('npl/downloadwrittenoffwithgl');?>/"+brname+"/"+datestart+"/"+dateend
       }
      
     });
