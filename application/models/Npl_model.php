@@ -113,17 +113,35 @@ class Npl_model extends CI_Model
      */
     public function summary_npl_wo($BrCode,$DateStart,$DateEnd){
         
-        $arraylist=0;
+      
         if($BrCode=="All"){
-            $brcontrol=$this->Function_model->getBrname();
-            $arraylist=array();
-            foreach($brcontrol as $row){
-                array_push($arraylist,$row->brCode);
-            }
+           
+            $nplwo=$this->db->query("select 
+                                n.BrCode,n.BrName,
+                                count(n.IdClient) as NumClient,
+                                sum(n.TrnAmt) as TrnAmt,
+                                case
+                                    when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) IS NULL then 
+                                    0
+                                else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) 
+                                end as AmtMB,
+                                (select count(AccountNumber) from wocollection wo where wo.BrCode=n.BrCode ) as TotalClient,
+                                
+                                case
+                                    when (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) IS NULL then 
+                                    0
+                                else (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) 
+                                end as AmtWOMB,
+                                
+                                (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode ) as TotalBalWOTools
+                                
+                                from nplcollection n                                 
+                                group by n.BrCode,n.BrName;
+
+                                ");
         }
         else{
-                $arraylist=$BrCode;
-        }
+              
         $nplwo=$this->db->query("select 
                                 n.BrCode,n.BrName,
                                 count(n.IdClient) as NumClient,
@@ -143,9 +161,12 @@ class Npl_model extends CI_Model
                                 
                                 (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode ) as TotalBalWOTools
                                 
-                                from nplcollection n group by n.BrCode,n.BrName;
+                                from nplcollection n 
+                                where n.BrCode='".$BrCode."'
+                                group by n.BrCode,n.BrName;
 
                                 ");
+         }
         return $nplwo->result();
     }
 }   
