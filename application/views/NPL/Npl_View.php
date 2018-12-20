@@ -108,6 +108,14 @@
                                 <tbody> 
                                 <?php
                                 $Total=0;
+                                $Total1=0;
+                                $Total2=0;
+                                $Total3=0;
+                                $Total4=0;
+                                $Total5=0;
+                                $Total6=0;
+                                $Total7=0;
+                                $Total8=0;
                                 $i=1;
                                   if(isset($viewnplwo)){
                                   foreach($viewnplwo as $row):?>
@@ -115,28 +123,28 @@
                                     <td><?= $i++;?></td>
                                     <td><?= $row->BrCode;?></td>
                                     <td><?= $row->BrName;?></td>
-                                    <td style="text-align:center;"><?= $row->NumClient;?></td>
-                                    <td style="text-align:right;"><?= $row->TrnAmt;?></td>
-                                    <td style="text-align:right;"><?= $row->AmtMB;?></td>
-                                    <td style="text-align:center;"><?= $row->TotalClient;?></td>
-                                    <td style="text-align:right;"><?= $row->AmtWOMB;?></td>
-                                    <td style="text-align:right;"><?= $row->TotalBalWOTools;?></td>
-                                    <td style="text-align:right;"><?php echo number_format($row->AmtWOMB-$row->TotalBalWOTools,0);?></td>
-                                    <td style="text-align:right;"><?php echo number_format($row->NumClient+$row->TotalClient,0);?></td> 
-                                    <td style="text-align:right;"><?php echo number_format($row->TrnAmt+$row->AmtWOMB,0);?></td> 
+                                    <td style="text-align:right;"><?= number_format($row->NumClient,0);$Total+=$row->NumClient;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TrnAmt,0);$Total1+=$row->TrnAmt;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->AmtMB,0);$Total2+=$row->AmtMB ;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TotalClient,0);$Total3+=$row->TotalClient ;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->AmtWOMB,0);$Total4+=$row->AmtWOMB;?></td>
+                                    <td style="text-align:right;"><?= number_format($row->TotalBalWOTools,0);$Total5+=$row->TotalBalWOTools;?></td>
+                                    <td style="text-align:right;"><?php echo number_format($row->AmtWOMB-$row->TotalBalWOTools,0);$Total6+=$row->AmtWOMB-$row->TotalBalWOTools;?></td>
+                                    <td style="text-align:right;"><?php echo number_format($row->NumClient+$row->TotalClient,0);$Total7+=$row->NumClient+$row->TotalClient;?></td> 
+                                    <td style="text-align:right;"><?php echo number_format($row->TrnAmt+$row->AmtWOMB,0);$Total8+= $row->TrnAmt+$row->AmtWOMB;?></td> 
                                   </tr>
                                   <?php endforeach;}?>
                                   <tr>
                                     <td colspan="3" style="text-align:right">សរុប</td>                                   
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>    
+                                    <td style="text-align:right;"> <?= number_format($Total,0);?> </td>
+                                    <td style="text-align:right;"> <?= number_format($Total1,0);?></td>
+                                    <td style="text-align:right;"> <?= number_format($Total2,0);?></td>
+                                    <td style="text-align:right;"> <?= number_format($Total3,0);?></td>
+                                    <td style="text-align:right;"><?= number_format($Total4,0);?></td>
+                                    <td style="text-align:right;"> <?= number_format($Total5,0);?></td>
+                                    <td style="text-align:right;"> <?= number_format($Total6,0);?> </td>
+                                    <td style="text-align:right;"> <?= number_format($Total7,0);?> </td>
+                                    <td style="text-align:right;"> <?= number_format($Total8,0);?></td>    
                                   </tr>
                                 </tbody>
                             </table>                            

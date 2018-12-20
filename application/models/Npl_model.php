@@ -117,55 +117,52 @@ class Npl_model extends CI_Model
         if($BrCode=="All"){
            
             $nplwo=$this->db->query("select 
-                                n.BrCode,n.BrName,
-                                count(n.IdClient) as NumClient,
-                                sum(n.TrnAmt) as TrnAmt,
-                                case
-                                    when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) IS NULL then 
-                                    0
-                                else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) 
-                                end as AmtMB,
-                                (select count(AccountNumber) from wocollection wo where wo.BrCode=n.BrCode ) as TotalClient,
-                                
-                                case
-                                    when (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) IS NULL then 
-                                    0
-                                else (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) 
-                                end as AmtWOMB,
-                                
-                                (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode ) as TotalBalWOTools
-                                
-                                from nplcollection n                                 
-                                group by n.BrCode,n.BrName;
-
-                                ");
+                                        n.BrCode,n.BrName,
+                                        count(n.IdClient) as NumClient,
+                                        sum(n.TrnAmt) as TrnAmt,
+                                        case
+                                            when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode and gl.PostDate between '".$DateStart."' and '".$DateEnd."') IS NULL then 
+                                            0
+                                        else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode and gl.PostDate between '".$DateStart."' and '".$DateEnd."') 
+                                        end as AmtMB,
+                                        (select count(AccountNumber) from wocollection wo where wo.BrCode=n.BrCode and wo.CollectDate between '".$DateStart."' and '".$DateEnd."' ) as TotalClient,
+                                        
+                                        case
+                                            when (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode and gll.PostDate between '".$DateStart."' and '".$DateEnd."'  ) IS NULL then 
+                                            0
+                                        else (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode and gll.PostDate between '".$DateStart."' and '".$DateEnd."') 
+                                        end as AmtWOMB,
+                                        (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode and wo.CollectDate between '".$DateStart."' and '".$DateEnd."' ) as TotalBalWOTools
+                                        from nplcollection n 
+                                        where n.TrnDate between '".$DateStart."' and '".$DateEnd."'
+                                         group by n.BrCode,n.BrName;
+                                          ");
         }
         else{
               
         $nplwo=$this->db->query("select 
-                                n.BrCode,n.BrName,
-                                count(n.IdClient) as NumClient,
-                                sum(n.TrnAmt) as TrnAmt,
-                                case
-                                    when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) IS NULL then 
-                                    0
-                                else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode) 
-                                end as AmtMB,
-                                (select count(AccountNumber) from wocollection wo where wo.BrCode=n.BrCode ) as TotalClient,
-                                
-                                case
-                                    when (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) IS NULL then 
-                                    0
-                                else (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode) 
-                                end as AmtWOMB,
-                                
-                                (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode ) as TotalBalWOTools
-                                
-                                from nplcollection n 
-                                where n.BrCode='".$BrCode."'
-                                group by n.BrCode,n.BrName;
+                                    n.BrCode,n.BrName,
+                                    count(n.IdClient) as NumClient,
+                                    sum(n.TrnAmt) as TrnAmt,
+                                    case
+                                        when (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode and gl.PostDate between '".$DateStart."' and '".$DateEnd."') IS NULL then 
+                                        0
+                                    else (select sum(gl.CrAmt) from npl_wo_glcollection gl where gl.GLAcc='3898016' and gl.BrCode=n.BrCode and gl.PostDate between '".$DateStart."' and '".$DateEnd."') 
+                                    end as AmtMB,
+                                    (select count(AccountNumber) from wocollection wo where wo.BrCode=n.BrCode and wo.CollectDate between '".$DateStart."' and '".$DateEnd."' ) as TotalClient,
+                                    
+                                    case
+                                        when (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode and gll.PostDate between '".$DateStart."' and '".$DateEnd."'  ) IS NULL then 
+                                        0
+                                    else (select sum(gll.CrAmt) from npl_wo_glcollection gll where gll.GLAcc='5744011' and gll.BrCode=n.BrCode and gll.PostDate between '".$DateStart."' and '".$DateEnd."') 
+                                    end as AmtWOMB,
+                                    (select sum(TotalCollectedAmt) from wocollection wo where wo.BrCode=n.BrCode and wo.CollectDate between '".$DateStart."' and '".$DateEnd."' ) as TotalBalWOTools
+                                    from nplcollection n 
+                                    where n.TrnDate between '".$DateStart."' and '".$DateEnd."'
+                                    and n.BrCode='".$BrCode."'
+                                    group by n.BrCode,n.BrName;
 
-                                ");
+                                         ");
          }
         return $nplwo->result();
     }
