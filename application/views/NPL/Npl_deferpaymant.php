@@ -5,11 +5,11 @@
      
          <!-- page content -->
          <div class="breadcrumb flat row nopadding" style="margin-top:-10px;">
-                        <a href="<?= base_url();?>">ទំព័រដើម</a>
-                        <a href="<?= site_url('npl/npldetail');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន</a>
-                        <a href="<?= site_url('npl/npldeferpaymant');?>" class="active">ប្រាក់ប្រមូលបានបង់ខ្ចប់ទុក</a>
-                        <a href="<?= site_url('npl/writtenoffdetail');?>">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីបង់ចូល SKP_Tools</a>
-                        <a href="<?= site_url('npl/writtenoffwithgl');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនី Written Off</a>
+         <a href="<?= base_url();?>">ទំព័រដើម</a>
+                        <a href="<?= site_url('npl/npldetail');?>">ប្រាក់ប្រមូលបានបង់ចូលគណនីអតិថិជន​ធំជាង ៩០​ថ្ងៃ</a>
+                        <a href="<?= site_url('npl/npldeferpaymant');?>"​ class="active" >ប្រាក់ប្រមូលបានបង់ខ្ចប់ទុកសម្រាប់អតិថិជន​ធំជាង ៩០​ថ្ងៃ</a>
+                        <a href="<?= site_url('npl/writtenoffdetail');?>">ប្រាក់ប្រមូលបានពីអតិថិជនកាត់ចេញពីបញ្ជីរបង់ចូល SKP_Tools</a>
+                        <a href="<?= site_url('npl/writtenoffwithgl');?>">ប្រាក់ប្រមូលបានកាត់ចេញពីបញ្ជីរបង់ចូលបង់ចូលគណនី Written Off</a>      
                         
                         
          </div>
@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                   <div class="x_panel">
                     <div class="x_title">
-                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">របាយការណ៍ប្រមូលទឹកប្រាក់កម្ចីធំជាង ៩០ ថ្ងៃ និងអិតិថិជនកាត់ចេញពីបញ្ជីរប្រចាំថ្ងៃ</span>
+                    <span class="glyphicon glyphicon-align-justify"></span><span style="margin-left:10px;">របាយការណ៍ប្រមូលទឹកប្រាក់ខ្ចប់ទុកសម្រាប់អតិថិជន​ធំជាង ៩០​ថ្ងៃ</span>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -121,7 +121,7 @@
                                   <tr>
                                     <td colspan="4" style="text-align:right">សរុប</td>                                   
                                     <td style="text-align:right"><?= number_format($total,0);?></td>
-                                    <!-- <td></td> -->
+                                    <td></td>
                                   </tr>
                                 </tbody>
                             </table>                            
