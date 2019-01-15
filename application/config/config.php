@@ -27,8 +27,8 @@ date_default_timezone_get();
 |
 */
 
-//$config['base_url'] = 'http://app.sahakrinpheap.com/skp_reports/';
-$config['base_url'] = 'http://localhost:8080/sahakrinpheap';
+$config['base_url'] = 'http://app.sahakrinpheap.com/skp_reports/';
+// $config['base_url'] = 'http://localhost:81/Sahakrinpheap';
 /*
 |--------------------------------------------------------------------------
 | Index File
