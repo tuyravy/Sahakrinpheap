@@ -71,8 +71,9 @@
                                       <button type="button" class="btn btn-success" style="margin-top:5px;" id="DownloadExcel">
                                       <span class="glyphicon glyphicon-cloud-download"></span>
                                       <span>Download Excel</span></button>
+
                                       <?php if($sid=="1489"){?>
-                                        <button type="button" class="btn btn-success" style="margin-top:5px;" id="DownloadExcel_by_Co">
+                                        <button type="button" class="btn btn-success" style="margin-top:5px;" id="DownloadExcelbyCo">
                                         <span class="glyphicon glyphicon-cloud-download"></span>
                                         <span>Download Disb by CO</span></button>
 
@@ -276,3 +277,32 @@
     })
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+$("#DownloadExcelbyCo").on("click",function(){
+           
+           var systemid=$("#systemid").val();      
+           var brcode=$("#branchname").val();
+           if(systemid=='' && brcode==''){
+                                      
+                   swal({
+                   title: "សូមជ្រើសរើសយក All ប្រសិនបើលោកអ្នកចង់ទាយយក File Excel",
+                   text: "",
+                   type: "warning",
+                   showCancelButton: true,
+                   confirmButtonClass: 'btn-info',                      
+                   closeOnCancel: false
+                   });                            
+                   return false;
+              
+           }      
+          
+           else
+           {                                
+               window.location.href="Download_DESB_performentbyco";  
+           }
+           
+       });
+    });
+</script>
