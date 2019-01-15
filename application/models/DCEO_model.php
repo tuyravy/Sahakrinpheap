@@ -34,22 +34,24 @@ class DCEO_model extends CI_Model
     }
     public function download_disb_byCo(){
         $db=$this->db->query("select 
+                            distinct(sc1.idco),
                             sc1.IdCo,
                             sc1.COName as COName,
-                            sum(sc1.Balance) as Balance,
-                            sum(sc1.Clients) as Clients,
-                            sum(sc1.PAR1Days) as PAR1Days,
-                            sum(sc1.PAR7Days) as PAR7Days,
-                            sum(sc1.PAR30Days) as PAR30Days,	
-                            sum(sc1.DisbAmt) as DisbAmt,				 
+                            (select sum(sc2.Balance) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as Balance,
+                            (select sum(sc2.Clients) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as Clients,
+                            (select sum(sc2.PAR1Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR1Days,
+                            (select sum(sc2.PAR7Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR7Days,
+                            (select sum(sc2.PAR30Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR30Days,
+                            (select sum(sc2.DisbAmt) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as DisbAmt,
+                                            
                             tbl.shortcode as shortcode,
                             sc1.BrCode as BrCode,
                             '".$this->Reportdate."' as Reportdate
                         from summary_coperformant sc1 				
-                        inner join tbl_branch tbl on tbl.brcode=sc1.brcode
-                        where sc1.Reportdate='".$this->Reportdate."'
+                        inner join tbl_branch tbl on tbl.brcode=sc1.brcode					
                         group by sc1.IdCo,sc1.COName
                         order by tbl.brcode
+      
                     ");
         return $db->result();
     }
