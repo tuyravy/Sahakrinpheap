@@ -273,7 +273,7 @@
                                         }else{
                                         echo number_format((($TotalPar1Days/$TotalBalance)-($TotalPar1Days_Pre/$TotalBalance_Pre))*100,2);
                                         }?>%</td>
-                                        <td><?=  number_format((($TotalDisbAmt)-($TotalDisbAmt_Pre))/4000,0);?></td>
+                                        <td><?=  number_format((($TotalDisbAmt-$TotalDisbAmt_Pre)/4000),0);?></td>
                                         <td>$ <?=  ($TotalClientDisb)-($TotalClientDisb_Pre);?></td>
                                         <td></td>
                                         <td></td>
