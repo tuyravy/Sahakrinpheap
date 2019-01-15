@@ -33,24 +33,28 @@ class DCEO_model extends CI_Model
        
     }
     public function download_disb_byCo(){
-        $db=$this->db->query("select 
-                            distinct(sc1.idco),
+        $db=$this->db->query("
+                        SELECT         
+                            DISTINCT 
+                            CONCAT(sc1.idco,
+                            sc1.BrCode) AS ID,
                             sc1.IdCo,
-                            sc1.COName as COName,
-                            (select sum(sc2.Balance) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as Balance,
-                            (select sum(sc2.Clients) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as Clients,
-                            (select sum(sc2.PAR1Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR1Days,
-                            (select sum(sc2.PAR7Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR7Days,
-                            (select sum(sc2.PAR30Days) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as PAR30Days,
-                            (select sum(sc2.DisbAmt) from summary_coperformant sc2 where sc2.BrCode=sc1.BrCode  and sc2.IdCo=sc1.idco and sc2.Reportdate between '2019-01-01' and '".$this->Reportdate."') as DisbAmt,
+                            sc1.COName AS COName,
+                        (SELECT SUM(sc2.Balance) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS Balance,
+                        (SELECT SUM(sc2.Clients) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS Clients,
+                            (SELECT SUM(sc2.PAR1Days) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS PAR1Days,
+                            (SELECT SUM(sc2.PAR7Days) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS PAR7Days,
+                            (SELECT SUM(sc2.PAR30Days) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS PAR30Days,
+                            (SELECT SUM(sc2.DisbAmt) FROM summary_coperformant sc2 WHERE sc2.BrCode=sc1.BrCode  AND sc2.IdCo=sc1.idco AND sc2.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."') AS DisbAmt,
                                             
-                            tbl.shortcode as shortcode,
-                            sc1.BrCode as BrCode,
-                            '".$this->Reportdate."' as Reportdate
-                        from summary_coperformant sc1 				
-                        inner join tbl_branch tbl on tbl.brcode=sc1.brcode					
-                        group by sc1.IdCo,sc1.COName
-                        order by tbl.brcode
+                            tbl.shortcode AS shortcode,
+                            sc1.BrCode AS BrCode,
+                            '2019-01-11' AS Reportdate
+                        FROM summary_coperformant sc1 				
+                        INNER JOIN tbl_branch tbl ON tbl.brcode=sc1.brcode
+                        WHERE sc1.Reportdate BETWEEN '2019-01-01' AND '".$this->Reportdate."'					
+                        GROUP BY CONCAT(sc1.IdCo,sc1.BrCode)
+                        ORDER BY tbl.brcode
       
                     ");
         return $db->result();
