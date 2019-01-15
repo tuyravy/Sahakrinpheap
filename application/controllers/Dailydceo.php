@@ -639,7 +639,7 @@ class Dailydceo extends CI_Controller {
         $this->excel->setActiveSheetIndex(0);                
         $data=$this->DCEO_model->download_disb_byCo();
         $this->excel->stream("Daily_Disbursement_byCo_.xls",$data);              
-                   
+        //teaast           
     }
     public function Downloadperformentbyco($sid=null,$brcode=null,$reportdate,$reportend)
     {
