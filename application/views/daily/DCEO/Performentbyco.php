@@ -280,29 +280,9 @@
 <script>
 $(document).ready(function()
 {
-$("#DownloadExcelbyCo").on("click",function(){
-           
-           var systemid=$("#systemid").val();      
-           var brcode=$("#branchname").val();
-           if(systemid=='' && brcode==''){
-                                      
-                   swal({
-                   title: "សូមជ្រើសរើសយក All ប្រសិនបើលោកអ្នកចង់ទាយយក File Excel",
-                   text: "",
-                   type: "warning",
-                   showCancelButton: true,
-                   confirmButtonClass: 'btn-info',                      
-                   closeOnCancel: false
-                   });                            
-                   return false;
-              
-           }      
-          
-           else
-           {                                
-               window.location.href="Download_DESB_performentbyco";  
-           }
-           
-       });
+    $("#DownloadExcelbyCo").on("click",function(){
+                                    
+        window.location.href="Download_DESB_performentbyco";  
+            
     });
 </script>
