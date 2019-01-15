@@ -72,7 +72,6 @@
                                       <span class="glyphicon glyphicon-cloud-download"></span>
                                       <span>Download Excel</span></button>
                                       <?php if($sid=="1489"){?>
-
                                         <button type="button" class="btn btn-success" style="margin-top:5px;" id="DownloadExcel_by_Co">
                                         <span class="glyphicon glyphicon-cloud-download"></span>
                                         <span>Download Disb by CO</span></button>

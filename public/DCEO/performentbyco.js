@@ -27,7 +27,7 @@ $(document).ready(function()
     });
 
     $("#DownloadExcel_by_Co").on("click",function(){
-                                
+            alert("test");    
             window.location.href="Download_DESB_performentbyco";  
         
     });
