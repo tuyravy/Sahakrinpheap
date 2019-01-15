@@ -1,5 +1,10 @@
 $(document).ready(function()
 {
+    $("#DownloadExcel_by_Co").on("click",function(){
+        //alert("test");    
+        window.location.href="Download_DESB_performentbyco";
+    });
+
     $("#DownloadExcel").on("click",function()
     {                      
         var systemid=$("#systemid").val();
@@ -26,10 +31,7 @@ $(document).ready(function()
         }
     });
 
-    $("#DownloadExcel_by_Co").on("click",function(){
-            //alert("test");    
-            window.location.href="Download_DESB_performentbyco";
-    });
+   
     $("#systemid").on("change",function(){
         var sid=$(this).val();
             $.ajax({
