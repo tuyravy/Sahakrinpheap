@@ -1,8 +1,29 @@
 $(document).ready(function()
 {
     $("#DownloadExcel_by_Co").on("click",function(){
-        //alert("test");    
-        window.location.href="Download_DESB_performentbyco";
+        var systemid=$("#systemid").val();
+        var datestart=$("#datestart").val();
+        var dateend=$("#dateend").val();
+        var brcode=$("#branchname").val();
+        if(systemid=='' && brcode==''){
+                                   
+                swal({
+                title: "សូមជ្រើសរើសយក All ប្រសិនបើលោកអ្នកចង់ទាយយក File Excel",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: 'btn-info',                      
+                closeOnCancel: false
+                });                            
+                return false;
+           
+        }      
+       
+        else
+        {                                
+            window.location.href="Download_DESB_performentbyco";  
+        }
+        
     });
 
     $("#DownloadExcel").on("click",function()
