@@ -25,6 +25,12 @@ $(document).ready(function()
             window.location.href="Downloadperformentbyco/"+systemid+"/"+brcode+"/"+datestart+"/"+dateend;  
         }
     });
+
+    $("#DownloadExcel_by_Co").on("click",function(){
+                                
+            window.location.href="Download_DESB_performentbyco";  
+        
+    });
     $("#systemid").on("change",function(){
         var sid=$(this).val();
             $.ajax({

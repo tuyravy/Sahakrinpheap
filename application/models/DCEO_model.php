@@ -32,6 +32,27 @@ class DCEO_model extends CI_Model
         
        
     }
+    public function download_disb_byCo(){
+        $db=$this->db->query("select 
+                            sc1.IdCo,
+                            sc1.COName as COName,
+                            sum(sc1.Balance) as Balance,
+                            sum(sc1.Clients) as Clients,
+                            sum(sc1.PAR1Days) as PAR1Days,
+                            sum(sc1.PAR7Days) as PAR7Days,
+                            sum(sc1.PAR30Days) as PAR30Days,	
+                            sum(sc1.DisbAmt) as DisbAmt,				 
+                            tbl.shortcode as shortcode,
+                            sc1.BrCode as BrCode,
+                            '".$this->Reportdate."' as Reportdate
+                        from summary_coperformant sc1 				
+                        inner join tbl_branch tbl on tbl.brcode=sc1.brcode
+                        where sc1.Reportdate='".$this->Reportdate."'
+                        group by sc1.IdCo,sc1.COName
+                        order by tbl.brcode
+                    ");
+        return $db->result();
+    }
     public function gethistorydetailbyDECO($Reportdate,$type)
     {
          $result=$this->db->query("Call sp_GetHistorydetailbyDECO(".$Reportdate.",".$type.")");     

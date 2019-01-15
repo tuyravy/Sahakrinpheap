@@ -633,7 +633,14 @@ class Dailydceo extends CI_Controller {
         $data['viewpage']='daily/DCEO/Performentbyco.php'; 
         $this->load->view('master_page',$data);        
     }
-
+    
+    public function Download_DESB_performentbyco()
+    {
+        $this->excel->setActiveSheetIndex(0);                
+        $data=$this->DCEO_model->download_disb_byCo();
+        $this->excel->stream("Daily_Disbursement_byCo_.xls",$data);              
+                   
+    }
     public function Downloadperformentbyco($sid=null,$brcode=null,$reportdate,$reportend)
     {
         $this->excel->setActiveSheetIndex(0);
