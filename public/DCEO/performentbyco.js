@@ -1,9 +1,7 @@
 $(document).ready(function()
 {
     $("#DownloadExcel_by_Co").on("click",function(){
-        var systemid=$("#systemid").val();
-        var datestart=$("#datestart").val();
-        var dateend=$("#dateend").val();
+        var systemid=$("#systemid").val();      
         var brcode=$("#branchname").val();
         if(systemid=='' && brcode==''){
                                    
